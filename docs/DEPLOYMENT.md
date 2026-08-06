@@ -5,6 +5,9 @@ The hosted onboarding and the learner exercise are deliberately separate Chromat
 The repository also publishes the same Hub to GitHub Pages. Pages provides the dependable public
 course URL; Chromatic adds the product-native build, review, and access experience.
 
+- Hosted course: <https://ethriel3695.github.io/storybook-multi-framework-demo/>
+- Source repository: <https://github.com/ethriel3695/storybook-multi-framework-demo>
+
 | Project               | Purpose                                                  | Who configures it             |
 | --------------------- | -------------------------------------------------------- | ----------------------------- |
 | Onboarding Hub        | A durable, read-only course and facilitator reference    | The course owner, once        |

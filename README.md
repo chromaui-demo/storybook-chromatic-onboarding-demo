@@ -5,6 +5,9 @@
 > core path with five optional advanced days, designed for 60–90 minutes of asynchronous work per
 > day and ending in a mock customer demo.
 
+[Open the hosted onboarding Hub](https://ethriel3695.github.io/storybook-multi-framework-demo/), or
+clone the repository to complete the hands-on labs.
+
 This standalone pnpm/Turborepo workspace mirrors the Chromatic Engineering monorepo criteria for newer projects. It is a minimal example of Storybook composition using the `@storybook/manager-webpack5` and
 `@storybook/preview-webpack5` packages, plus the `@storybook/addon-interactions`. It demonstrates one customer-facing Storybook that composes five
 separately built and tested catalogs:
