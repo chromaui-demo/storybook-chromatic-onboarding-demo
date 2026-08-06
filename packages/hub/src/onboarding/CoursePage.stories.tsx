@@ -39,10 +39,10 @@ export const Welcome: Story = {
       }),
     ).toBeVisible();
     await expect(
-      canvas.getByRole('link', { name: /Start Day 1/ }),
+      canvas.getByRole('link', { name: /Set up the field lab/ }),
     ).toHaveAttribute(
       'href',
-      './?path=/docs/onboarding-core-01-upgrade-orient--docs',
+      './?path=/docs/onboarding-start-here-setup--docs',
     );
   },
 };
@@ -94,8 +94,8 @@ export const Setup: Story = {
       'Install once, claim a branch, and prove the demo works before you change it.',
     duration: '30–45 minutes',
     next: {
-      href: './?path=/docs/onboarding-core-01-upgrade-orient--docs',
-      label: 'Day 1 · Upgrade & orient',
+      href: './?path=/docs/onboarding-start-here-why-the-workflow-matters--docs',
+      label: 'Why the workflow matters',
     },
     phase: 'Setup',
     title: 'Get to a known-good starting point',
@@ -182,9 +182,58 @@ export const Setup: Story = {
         name: 'Get to a known-good starting point',
       }),
     ).toBeVisible();
-    await expect(canvas.getByText('Ready for Day 1')).toBeVisible();
+    await expect(canvas.getByText('Set up first')).toBeVisible();
     await expect(
       canvas.getByRole('heading', { name: 'A few lines we do not cross' }),
+    ).toBeVisible();
+  },
+};
+
+export const Orientation: Story = {
+  args: {
+    customerProblem:
+      'Important UI states are hard to reproduce, reviews rely on screenshots, and regressions arrive late.',
+    description:
+      'Learn the customer problem each part of the workflow solves before you configure the first tool.',
+    duration: '35–45 minutes',
+    outcome:
+      'You can explain why Storybook and Chromatic belong together and know when more coverage would actually help.',
+    phase: 'Orientation',
+    title: 'Why this workflow matters',
+    children: (
+      <>
+        <section className="value-thesis">
+          <span className="value-eyebrow">The field answer</span>
+          <h2>Make UI risk visible before it reaches a customer</h2>
+          <p>
+            Storybook makes important UI states reproducible. Chromatic turns
+            those states into shared evidence that a team can test and review.
+          </p>
+        </section>
+        <section className="value-product-pair" aria-label="Product roles">
+          <article>
+            <span>Storybook</span>
+            <h2>Make the state real</h2>
+            <p>Develop, document, and test the UI outside the full app.</p>
+          </article>
+          <article>
+            <span>Chromatic</span>
+            <h2>Make the change shared</h2>
+            <p>
+              Capture, compare, and review those states against Git history.
+            </p>
+          </article>
+        </section>
+      </>
+    ),
+  },
+  play: async ({ canvas }) => {
+    await expect(canvas.getByText('Why before how')).toBeVisible();
+    await expect(
+      canvas.getByRole('heading', { name: 'Make the state real' }),
+    ).toBeVisible();
+    await expect(
+      canvas.getByRole('heading', { name: 'Make the change shared' }),
     ).toBeVisible();
   },
 };

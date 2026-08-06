@@ -13,6 +13,32 @@ This is the moment the previous 14 days are for. You are not racing through tabs
 remember every setting. You are helping a customer make a good decision while operating the product
 with confidence.
 
+## Choose the call before you choose the demo
+
+The reviewer assigns one track. Both use the same repository and product workflow; the customer has a
+different decision to make.
+
+<section className="value-role-grid" aria-label="Capstone call tracks">
+  <article className="value-role-card">
+    <span>Track A · Presales</span>
+    <h2>Evaluation and technical validation</h2>
+    <p>
+      Trailhead is deciding whether Storybook and Chromatic fit its component
+      workflow. Discover the risk worth proving, run a focused demo, and propose
+      a concrete evaluation with success criteria.
+    </p>
+  </article>
+  <article className="value-role-card">
+    <span>Track B · Postsales</span>
+    <h2>Adoption and coverage</h2>
+    <p>
+      Trailhead already publishes its React Storybook and runs visual tests.
+      Adoption is uneven. Find a material blind spot and recommend the smallest
+      next practice or capability that closes it.
+    </p>
+  </article>
+</section>
+
 ## Customer brief
 
 You are meeting Trailhead Travel's design-system lead, frontend platform engineer, and engineering
@@ -26,6 +52,10 @@ manager.
 - Accessibility issues are found during release hardening.
 - Leadership wants faster review without creating a test suite nobody trusts.
 
+For the postsales track, assume the design-system Storybook and a passing `main` baseline already
+exist. Only happy paths are consistently covered, some teams still approve screenshots in chat, and
+CI is not required across every owning team.
+
 The customer has 20 minutes. Reserve at least two minutes for discovery and three minutes for questions.
 
 ## Discovery prompts
@@ -38,6 +68,7 @@ Ask enough to choose a relevant demo path:
 4. How are intentional visual changes approved today?
 5. What makes current CI slow or unreliable?
 6. What accessibility policy or release gate already exists?
+7. If Chromatic is already in place, where does evidence or review still leave the workflow?
 
 The reviewer will answer with two priorities. Adapt the demo to those answers.
 
@@ -50,7 +81,9 @@ Demonstrate these as one narrative rather than six disconnected features:
 3. One interaction test and one accessibility result.
 4. A Chromatic visual diff with a correct baseline explanation.
 5. A CI/branch result and the review decision needed to move forward.
-6. A recommended rollout path for Trailhead Travel.
+6. A recommendation that matches the track:
+   - **Presales:** a bounded evaluation, named owner, and proof of success.
+   - **Postsales:** a specific coverage gap, smallest useful change, and measurement.
 
 Composition, modes, MCP, and TurboSnap are optional demo moments. Include them only when discovery makes
 them relevant.
@@ -73,14 +106,14 @@ safest next action. You do not need to repair the issue live if doing so would d
 
 Score each dimension from 1–4. A passing capstone has no score below 2 and a total of at least 18/24.
 
-| Dimension              | 1: Needs work                             | 2: Developing                     | 3: Ready                                               | 4: Strong                                                     |
-| :--------------------- | :---------------------------------------- | :-------------------------------- | :----------------------------------------------------- | :------------------------------------------------------------ |
-| Discovery              | Starts a fixed feature tour               | Asks questions but barely adapts  | Reflects priorities and adapts                         | Surfaces constraints and reframes the path insightfully       |
-| Storybook fluency      | Cannot connect story/config/test concepts | Operates the happy path with help | Explains and operates the core workflow                | Connects architecture and tradeoffs clearly                   |
-| Chromatic fluency      | Misstates baselines or review             | Completes review with prompting   | Correctly explains branch, baseline, tests, and review | Anticipates ancestry, CI, and adoption risks                  |
-| Technical recovery     | Guesses or hides the failure              | Identifies a plausible check      | Uses evidence and chooses a safe next step             | Diagnoses systematically while preserving customer confidence |
-| Customer communication | Jargon-heavy feature list                 | Some outcome language             | Concise narrative tied to stated needs                 | Teaches complex boundaries simply and honestly                |
-| Recommendation         | No next step or generic trial             | Broad next step                   | Phased, owned, measurable next step                    | Balances value, risk, ownership, and expansion path           |
+| Dimension                | 1: Needs work                             | 2: Developing                     | 3: Ready                                               | 4: Strong                                                     |
+| :----------------------- | :---------------------------------------- | :-------------------------------- | :----------------------------------------------------- | :------------------------------------------------------------ |
+| Discovery                | Starts a fixed feature tour               | Asks questions but barely adapts  | Reflects priorities and adapts                         | Surfaces constraints and reframes the path insightfully       |
+| Storybook fluency        | Cannot connect story/config/test concepts | Operates the happy path with help | Explains and operates the core workflow                | Connects architecture and tradeoffs clearly                   |
+| Chromatic fluency        | Misstates baselines or review             | Completes review with prompting   | Correctly explains branch, baseline, tests, and review | Anticipates ancestry, CI, and adoption risks                  |
+| Technical recovery       | Guesses or hides the failure              | Identifies a plausible check      | Uses evidence and chooses a safe next step             | Diagnoses systematically while preserving customer confidence |
+| Customer communication   | Jargon-heavy feature list                 | Some outcome language             | Concise narrative tied to stated needs                 | Teaches complex boundaries simply and honestly                |
+| Value and recommendation | No next step or pushes more usage         | Broad next step                   | Ties a measured next step to a real gap                | Balances value, risk, ownership, boundaries, and expansion    |
 
 ## Feedback format
 

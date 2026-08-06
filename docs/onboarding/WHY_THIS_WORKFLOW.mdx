@@ -1,0 +1,261 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { CoursePage } from '../../packages/hub/src/onboarding/CoursePage';
+
+<Meta title="Onboarding/Start here/Why the workflow matters" />
+
+<CoursePage
+  phase="Orientation"
+  duration="35–45 minutes"
+  title="Why this workflow matters"
+  description="Learn the customer problem each part of the workflow solves before you configure the first tool."
+  customerProblem="Important UI states are hard to reproduce, reviews rely on screenshots, and regressions arrive late."
+  outcome="You can explain why Storybook and Chromatic belong together, ask useful discovery questions, and recognize when more coverage would actually help."
+  previous={{ href: './?path=/docs/onboarding-start-here-setup--docs', label: 'Setup' }}
+  next={{ href: './?path=/docs/onboarding-core-01-upgrade-orient--docs', label: 'Day 1 · Upgrade & orient' }}
+>
+
+<section className="value-thesis" aria-labelledby="value-thesis-heading">
+  <span className="value-eyebrow">The field answer</span>
+  <h2 id="value-thesis-heading">
+    Make UI risk visible before it reaches a customer
+  </h2>
+  <p>
+    Storybook makes important UI states reproducible. Chromatic turns those
+    states into a shared, automated quality and review workflow. Together, they
+    help teams understand what they support, test what can break, and decide
+    whether a change is safe to ship.
+  </p>
+</section>
+
+<section className="value-scenario" aria-labelledby="value-scenario-heading">
+  <div className="value-scenario__brief">
+    <span>The call starts here</span>
+    <h2 id="value-scenario-heading">Trailhead cannot see the whole product</h2>
+    <p>
+      Its reservation card behaves differently while loading, after an API
+      error, with a long translation, and on a narrow screen. Most reviewers
+      only see the happy path.
+    </p>
+  </div>
+  <ul className="value-scenario__signals">
+    <li>A developer has to manipulate the app to reach an edge state.</li>
+    <li>A screenshot arrives with no runnable context or clear owner.</li>
+    <li>Functional tests pass while the layout is visibly broken.</li>
+    <li>Accessibility problems surface during release hardening.</li>
+  </ul>
+</section>
+
+<blockquote>
+  <p>
+    Do not start by prescribing a product. Start by asking which states matter,
+    who needs to see them, and how the team decides that a change is safe.
+  </p>
+</blockquote>
+
+<section className="value-product-pair" aria-label="The role of each product">
+  <article>
+    <span>Storybook</span>
+    <h2>Make the state real</h2>
+    <p>
+      A story is a small, named, runnable example of UI. It gives the team a
+      stable place to develop, document, and test a state without driving the
+      entire application into position.
+    </p>
+    <ul>
+      <li>Controls make inputs inspectable.</li>
+      <li>MSW makes network states deterministic.</li>
+      <li>
+        Interaction and accessibility tests run where the state is already
+        visible.
+      </li>
+    </ul>
+    <p className="value-boundary">
+      <strong>The boundary:</strong> local Storybook alone does not preserve a
+      Git-aware visual history or give a remote team a shared review decision.
+    </p>
+  </article>
+  <article>
+    <span>Chromatic</span>
+    <h2>Make the change shared</h2>
+    <p>
+      Chromatic publishes the Storybook, captures its stories, compares them
+      with accepted baselines, and puts the result next to the branch and commit
+      that produced it.
+    </p>
+    <ul>
+      <li>Visual tests catch presentation changes other tests miss.</li>
+      <li>Branch builds give reviewers the same runnable evidence.</li>
+      <li>UI Review records whether a change is intended.</li>
+    </ul>
+    <p className="value-boundary">
+      <strong>The boundary:</strong> Chromatic cannot decide which customer
+      states deserve stories. Thin stories still produce thin coverage.
+    </p>
+  </article>
+</section>
+
+<section className="value-loop" aria-labelledby="value-loop-heading">
+  <div className="value-section-heading">
+    <h2 id="value-loop-heading">The loop you will build</h2>
+    <p>
+      Every course day strengthens one part of this path. On a call, move
+      through it as one workflow, not as a tour of separate tabs.
+    </p>
+  </div>
+  <ol aria-label="Customer quality workflow">
+    <li>Find the risk</li>
+    <li>Name the state</li>
+    <li>Check behavior</li>
+    <li>Capture in cloud</li>
+    <li>Compare change</li>
+    <li>Make a decision</li>
+    <li>Report to CI</li>
+  </ol>
+</section>
+
+## Translate product mechanics into customer outcomes
+
+<div className="value-map">
+  <article>
+    <span>Hard-to-reach UI</span>
+    <strong>Reproducible stories</strong>
+    <p>Bugs and edge cases become visible, named, and easier to discuss.</p>
+  </article>
+  <article>
+    <span>Slow application loop</span>
+    <strong>Isolated development</strong>
+    <p>Teams get useful feedback without waiting on the rest of the app.</p>
+  </article>
+  <article>
+    <span>Tests miss appearance</span>
+    <strong>Visual baselines</strong>
+    <p>Layout and styling regressions become reviewable evidence.</p>
+  </article>
+  <article>
+    <span>Screenshots in chat</span>
+    <strong>Branch builds and UI Review</strong>
+    <p>Everyone inspects the same runnable build and recorded decision.</p>
+  </article>
+  <article>
+    <span>Late accessibility fixes</span>
+    <strong>Tests beside the story</strong>
+    <p>Common issues are caught closer to the code that introduced them.</p>
+  </article>
+  <article>
+    <span>Coverage grows expensive</span>
+    <strong>Modes and TurboSnap</strong>
+    <p>Teams cover meaningful variants and optimize from evidence.</p>
+  </article>
+</div>
+
+<section className="value-coverage" aria-labelledby="coverage-heading">
+  <div>
+    <span>The expansion conversation</span>
+    <h2 id="coverage-heading">Talk about risk coverage, not snapshot volume</h2>
+    <p>
+      Anchor the recommendation in a blind spot: a consequential state, variant,
+      or ownership boundary that can change without the right evidence. Snapshot
+      volume follows from that choice; it is not the goal.
+    </p>
+  </div>
+  <div>
+    <blockquote>
+      <p>
+        “Which important states could change today without the right person
+        seeing evidence?”
+      </p>
+    </blockquote>
+    <ul>
+      <li>
+        Ask which viewports, themes, data states, and ownership boundaries
+        matter.
+      </li>
+      <li>Recommend the smallest addition that closes a real gap.</li>
+      <li>
+        Do not expand coverage when the state has little consequence or the
+        signal will be ignored.
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section
+  className="value-role-grid"
+  aria-label="Practice by customer conversation"
+>
+  <article className="value-role-card">
+    <span>Presales lens</span>
+    <h2>Prove that the workflow fits</h2>
+    <p>
+      Discover the consequence, show the shortest believable path from story to
+      decision, and leave the customer with a concrete way to validate the fit.
+    </p>
+    <ul>
+      <li>What breaks or slows down today?</li>
+      <li>Who needs confidence before a change ships?</li>
+      <li>What would a successful evaluation prove?</li>
+    </ul>
+  </article>
+  <article className="value-role-card">
+    <span>Postsales lens</span>
+    <h2>Find the next useful coverage gap</h2>
+    <p>
+      Inspect what the customer already uses, locate a material blind spot, and
+      recommend the smallest capability or practice that improves the signal.
+    </p>
+    <ul>
+      <li>Which states are not represented yet?</li>
+      <li>Where does review still happen outside the workflow?</li>
+      <li>How will the team know the change helped?</li>
+    </ul>
+  </article>
+</section>
+
+<section className="value-practice" aria-labelledby="value-practice-heading">
+  <div>
+    <span className="value-eyebrow">Before Day 1</span>
+    <h2 id="value-practice-heading">Say it out loud</h2>
+    <p>
+      Put these in your progress file. You will sharpen them as the product
+      becomes familiar.
+    </p>
+  </div>
+  <ul>
+    <li>
+      <strong>A 90-second answer:</strong> Why Storybook? Why Chromatic? Why
+      together?
+    </li>
+    <li>
+      <strong>Three discovery questions:</strong> Each should reveal risk,
+      ownership, or evidence.
+    </li>
+    <li>
+      <strong>One honest boundary:</strong> Describe a situation where you would
+      not recommend more coverage.
+    </li>
+  </ul>
+</section>
+
+<ul className="value-reading" aria-label="Official product reading">
+  <li>
+    <a href="https://storybook.js.org/docs/get-started/why-storybook">
+      Why Storybook
+    </a>
+  </li>
+  <li>
+    <a href="https://storybook.js.org/docs/writing-tests">
+      Testing with Storybook
+    </a>
+  </li>
+  <li>
+    <a href="https://www.chromatic.com/docs/">Why Chromatic</a>
+  </li>
+  <li>
+    <a href="https://www.chromatic.com/docs/visual/">Visual tests</a>
+  </li>
+  <li>
+    <a href="https://www.chromatic.com/docs/review/">UI Review</a>
+  </li>
+</ul>
+
+</CoursePage>
