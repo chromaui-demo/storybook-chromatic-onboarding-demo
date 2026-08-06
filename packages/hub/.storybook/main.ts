@@ -11,39 +11,46 @@ const references = [
     id: 'react',
     title: 'React',
     environmentName: 'STORYBOOK_REACT_URL',
-    localUrl: 'http://localhost:6007',
+    defaultPort: 6007,
   },
   {
     id: 'nextjs',
     title: 'Next.js',
     environmentName: 'STORYBOOK_NEXTJS_URL',
-    localUrl: 'http://localhost:6008',
+    defaultPort: 6008,
   },
   {
     id: 'angular',
     title: 'Angular',
     environmentName: 'STORYBOOK_ANGULAR_URL',
-    localUrl: 'http://localhost:6009',
+    defaultPort: 6009,
   },
   {
     id: 'web-components',
     title: 'Web Components',
     environmentName: 'STORYBOOK_WEB_COMPONENTS_URL',
-    localUrl: 'http://localhost:6010',
+    defaultPort: 6010,
   },
   {
     id: 'react-native-web',
     title: 'React Native Web',
     environmentName: 'STORYBOOK_REACT_NATIVE_WEB_URL',
-    localUrl: 'http://localhost:6011',
+    defaultPort: 6011,
   },
 ] as const;
 
+const portOffset = Number.parseInt(
+  process.env.STORYBOOK_PORT_OFFSET ?? '0',
+  10,
+);
+
 const refs = Object.fromEntries(
-  references.flatMap(({ id, title, environmentName, localUrl }) => {
+  references.flatMap(({ id, title, environmentName, defaultPort }) => {
     const url =
       process.env[environmentName] ??
-      (process.env.CHROMATIC === 'true' ? undefined : localUrl);
+      (process.env.CHROMATIC === 'true'
+        ? undefined
+        : `http://localhost:${defaultPort + portOffset}`);
 
     return url ? [[id, { title, url }]] : [];
   }),

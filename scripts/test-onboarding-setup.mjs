@@ -5,6 +5,7 @@ import { join, resolve } from 'node:path';
 
 const repositoryRoot = resolve(import.meta.dirname, '..');
 const startupTimeout = 180_000;
+const testPortOffset = 100;
 
 function run(command, args, cwd, options = {}) {
   return new Promise((resolveRun, rejectRun) => {
@@ -112,16 +113,20 @@ try {
   devProcess = spawn('pnpm', ['dev'], {
     cwd: learnerWorkspace,
     detached: true,
-    env: { ...process.env, STORYBOOK_DISABLE_TELEMETRY: '1' },
+    env: {
+      ...process.env,
+      STORYBOOK_DISABLE_TELEMETRY: '1',
+      STORYBOOK_PORT_OFFSET: String(testPortOffset),
+    },
     stdio: 'inherit',
   });
 
   await Promise.all([
-    waitForCatalog('http://localhost:6006/index.json', (entry) =>
+    waitForCatalog('http://localhost:6106/index.json', (entry) =>
       entry.id?.startsWith('onboarding-welcome'),
     ),
     waitForCatalog(
-      'http://localhost:6007/index.json',
+      'http://localhost:6107/index.json',
       (entry) => entry.title === 'ReservationCard',
     ),
   ]);

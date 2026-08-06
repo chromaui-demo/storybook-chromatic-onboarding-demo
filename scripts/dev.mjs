@@ -1,18 +1,37 @@
 import { spawn } from 'node:child_process';
 
+const portOffset = Number.parseInt(
+  process.env.STORYBOOK_PORT_OFFSET ?? '0',
+  10,
+);
+
+if (!Number.isInteger(portOffset) || portOffset < 0) {
+  throw new Error('STORYBOOK_PORT_OFFSET must be a non-negative integer.');
+}
+
+const storybook = (name, defaultPort) => ({
+  name,
+  port: defaultPort + portOffset,
+  url: `http://localhost:${defaultPort + portOffset}/index.json`,
+});
+
+const hubStorybook = storybook('@demo/hub', 6006);
 const childStorybooks = [
-  { name: '@demo/react', url: 'http://localhost:6007/index.json' },
-  { name: '@demo/nextjs', url: 'http://localhost:6008/index.json' },
-  { name: '@demo/angular', url: 'http://localhost:6009/index.json' },
-  { name: '@demo/web-components', url: 'http://localhost:6010/index.json' },
-  { name: '@demo/react-native-web', url: 'http://localhost:6011/index.json' },
+  storybook('@demo/react', 6007),
+  storybook('@demo/nextjs', 6008),
+  storybook('@demo/angular', 6009),
+  storybook('@demo/web-components', 6010),
+  storybook('@demo/react-native-web', 6011),
 ];
 
 const runningProcesses = new Set();
 let shuttingDown = false;
 
-function startStorybook(name) {
-  const child = spawn('pnpm', ['--filter', name, 'storybook'], {
+function startStorybook({ name, port }) {
+  const args = ['--filter', name, 'storybook'];
+  if (portOffset > 0) args.push('--port', String(port));
+
+  const child = spawn('pnpm', args, {
     env: { ...process.env, STORYBOOK_DISABLE_TELEMETRY: '1' },
     stdio: 'inherit',
   });
@@ -62,15 +81,14 @@ function shutdown(signal, exitCode = 0) {
 process.once('SIGINT', () => shutdown('SIGINT'));
 process.once('SIGTERM', () => shutdown('SIGTERM'));
 
-for (const childStorybook of childStorybooks)
-  startStorybook(childStorybook.name);
+for (const childStorybook of childStorybooks) startStorybook(childStorybook);
 
 try {
   await Promise.all(childStorybooks.map(waitUntilReady));
   console.log(
     'All referenced Storybooks are ready. Starting the composed hub.',
   );
-  startStorybook('@demo/hub');
+  startStorybook(hubStorybook);
 } catch (error) {
   if (!shuttingDown) {
     console.error(error);

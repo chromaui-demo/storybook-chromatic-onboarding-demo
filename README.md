@@ -38,6 +38,10 @@ Open [http://localhost:6006](http://localhost:6006). Turbo starts the hub and al
 Storybooks together. The other ports remain available for showing that each catalog is independently
 deployable.
 
+If another project already uses this range, shift all six ports together. For example,
+`STORYBOOK_PORT_OFFSET=100 pnpm dev` serves the Hub at `http://localhost:6106` and React at
+`http://localhost:6107`.
+
 Useful verification commands:
 
 ```sh
