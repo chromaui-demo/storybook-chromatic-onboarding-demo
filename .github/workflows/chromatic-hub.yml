@@ -41,6 +41,11 @@ jobs:
         run: pnpm check
 
       - name: Publish the onboarding Hub
+        if: ${{ secrets.CHROMATIC_HUB_PROJECT_TOKEN != '' }}
         run: pnpm deploy:hub
         env:
           CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_HUB_PROJECT_TOKEN }}
+
+      - name: Chromatic setup is waiting for its project token
+        if: ${{ secrets.CHROMATIC_HUB_PROJECT_TOKEN == '' }}
+        run: echo "::notice::Add CHROMATIC_HUB_PROJECT_TOKEN to publish the separate onboarding Hub project."

@@ -43,12 +43,14 @@ const portOffset = Number.parseInt(
   process.env.STORYBOOK_PORT_OFFSET ?? '0',
   10,
 );
+const isHostedBuild =
+  process.env.CHROMATIC === 'true' || process.env.STORYBOOK_HOSTED === 'true';
 
 const refs = Object.fromEntries(
   references.flatMap(({ id, title, environmentName, defaultPort }) => {
     const url =
       process.env[environmentName] ??
-      (process.env.CHROMATIC === 'true'
+      (isHostedBuild
         ? undefined
         : `http://localhost:${defaultPort + portOffset}`);
 

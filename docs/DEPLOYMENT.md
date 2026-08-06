@@ -2,6 +2,9 @@
 
 The hosted onboarding and the learner exercise are deliberately separate Chromatic projects.
 
+The repository also publishes the same Hub to GitHub Pages. Pages provides the dependable public
+course URL; Chromatic adds the product-native build, review, and access experience.
+
 | Project               | Purpose                                                  | Who configures it             |
 | --------------------- | -------------------------------------------------------- | ----------------------------- |
 | Onboarding Hub        | A durable, read-only course and facilitator reference    | The course owner, once        |
@@ -22,6 +25,9 @@ publish the correct package, understand Git ancestry, and build the CI workflow.
 4. Run the **Publish onboarding Hub** workflow, or push a commit to `main`.
 5. Open the resulting Storybook, confirm the Welcome and Setup pages work, and share that Storybook
    URL with the cohort.
+
+The **Deploy onboarding Hub to GitHub Pages** workflow needs no project token. It runs on `main` and
+sets `STORYBOOK_HOSTED=true`, which removes local-only composition references from the hosted sidebar.
 
 The workflow publishes with `--exit-once-uploaded` because this project is a course host, not the
 visual-testing exercise. The separate React project keeps normal Chromatic test and review behavior.
