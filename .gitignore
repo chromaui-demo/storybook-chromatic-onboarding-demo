@@ -1,0 +1,14 @@
+.turbo/
+.scratch/
+node_modules/
+storybook-static/
+packages/*/storybook-static/
+packages/*/node_modules/
+packages/*/stories/assets/
+packages/angular/src/stories/assets/
+debug-storybook.log
+*.tsbuildinfo
+packages/angular/documentation.json
+
+*storybook.log
+pnpm-debug.log*

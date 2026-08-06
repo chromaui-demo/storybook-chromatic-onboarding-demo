@@ -1,0 +1,83 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
+
+<Meta title="Onboarding/Core/01 Upgrade & orient" />
+
+<CoursePage
+  phase="Core"
+  day={1}
+  duration="60–75 minutes"
+  title="Upgrade Storybook without guessing"
+  description="Run the supported upgrade path, inspect what it changed, and leave the React Storybook in a state you trust."
+  customerProblem="Trailhead Travel inherited several Storybooks and is afraid an upgrade will silently break them."
+  outcome="You can walk a customer through the migration boundary and show the checks that make an upgrade safe."
+  previous={{ href: './?path=/docs/onboarding-start-here-setup--docs', label: 'Setup & orientation' }}
+  next={{ href: './?path=/docs/onboarding-core-02-agentic-setup--docs', label: 'Day 2 · Agentic setup' }}
+>
+
+## Your first 75 minutes
+
+- 10 minutes: read
+- 20 minutes: inspect the workspace and upgrade plan
+- 25 minutes: verify development and static builds
+- 10 minutes: explain and record
+
+## Know the migration boundary
+
+- [Migrate to Storybook 10](https://storybook.js.org/docs/10.5/releases/migration-guide)
+- [Upgrade Storybook](https://storybook.js.org/docs/10.5/releases/upgrading)
+
+Pay attention to Node requirements, ESM-only configuration, automigrations, aligned Storybook
+package versions, and upgrading one major at a time.
+
+## Run the upgrade without hand-waving
+
+1. Inspect `.nvmrc`, `pnpm-workspace.yaml`, `packages/react/package.json`, and
+   `packages/react/.storybook/main.ts`.
+2. Run the pinned upgrade and health checks:
+
+   ```sh
+   pnpm dlx storybook@10.5.5 upgrade
+   pnpm --filter @demo/react exec storybook doctor
+   pnpm --filter @demo/react typecheck
+   pnpm --filter @demo/react build-storybook
+   ```
+
+3. Review `git diff`. On the normal `main` starting point, the upgrade should make no dependency
+   changes because the repository is already pinned to 10.5.5. Treat unexpected edits as something
+   to understand, not something to accept automatically.
+4. Start `pnpm --filter @demo/react storybook`, open the React Storybook, and exercise Controls,
+   Docs, viewport, and the Interactions panel.
+5. Write a short upgrade checklist in your progress file that you could use with a customer.
+
+If your facilitator supplied `course/storybook-9-start`, branch from that tag instead and follow the
+migration guide's major-by-major path. Capture the dependency/config diff before continuing.
+
+## Before you move on
+
+- `doctor`, type checking, and the static build pass.
+- The React Storybook renders at its local URL.
+- Your progress file identifies at least three upgrade risks and how you verified them.
+
+## Practice the customer answer
+
+Imagine this comes up on a customer call: **How do we upgrade without treating the automigration as a
+black box?** Give yourself two minutes to answer.
+
+<details>
+<summary>Hint</summary>
+
+Separate package migration from behavioral verification. Mention aligned versions, generated config
+review, `doctor`, type checks, the production Storybook build, and a visual baseline before/after the
+upgrade.
+
+</details>
+
+## Leave a clean checkpoint
+
+```sh
+git add docs/onboarding progress/<handle>.md
+git commit -m "onboarding(day-01): verify Storybook upgrade boundary"
+```
+
+</CoursePage>

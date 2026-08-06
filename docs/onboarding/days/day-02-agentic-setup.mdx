@@ -1,0 +1,91 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
+
+<Meta title="Onboarding/Core/02 Agentic setup" />
+
+<CoursePage
+  phase="Core"
+  day={2}
+  duration="75–90 minutes"
+  title="Let AI help, then review the work"
+  description="Give Storybook's agentic setup a bounded job and decide which parts of the result deserve to stay."
+  customerProblem="The design-system team wants AI to accelerate setup, but it cannot accept unreviewed generated configuration or tests."
+  outcome="You can use the React/Vite setup prompts and explain every package, config change, and test they produce."
+  previous={{ href: './?path=/docs/onboarding-core-01-upgrade-orient--docs', label: 'Day 1 · Upgrade & orient' }}
+  next={{ href: './?path=/docs/onboarding-core-03-stories-docs-manifests--docs', label: 'Day 3 · Stories & manifests' }}
+>
+
+## Plan on 75 minutes
+
+- 10 minutes: read
+- 45–60 minutes: prompt, inspect, and refine
+- 15 minutes: verify and explain
+
+## See how agentic setup is supposed to work
+
+- [Agentic setup](https://storybook.js.org/docs/10.5/ai/setup)
+- [Storybook installation](https://storybook.js.org/docs/10.5/get-started/install)
+
+Agentic setup is a preview capability for React with the Vite builder. It accelerates codebase analysis,
+preview configuration, mocks, stories, play functions, verification, and MCP installation. It does not
+remove the need to understand those parts.
+
+## Give the agent a bounded job
+
+1. Open your coding agent at the repository root. The official documentation currently proposes:
+
+   ```text
+   Set up Storybook for me with npm create storybook@latest and follow its instructions precisely
+   ```
+
+2. For this pinned pnpm course, use the constrained version below so the agent does not switch package
+   managers, change sibling frameworks, or silently move beyond Storybook 10.5:
+
+   ```text
+   Review and finish setting up Storybook for packages/react using React, Vite, pnpm, and Storybook
+   10.5.5. Follow Storybook's official agentic setup instructions precisely. Keep every Storybook
+   package on 10.5.5, do not edit sibling packages, preserve the existing customer scenario, tag new
+   stories ai-generated, and stop to explain any destructive or cross-workspace change before making it.
+   Run the React Storybook tests, type checker, and static build when finished.
+   ```
+
+3. Require the agent to produce its setup plan before editing. Compare that plan to the existing
+   `main.ts`, `preview.tsx`, `vitest.config.ts`, stories, and package scripts.
+4. Let it improve one bounded area, such as missing component JSDoc, a portal root, or a story state.
+   Reject unrelated rewrites.
+5. Review every changed line. Keep `ai-generated` tags until Day 3 validates the stories.
+
+## Review the diff like you own it
+
+```sh
+pnpm --filter @demo/react typecheck
+pnpm --filter @demo/react exec vitest run --project=storybook
+pnpm --filter @demo/react build-storybook
+git diff --check
+```
+
+In your progress file, record one useful agent observation, one suggestion you rejected or constrained,
+and why the final change is trustworthy.
+
+## Try this explanation
+
+Put this in your own words: **Where does Storybook AI save time, and where does engineering judgment
+still matter?**
+
+<details>
+<summary>Recovery</summary>
+
+If the agent tries to initialize another Storybook or rewrites package management, stop it. Restore only
+its unrelated edits, narrow the prompt to auditing `packages/react`, and ask for one proposed change at
+a time.
+
+</details>
+
+## Commit what you trust
+
+```sh
+git add packages/react progress/<handle>.md
+git commit -m "onboarding(day-02): review agentic Storybook setup"
+```
+
+</CoursePage>

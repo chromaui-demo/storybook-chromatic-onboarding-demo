@@ -1,0 +1,81 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
+
+<Meta title="Onboarding/Core/07 Accessibility" />
+
+<CoursePage
+  phase="Core"
+  day={7}
+  duration="60–90 minutes"
+  title="Catch accessibility problems in the story"
+  description="Break one accessible state on purpose, watch the tooling find it, and finish with a keyboard pass."
+  customerProblem="Trailhead Travel catches accessibility problems late, after components have already spread across applications."
+  outcome="You can fix an accessibility failure locally and explain what the automated check still cannot tell you."
+  previous={{ href: './?path=/docs/onboarding-core-06-interaction-tests--docs', label: 'Day 6 · Interaction tests' }}
+  next={{ href: './?path=/docs/onboarding-core-08-first-chromatic-build--docs', label: 'Day 8 · First Chromatic build' }}
+>
+
+## Plan on 90 minutes
+
+- 15 minutes: read
+- 15 minutes: configure
+- 30–45 minutes: reproduce and fix
+- 10 minutes: verify and explain
+
+## Know what automation can and cannot catch
+
+- [Storybook accessibility testing](https://storybook.js.org/docs/10.5/writing-tests/accessibility-testing)
+- [Chromatic accessibility workflow](https://www.chromatic.com/docs/accessibility/)
+
+Automated axe checks catch an important subset of accessibility problems. They do not replace keyboard,
+screen-reader, zoom, motion, or other manual evaluation.
+
+## Break accessibility on purpose
+
+1. Install and configure the version-aligned accessibility addon:
+
+   ```sh
+   pnpm --filter @demo/react add -D @storybook/addon-a11y@10.5.5
+   ```
+
+2. Add the addon to the React Storybook and configure project-level
+   `parameters.a11y.test: 'error'` so the Vitest integration enforces violations.
+3. Run the accessibility panel across the required React stories. Record violations, passes, and
+   incomplete checks separately.
+4. Create one short-lived, intentional violation in a story branch, such as removing a form label or
+   accessible button name. Confirm local Storybook and the story test identify it.
+5. Fix the underlying component or story context. Avoid disabling the rule. If a real migration needs
+   time, use a narrowly scoped `'todo'` with an owner and explanation; do not normalize `'off'`.
+6. Perform a keyboard-only pass through the reservation interaction and record anything automation
+   did not tell you.
+
+## Run the checks, then use the keyboard
+
+```sh
+pnpm --filter @demo/react exec vitest run --project=storybook
+pnpm --filter @demo/react build-storybook
+```
+
+Capture evidence of the failing check and the passing fix in your progress file.
+
+## Set expectations honestly
+
+Answer the harder version: **How do local Storybook checks and Chromatic accessibility regressions
+reinforce each other, and what do they still miss?**
+
+<details>
+<summary>Recovery</summary>
+
+If the accessibility result appears before asynchronous UI settles, make the story reach a stable state
+through its loader, MSW handler, or `play` function. A fixed delay is the last resort, not the default.
+
+</details>
+
+## Commit the fix
+
+```sh
+git add packages/react pnpm-lock.yaml progress/<handle>.md
+git commit -m "onboarding(day-07): enforce accessible stories"
+```
+
+</CoursePage>

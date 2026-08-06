@@ -1,0 +1,78 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
+
+<Meta title="Onboarding/Core/09 Visual review" />
+
+<CoursePage
+  phase="Core"
+  day={9}
+  duration="75–90 minutes"
+  title="Decide what changed and what should ship"
+  description="Create one intentional change and one regression, then use Chromatic to review each on its merits."
+  customerProblem="The team needs to distinguish an intentional design change from a regression and understand what accepting a snapshot actually means."
+  outcome="You can accept the intended change, deny the regression, fix it, and explain what each decision changed."
+  previous={{ href: './?path=/docs/onboarding-core-08-first-chromatic-build--docs', label: 'Day 8 · First Chromatic build' }}
+  next={{ href: './?path=/docs/onboarding-core-10-ci-core-demo--docs', label: 'Day 10 · CI & core demo' }}
+>
+
+## Plan on 90 minutes
+
+- 15 minutes: read
+- 15 minutes: create controlled changes
+- 30–45 minutes: review and recover
+- 10 minutes: explain
+
+## Keep the review model straight
+
+- [Visual testing](https://www.chromatic.com/docs/visual/)
+- [UI Review](https://www.chromatic.com/docs/review/)
+- [Branches and baselines](https://www.chromatic.com/docs/branching-and-baselines/)
+
+UI Tests compare snapshots with accepted baselines for that story, mode, and branch. UI Review helps
+stakeholders review the PR changeset against its merge base. They are related but not interchangeable.
+
+## Create one good change and one bad one
+
+1. Make one intentional UI change to `ReservationCard`, such as a reviewed spacing or badge treatment.
+2. Add one accidental regression, such as clipped long text, a missing focus indicator, or a broken
+   compact layout. Keep the two changes visually distinguishable.
+3. Commit and publish a new Chromatic build.
+4. In UI Tests, inspect baseline, new, and diff views. Accept the intended change and deny the
+   regression. Add concise review comments that explain impact, not just pixel count.
+5. Observe the build result after the denial. Fix the regression in code, commit, and publish again.
+6. Verify the latest build compares against the expected accepted baseline and passes. Only the newest
+   build on a branch should be treated as the review target.
+7. Open UI Review for the branch or pull request and explain how its purpose differs from baseline
+   maintenance.
+
+## Follow the evidence
+
+Record links or screenshots for the initial diff, the denial, and the passing rebuild. In your progress
+file, answer:
+
+- What changed when you accepted the intended snapshot?
+- What remained unchanged when you denied the regression?
+- Which ancestor supplied the baseline?
+
+## Demo the decision, not the pixels
+
+Demonstrate an intentional change and a regression without claiming that Chromatic decides whether
+the UI is correct. Chromatic surfaces change; a reviewer supplies intent and judgment.
+
+<details>
+<summary>Hint</summary>
+
+If a change unexpectedly reappears, first check branch ancestry, the latest accepted build for that
+story/mode, whether `main` was built after merge, and whether a squash/rebase was connected through the
+Git provider app.
+
+</details>
+
+## Commit the repair
+
+```sh
+git add packages/react progress/<handle>.md
+git commit -m "onboarding(day-09): practice visual review and recovery"
+```
+
+</CoursePage>

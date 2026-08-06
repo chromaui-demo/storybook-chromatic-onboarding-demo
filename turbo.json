@@ -1,0 +1,17 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "ui": "tui",
+  "tasks": {
+    "//#format": {},
+    "//#format:check": {},
+    "storybook": {
+      "cache": false,
+      "persistent": true,
+      "interruptible": true
+    },
+    "build-storybook": {
+      "outputs": ["storybook-static/**"]
+    },
+    "typecheck": {}
+  }
+}

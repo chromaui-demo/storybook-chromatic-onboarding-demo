@@ -1,0 +1,24 @@
+import type { StorybookConfig } from '@storybook/angular-vite';
+import { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+function getAbsolutePath(value: string) {
+  return dirname(fileURLToPath(import.meta.resolve(`${value}/package.json`)));
+}
+const config: StorybookConfig = {
+  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  addons: [
+    getAbsolutePath('@chromatic-com/storybook'),
+    getAbsolutePath('@storybook/addon-vitest'),
+    getAbsolutePath('@storybook/addon-docs'),
+    getAbsolutePath('@storybook/addon-mcp'),
+  ],
+  framework: {
+    name: getAbsolutePath('@storybook/angular-vite'),
+    options: {
+      compodoc: true,
+      compodocArgs: ['-e', 'json', '-d', '.'],
+    },
+  },
+};
+export default config;

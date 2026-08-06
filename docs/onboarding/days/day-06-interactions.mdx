@@ -1,0 +1,74 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
+
+<Meta title="Onboarding/Core/06 Interaction tests" />
+
+<CoursePage
+  phase="Core"
+  day={6}
+  duration="60–90 minutes"
+  title="Interaction tests"
+  description="Drive the reservation flow in the browser and assert what a guest can actually see and do."
+  customerProblem="Static screenshots cannot prove that a guest can choose dates and complete the reservation flow."
+  outcome="You can write a focused play function, debug it in Storybook, and run it with the Vitest addon."
+  previous={{ href: './?path=/docs/onboarding-core-05-mock-service-worker--docs', label: 'Day 5 · Mock Service Worker' }}
+  next={{ href: './?path=/docs/onboarding-core-07-accessibility--docs', label: 'Day 7 · Accessibility' }}
+>
+
+## Set aside 75 minutes
+
+- 15 minutes: read
+- 35–50 minutes: write and debug tests
+- 15 minutes: run and explain
+
+## Keep the test model handy
+
+- [Interaction testing](https://storybook.js.org/docs/10.5/writing-tests/interaction-testing)
+- [Vitest addon](https://storybook.js.org/docs/10.5/writing-tests/integrations/vitest-addon)
+
+## Drive the reservation like a user
+
+1. Run `ReservationCard / Reservation interaction` in the Interactions panel. Step through its
+   `play` function and connect each log entry to the source.
+2. Add an interaction to an `AvailabilityPanel` story: wait for mocked dates, choose a date, and assert
+   the visible selected state or callback payload.
+3. Query by accessible role, name, or label. Use `data-testid` only after documenting why a user-facing
+   query cannot express the behavior.
+4. Await every `userEvent` and assertion. Use `fn()` for callback args rather than a logging-only action.
+5. Run the React story tests in headless Chromium:
+
+   ```sh
+   pnpm --filter @demo/react exec vitest run --project=storybook
+   ```
+
+6. Introduce one temporary assertion failure, inspect it in Storybook and the terminal, then restore
+   the correct behavior. Record which surface made diagnosis faster and why.
+
+## Watch the test fail for the right reason
+
+- The `play` function fails for the intended bad assertion and passes after the fix.
+- The test asserts a customer-visible outcome, not implementation detail.
+- Type checking, story tests, and the static build pass.
+
+## Demo behavior, not test syntax
+
+Explain the testing layers: every story gets a render test; important behavior gets an interaction
+test; broad appearance is covered by visual tests; narrow logic may still deserve unit tests.
+
+<details>
+<summary>Hint</summary>
+
+Chromatic waits for a story's full `play` function before capturing the final state. If the customer
+needs visual coverage at multiple intermediate points, create distinct stories for those states rather
+than expecting a screenshot after every step.
+
+</details>
+
+## Save the behavior
+
+```sh
+git add packages/react progress/<handle>.md
+git commit -m "onboarding(day-06): test the reservation interaction"
+```
+
+</CoursePage>

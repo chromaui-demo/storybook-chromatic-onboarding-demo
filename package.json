@@ -1,0 +1,35 @@
+{
+  "name": "storybook-multi-framework-demo",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.19.0",
+  "scripts": {
+    "build-storybook": "turbo run build-storybook",
+    "check": "pnpm check:onboarding && turbo run format:check typecheck build-storybook --continue",
+    "check:onboarding": "node scripts/check-onboarding.mjs",
+    "deploy:hub": "pnpm --filter @demo/hub chromatic --exit-once-uploaded",
+    "dev": "node scripts/dev.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "storybook": "pnpm --filter @demo/hub storybook",
+    "test:onboarding:setup": "node scripts/test-onboarding-setup.mjs",
+    "turbo": "turbo",
+    "typecheck": "turbo run typecheck"
+  },
+  "devDependencies": {
+    "@storybook/addon-docs": "catalog:",
+    "@vitest/browser-playwright": "catalog:",
+    "@vitest/runner": "catalog:",
+    "playwright": "catalog:",
+    "prettier": "catalog:",
+    "turbo": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  },
+  "pnpm": {
+    "overrides": {
+      "@valibot/to-json-schema": "1.4.0"
+    }
+  }
+}

@@ -1,0 +1,78 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
+
+<Meta title="Onboarding/Advanced/14 Storybook 11 readiness" />
+
+<CoursePage
+  phase="Advanced"
+  day={14}
+  duration="60–75 minutes"
+  title="Talk about Storybook 11 without making promises"
+  description="Separate the practices that will carry forward from preview APIs and roadmap details that can still change."
+  customerProblem="A customer wants to know whether today's investment survives the next major version and whether AI workflows will expand beyond React."
+  outcome="You can write an upgrade-readiness note that is useful now and honest about what is not settled."
+  previous={{ href: './?path=/docs/onboarding-advanced-13-monorepo-turbosnap--docs', label: 'Day 13 · TurboSnap' }}
+  next={{ href: './?path=/docs/onboarding-advanced-15-mock-demo--docs', label: 'Day 15 · Mock demo' }}
+>
+
+## Give this 75 minutes
+
+- 15 minutes: read current lifecycle and roadmap guidance
+- 25 minutes: inventory version-specific surface area
+- 20 minutes: inspect another framework
+- 10 minutes: explain and record
+
+## Separate release notes from roadmap
+
+- [Storybook feature lifecycle](https://storybook.js.org/docs/10.5/releases/feature-lifecycle)
+- [Storybook roadmap](https://storybook.js.org/docs/10.5/releases/roadmap)
+- Revisit the [Storybook 10 migration guide](https://storybook.js.org/docs/10.5/releases/migration-guide)
+
+Use released documentation as the source of truth. Do not promise Storybook 11 dates, APIs, or framework
+support that the project has not published.
+
+## Inventory what will actually need work
+
+1. Create a short decision note in your progress file with three columns:
+   - stable practice to preserve;
+   - Storybook 10.5 preview/version-specific detail;
+   - verification required before Storybook 11 adoption.
+2. Include CSF stories, args, play functions, deterministic mocks, accessibility intent, visual
+   baselines, manifests, MCP, agentic setup, and multi-framework composition.
+3. Inspect one non-React package and compare its Storybook config and stories with `packages/react`.
+   Identify concepts that already transfer and AI/manifest capabilities that should not be claimed as
+   equivalent in 10.5.
+4. Run `storybook doctor`, type checking, and a static build again. Record the repeatable commands that
+   belong in any future major-upgrade pull request.
+5. Draft a five-sentence customer answer to this question: **Should we wait for Storybook 11 before
+   improving our component workflow?**
+
+## Write the note you would send a customer
+
+- Every future-looking statement is either linked to released official guidance or explicitly labeled
+  as an unknown to verify.
+- The note separates framework-neutral habits from current React/Vite-only AI support.
+- The selected non-React Storybook still builds independently.
+
+## Answer without predicting
+
+Lead with durable outcomes: isolated states, deterministic tests, accessible behavior, reviewable
+visual change, and discoverable catalogs. Then identify current preview boundaries plainly.
+
+<details>
+<summary>Hint</summary>
+
+Saying you will verify a detail when the Storybook 11 documentation is released is stronger than
+inventing a roadmap.
+Customers need a safe adoption decision, not false certainty.
+
+</details>
+
+## Save the readiness note
+
+```sh
+git add progress/<handle>.md
+git commit -m "onboarding(day-14): document Storybook upgrade readiness"
+```
+
+</CoursePage>

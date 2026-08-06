@@ -1,0 +1,97 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { CoursePage } from '../../packages/hub/src/onboarding/CoursePage';
+
+<Meta title="Onboarding/Reference/Capstone rubric" />
+
+<CoursePage
+  phase="Reference"
+  title="Mock-demo capstone"
+  description="Twenty minutes. One customer. No canned feature tour. Find the useful path, handle a surprise, and earn the next step."
+>
+
+This is the moment the previous 14 days are for. You are not racing through tabs or trying to prove you
+remember every setting. You are helping a customer make a good decision while operating the product
+with confidence.
+
+## Customer brief
+
+You are meeting Trailhead Travel's design-system lead, frontend platform engineer, and engineering
+manager.
+
+- The design system is React, but product teams also use Next.js, Angular, Web Components, and React
+  Native Web.
+- Storybook exists in pockets with inconsistent stories and duplicated configuration.
+- Pull requests rely on manual screenshots and reviewers often miss responsive regressions.
+- Several components call unstable development APIs, making tests flaky.
+- Accessibility issues are found during release hardening.
+- Leadership wants faster review without creating a test suite nobody trusts.
+
+The customer has 20 minutes. Reserve at least two minutes for discovery and three minutes for questions.
+
+## Discovery prompts
+
+Ask enough to choose a relevant demo path:
+
+1. Which team owns component quality and Storybook configuration today?
+2. Is the immediate priority development, documentation, testing, review, or cross-team discovery?
+3. Which frameworks need independent ownership and deployment?
+4. How are intentional visual changes approved today?
+5. What makes current CI slow or unreliable?
+6. What accessibility policy or release gate already exists?
+
+The reviewer will answer with two priorities. Adapt the demo to those answers.
+
+## Required demo moments
+
+Demonstrate these as one narrative rather than six disconnected features:
+
+1. A React component expressed as editable, documented story states.
+2. Deterministic success/error data through MSW.
+3. One interaction test and one accessibility result.
+4. A Chromatic visual diff with a correct baseline explanation.
+5. A CI/branch result and the review decision needed to move forward.
+6. A recommended rollout path for Trailhead Travel.
+
+Composition, modes, MCP, and TurboSnap are optional demo moments. Include them only when discovery makes
+them relevant.
+
+## Seeded recovery moment
+
+The reviewer chooses one interruption:
+
+- a denied visual regression;
+- an interaction test that never reaches its expected state;
+- an MSW request that escapes to the network;
+- a composed Storybook reference that is unavailable;
+- a TurboSnap result that retests more stories than expected;
+- a question about Storybook 11 or unsupported framework AI behavior.
+
+Diagnose aloud. State what evidence you would inspect, what you know, what you do not yet know, and the
+safest next action. You do not need to repair the issue live if doing so would derail the call.
+
+## Scoring rubric
+
+Score each dimension from 1–4. A passing capstone has no score below 2 and a total of at least 18/24.
+
+| Dimension              | 1: Needs work                             | 2: Developing                     | 3: Ready                                               | 4: Strong                                                     |
+| :--------------------- | :---------------------------------------- | :-------------------------------- | :----------------------------------------------------- | :------------------------------------------------------------ |
+| Discovery              | Starts a fixed feature tour               | Asks questions but barely adapts  | Reflects priorities and adapts                         | Surfaces constraints and reframes the path insightfully       |
+| Storybook fluency      | Cannot connect story/config/test concepts | Operates the happy path with help | Explains and operates the core workflow                | Connects architecture and tradeoffs clearly                   |
+| Chromatic fluency      | Misstates baselines or review             | Completes review with prompting   | Correctly explains branch, baseline, tests, and review | Anticipates ancestry, CI, and adoption risks                  |
+| Technical recovery     | Guesses or hides the failure              | Identifies a plausible check      | Uses evidence and chooses a safe next step             | Diagnoses systematically while preserving customer confidence |
+| Customer communication | Jargon-heavy feature list                 | Some outcome language             | Concise narrative tied to stated needs                 | Teaches complex boundaries simply and honestly                |
+| Recommendation         | No next step or generic trial             | Broad next step                   | Phased, owned, measurable next step                    | Balances value, risk, ownership, and expansion path           |
+
+## Feedback format
+
+The reviewer provides:
+
+- one moment to keep;
+- one explanation to tighten;
+- one technical topic to revisit;
+- one recommended next practice call;
+- the rubric score with brief evidence.
+
+The learner records that feedback in `progress/<handle>.md` and names an owner/date for the follow-up.
+
+</CoursePage>

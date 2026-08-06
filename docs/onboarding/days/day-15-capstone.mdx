@@ -1,0 +1,75 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
+
+<Meta title="Onboarding/Advanced/15 Mock demo" />
+
+<CoursePage
+  phase="Advanced"
+  day={15}
+  duration="75–90 minutes"
+  title="Run the customer call"
+  description="Use discovery to choose the right demo path, recover from one surprise, and make a recommendation you can defend."
+  customerProblem="Product knowledge matters only if you can connect it to the customer's situation, operate the product under pressure, and explain the next step honestly."
+  outcome="You can run the mock call, handle the recovery moment, and leave with feedback you can use."
+  previous={{ href: './?path=/docs/onboarding-advanced-14-storybook-11-readiness--docs', label: 'Day 14 · Storybook 11 readiness' }}
+>
+
+## Block 90 minutes
+
+- 15 minutes: select the demo path and validate environments
+- 20 minutes: rehearse once
+- 20–30 minutes: deliver the mock call
+- 15 minutes: debrief and capture feedback
+
+## Prepare the room
+
+Read the complete <a href="./?path=/docs/onboarding-reference-capstone-rubric--docs" target="_top">capstone brief and rubric</a>. Ask a teammate to play the customer or record an asynchronous demo and
+request timestamped feedback.
+
+Before the demo:
+
+```sh
+pnpm check
+pnpm dev
+```
+
+Also open your latest Chromatic branch build and CI run. Keep a known failing example or diff available
+for the recovery moment, but do not leave the live branch in a broken state.
+
+## Run the call
+
+1. Spend the first two to three minutes on discovery and reflect the customer's priorities back.
+2. Choose a coherent path through Storybook, tests, Chromatic review, and CI. Do not tour every tab.
+3. Include one multi-framework composition moment only if it supports the customer's discovery answers.
+4. Diagnose one seeded failure or unexpected diff aloud.
+5. Close with a phased recommendation, explicit boundaries, and a concrete next step.
+
+## Get specific feedback
+
+- The reviewer completes every section of the capstone rubric.
+- Your progress file includes the recording or meeting artifact, strongest moment, one explanation to
+  tighten, one technical gap, and a follow-up owner/date.
+- Your branch ends with `pnpm check` passing and no secret or generated output committed.
+
+## Debrief while it is fresh
+
+Write a brief answer to each question:
+
+- Where did you connect a product capability to a customer outcome?
+- Where did you slip into feature-tour language?
+- Which technical question made you least confident?
+- What would you show differently for a small React-only team?
+- What would you show differently for a large multi-framework platform team?
+
+## Close the loop
+
+```sh
+git add progress/<handle>.md
+git commit -m "onboarding(day-15): complete Storybook and Chromatic capstone"
+git push -u origin onboarding/<handle>
+```
+
+Share the branch, Chromatic build, and demo artifact with the course owner. Completion means you can
+apply and explain the workflow. It does not mean you have memorized every option.
+
+</CoursePage>

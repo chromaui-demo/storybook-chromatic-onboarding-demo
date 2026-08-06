@@ -1,0 +1,220 @@
+:root {
+  color-scheme: light;
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  background: #f4f2ff;
+  color: #171426;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+button {
+  font: inherit;
+  touch-action: manipulation;
+}
+
+.reservation-card {
+  display: grid;
+  width: min(100%, 760px);
+  min-width: min(320px, calc(100vw - 32px));
+  overflow: hidden;
+  border: 1px solid rgb(67 47 151 / 18%);
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 24px 70px rgb(48 31 112 / 16%);
+}
+
+.reservation-card__visual {
+  position: relative;
+  display: grid;
+  min-height: 180px;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 78% 20%, rgb(255 255 255 / 42%), transparent 24%),
+    linear-gradient(135deg, #ffbd6f 0%, #ff6f91 48%, #6439ff 100%);
+}
+
+.reservation-card__visual::after {
+  position: absolute;
+  width: 190px;
+  height: 190px;
+  border: 34px solid rgb(255 255 255 / 18%);
+  border-radius: 50%;
+  content: '';
+  transform: translate(36%, 45%);
+}
+
+.reservation-card__badge,
+.reservation-card__availability {
+  position: absolute;
+  z-index: 1;
+  padding: 7px 10px;
+  border: 1px solid rgb(255 255 255 / 38%);
+  border-radius: 999px;
+  background: rgb(25 18 56 / 74%);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.reservation-card__badge {
+  top: 16px;
+  left: 16px;
+}
+
+.reservation-card__availability {
+  right: 16px;
+  bottom: 16px;
+  background: rgb(9 94 64 / 88%);
+}
+
+.reservation-card__monogram {
+  color: rgb(255 255 255 / 90%);
+  font-size: clamp(54px, 12vw, 88px);
+  font-weight: 850;
+  letter-spacing: -0.08em;
+}
+
+.reservation-card__content {
+  display: grid;
+  gap: 18px;
+  min-width: 0;
+  padding: clamp(20px, 5vw, 34px);
+}
+
+.reservation-card__eyebrow {
+  margin: 0 0 6px;
+  color: #5d35db;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.reservation-card h2 {
+  margin: 0;
+  max-width: 24ch;
+  font-size: clamp(25px, 5vw, 36px);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+.reservation-card__location,
+.reservation-card__confirmation,
+.reservation-card__price {
+  margin: 0;
+}
+
+.reservation-card__location {
+  margin-top: 8px;
+  color: #6a657b;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.reservation-card__price {
+  color: #5e5870;
+  font-variant-numeric: tabular-nums;
+}
+
+.reservation-card__price strong {
+  color: #171426;
+  font-size: 22px;
+}
+
+.reservation-card__controls {
+  display: grid;
+  gap: 12px;
+}
+
+.guest-stepper {
+  display: grid;
+  grid-template-columns: 44px minmax(110px, 1fr) 44px;
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid #dcd7ed;
+  border-radius: 14px;
+}
+
+.guest-stepper button {
+  min-width: 44px;
+  min-height: 44px;
+  border: 0;
+  background: #f5f2ff;
+  color: #4a2cff;
+  cursor: pointer;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.guest-stepper button:disabled {
+  color: #a9a4b7;
+  cursor: not-allowed;
+}
+
+.guest-stepper output {
+  padding: 0 8px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+}
+
+.reservation-card__primary {
+  min-height: 48px;
+  padding: 12px 18px;
+  border: 0;
+  border-radius: 14px;
+  background: #4a2cff;
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: 800;
+  box-shadow: 0 10px 24px rgb(74 44 255 / 24%);
+}
+
+.guest-stepper button:hover:not(:disabled),
+.reservation-card__primary:hover {
+  filter: brightness(0.92);
+}
+
+.guest-stepper button:focus-visible,
+.reservation-card__primary:focus-visible {
+  outline: 3px solid #ff9f43;
+  outline-offset: 3px;
+}
+
+.reservation-card__confirmation {
+  min-height: 20px;
+  color: #5e5870;
+  font-size: 13px;
+}
+
+@media (min-width: 640px) {
+  .reservation-card {
+    grid-template-columns: minmax(250px, 0.9fr) minmax(360px, 1.1fr);
+  }
+
+  .reservation-card__visual {
+    min-height: 440px;
+  }
+
+  .reservation-card__controls {
+    grid-template-columns: minmax(190px, 0.8fr) minmax(190px, 1.2fr);
+  }
+}

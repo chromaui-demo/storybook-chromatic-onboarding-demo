@@ -1,0 +1,159 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { CoursePage } from '../../packages/hub/src/onboarding/CoursePage';
+
+<Meta title="Onboarding/Start here/Setup" />
+
+<CoursePage
+  phase="Setup"
+  title="Get to a known-good starting point"
+  description="Install once, claim a branch, and prove the demo works before you change it."
+  duration="30–45 minutes"
+  next={{ href: './?path=/docs/onboarding-core-01-upgrade-orient--docs', label: 'Day 1 · Upgrade & orient' }}
+>
+
+<div className="setup-finish-line">
+  <span className="setup-finish-line__check" aria-hidden="true">
+    ✓
+  </span>
+  <div>
+    <strong>Your finish line</strong>
+    <div className="setup-finish-line__copy">
+      The Hub and React Storybook both open, <code>pnpm check</code> passes, and
+      your progress file lives on a personal branch.
+    </div>
+  </div>
+</div>
+
+<section className="setup-readiness" aria-labelledby="setup-ready">
+  <div className="setup-section-heading">
+    <h2 id="setup-ready">Bring four things</h2>
+    <div className="setup-section-heading__copy">
+      If one is missing, sort it out now. Everything after Day 1 assumes this
+      page is done.
+    </div>
+  </div>
+  <ul className="setup-requirements">
+    <li>
+      <strong>Node and pnpm</strong>
+      <span>Node 20 from `.nvmrc`; pnpm 10.19 through Corepack.</span>
+    </li>
+    <li>
+      <strong>Repository access</strong>
+      <span>
+        Git, the shared repository, and permission to create a personal branch.
+      </span>
+    </li>
+    <li>
+      <strong>Product access</strong>
+      <span>
+        A Chromium browser plus the team's shared Chromatic organization and
+        project.
+      </span>
+    </li>
+    <li>
+      <strong>A coding agent</strong>
+      <span>
+        Use one that can connect to a local HTTP MCP server for Days 2–4.
+      </span>
+    </li>
+  </ul>
+</section>
+
+<div className="setup-runbook">
+  <section className="setup-step">
+    <span className="setup-step__number" aria-hidden="true">1</span>
+    <div className="setup-step__body">
+      <span className="setup-step__label">Workspace</span>
+      <h2>Install and claim your branch</h2>
+      <div className="setup-step__intro">Replace <code>{'<handle>'}</code> with your GitHub handle. This branch is yours for all 15 days.</div>
+
+      ```sh
+      nvm use
+      corepack enable
+      pnpm install --frozen-lockfile
+      git switch main
+      git pull --ff-only
+      git switch -c onboarding/<handle>
+      cp progress/TEMPLATE.md progress/<handle>.md
+      ```
+
+      <aside className="setup-note">
+        <strong>No remote or <code>main</code> commit?</strong>
+        <div className="setup-note__copy">Stop here and ask the facilitator to finish <a href="./?path=/docs/onboarding-reference-facilitator-setup--docs" target="_top">the shared setup</a>. An unpublished local repository is not a useful starting point for a branch-and-baseline course.</div>
+      </aside>
+    </div>
+
+  </section>
+
+  <section className="setup-step">
+    <span className="setup-step__number" aria-hidden="true">2</span>
+    <div className="setup-step__body">
+      <span className="setup-step__label">Health check</span>
+      <h2>Prove the repository works before you touch it</h2>
+      <div className="setup-step__intro">If this fails now, it is a setup problem. If it fails tomorrow, it is probably your change. That distinction will save you time.</div>
+
+      ```sh
+      pnpm check
+      pnpm dev
+      ```
+
+      <div className="setup-success">
+        <strong>You're clear to continue when</strong>
+        <span>the checks pass and the Hub opens at <code>http://localhost:6006</code>.</span>
+      </div>
+    </div>
+
+  </section>
+
+  <section className="setup-step">
+    <span className="setup-step__number" aria-hidden="true">3</span>
+    <div className="setup-step__body">
+      <span className="setup-step__label">Product tour</span>
+      <h2>Spend ten minutes clicking around</h2>
+      <div className="setup-step__intro">Open the React Storybook, normally at <code>http://localhost:6007</code>. Use the product before the course asks you to configure it.</div>
+      <ul className="setup-story-list">
+        <li><strong>Default</strong><span>Change args in Controls and watch the component respond.</span></li>
+        <li><strong>Responsive coverage</strong><span>Move between compact and desktop views.</span></li>
+        <li><strong>Reservation interaction</strong><span>Run the play function in the Interactions panel.</span></li>
+        <li><strong>Long localized content</strong><span>Look for layout decisions that only show up at the edges.</span></li>
+      </ul>
+      <div className="setup-step__outro">Record the actual React port in your progress file. The MCP connection uses it later. Stop the dev processes with <code>Ctrl+C</code> when you're done.</div>
+    </div>
+  </section>
+</div>
+
+<section className="setup-guardrails" aria-labelledby="setup-guardrails">
+  <div>
+    <span>How this repo works</span>
+    <h2 id="setup-guardrails">A few lines we do not cross</h2>
+  </div>
+  <ul>
+    <li>
+      Do the required implementation work in `packages/react`. The Hub and other
+      frameworks are there for composition and comparison.
+    </li>
+    <li>
+      Never commit `CHROMATIC_PROJECT_TOKEN`, populated `.env` files,
+      `storybook-static`, or `node_modules`.
+    </li>
+    <li>
+      Stay on your own branch. Do not accept another learner's Chromatic
+      changes.
+    </li>
+    <li>
+      Treat generated code as a first draft. Read it, run it, and be ready to
+      explain it.
+    </li>
+  </ul>
+</section>
+
+<aside className="setup-help">
+  <strong>Stuck?</strong>
+  <div className="setup-help__copy">
+    Send the day, the broken command, and the complete error. Add what you
+    expected and the last thing that worked. That usually gives the team enough
+    to help in one pass.
+  </div>
+</aside>
+
+</CoursePage>

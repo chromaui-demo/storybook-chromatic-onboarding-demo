@@ -1,0 +1,62 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { CoursePage } from '../../packages/hub/src/onboarding/CoursePage';
+
+<Meta title="Onboarding/Reference/Facilitator setup" />
+
+<CoursePage
+  phase="Reference"
+  title="Facilitator setup"
+  description="Set up the shared repository and Chromatic project once, then let each SE work independently without muddying ancestry or exposing secrets."
+>
+
+The learner should be able to begin without waiting for a meeting. That takes a small amount of
+one-time work from the facilitator.
+
+## Repository readiness
+
+1. Publish this repository with a protected `main` branch and a passing initial commit.
+2. Confirm `pnpm install --frozen-lockfile`, `pnpm check`, and `pnpm dev` work on Node 20.
+3. Decide whether learners may merge course branches or whether branches remain disposable.
+4. Give every learner write access and reserve the `onboarding/<handle>` branch namespace.
+
+The checked-in repository already pins Storybook 10.5.5. Day 1 therefore performs a real upgrade
+health check and migration review, but the upgrade command should be a no-op. If a cohort must perform
+a live Storybook 9-to-10 migration, maintain a tested `course/storybook-9-start` tag separately and
+have every learner branch from that tag. Do not downgrade shared `main` during a cohort.
+
+## Shared Chromatic project
+
+1. Create or select one Chromatic project for `packages/react` in the demo organization.
+2. Connect the GitHub repository and install the Chromatic GitHub App.
+3. Publish and accept a clean `main` build before learners branch. Keep `main` passing throughout the
+   cohort so baseline ancestry remains trustworthy.
+4. Store `CHROMATIC_PROJECT_TOKEN` as a GitHub repository secret. Share it locally only through the
+   team's approved secret manager; never paste it into course docs, chat transcripts, or source.
+5. Give learners the least role needed for the exercise. Use Reviewer for assigned peer review and
+   Developer only when learners must accept their own UI Test baselines.
+6. Fill in and share these values out of band:
+
+| Setting                | Value       |
+| :--------------------- | :---------- |
+| Chromatic organization | `<fill in>` |
+| Chromatic project      | `<fill in>` |
+| Project URL            | `<fill in>` |
+| Support channel        | `<fill in>` |
+| Course owner           | `<fill in>` |
+| Demo reviewer          | `<fill in>` |
+
+## Cohort guardrails
+
+- One learner, one namespaced Git branch, one corresponding Chromatic branch.
+- Learners review only their own newest branch build unless they are assigned as a reviewer.
+- Do not enable automatic acceptance on learner branches.
+- Do not enable TurboSnap until the project has enough successful full builds and the learner can
+  explain the dependency graph.
+- Archive or delete stale course branches only after progress and feedback have been captured.
+
+## Facilitator checkpoints
+
+Review progress after Days 5, 10, and 15. Let the learner drive the product and narrate the decisions.
+Ask what would change for this customer more often than you ask which flag they used.
+
+</CoursePage>

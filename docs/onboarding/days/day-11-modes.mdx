@@ -1,0 +1,72 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
+
+<Meta title="Onboarding/Advanced/11 Modes" />
+
+<CoursePage
+  phase="Advanced"
+  day={11}
+  duration="60–90 minutes"
+  title="Build the smallest useful test matrix"
+  description="Add the mobile, desktop, light, and dark combinations that earn their place, then count the cost."
+  customerProblem="The customer supports mobile, desktop, light, and dark experiences but cannot afford an uncontrolled multiplication of snapshots."
+  outcome="You can add narrowly scoped modes and explain why each one deserves its own baseline."
+  previous={{ href: './?path=/docs/onboarding-core-10-ci-core-demo--docs', label: 'Day 10 · CI & core demo' }}
+  next={{ href: './?path=/docs/onboarding-advanced-12-composition--docs', label: 'Day 12 · Composition' }}
+>
+
+## Plan on 75 minutes
+
+- 15 minutes: read and audit
+- 35–50 minutes: implement modes
+- 15 minutes: inspect and explain
+
+## Open the Modes docs
+
+- [Chromatic Modes](https://www.chromatic.com/docs/modes/)
+- [Viewport modes](https://www.chromatic.com/docs/modes/viewports/)
+- [Themes](https://www.chromatic.com/docs/themes/)
+
+## Design the smallest useful matrix
+
+1. Inspect `config/responsive.ts` and `ReservationCard / Responsive coverage`. Identify which widths
+   represent intentional product decisions and which would only add cost.
+2. Add light and dark Storybook globals using the version-aligned Storybook themes addon or a small
+   global decorator. Make the component visibly correct in both themes before asking Chromatic to
+   capture them.
+3. Add exactly two theme modes to one high-value story. Keep the existing compact, breakpoint, and
+   desktop viewport modes limited to stories where responsive risk justifies them.
+4. Publish a Chromatic build and inspect each story/mode combination. Verify each mode has its own
+   snapshot and approval decision.
+5. Calculate the snapshot count before and after your change. Record why your selected matrix is
+   valuable enough to keep.
+
+## Count the cost
+
+- Light and dark can be explored locally through Storybook globals.
+- The selected story produces the intended named Chromatic modes.
+- Other stories are not multiplied without a reason.
+- Each mode remains deterministic and passes interaction/accessibility checks.
+
+## Explain the tradeoff
+
+Explain it without reaching for jargon: **How do modes turn one story into a test matrix, and how do
+we prevent that matrix from becoming noise?**
+
+<details>
+<summary>Hint</summary>
+
+Start narrow. Apply modes at story or component scope before considering project-wide modes. The
+current Modes API is the preferred direction for viewport coverage; avoid leading with the legacy
+`chromatic.viewports` parameter.
+
+</details>
+
+## Commit the matrix
+
+```sh
+git add config packages/react pnpm-lock.yaml progress/<handle>.md
+git commit -m "onboarding(day-11): add purposeful visual modes"
+```
+
+</CoursePage>

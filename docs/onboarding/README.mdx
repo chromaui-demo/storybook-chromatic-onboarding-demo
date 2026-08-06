@@ -1,0 +1,56 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { CoursePage } from '../../packages/hub/src/onboarding/CoursePage';
+
+<Meta title="Onboarding/Welcome" />
+
+<CoursePage
+  phase="Welcome"
+  title="Learn the product by using the product"
+  description="A React-first field lab where you build, break, publish, review, and eventually demo the same workflow our customers use."
+  showPath
+>
+
+This is not a reading list. Over 15 sessions, you will take one React Storybook from local setup to a
+customer-ready Chromatic workflow. You will make real changes, see tests fail, review visual diffs,
+wire up CI, and finish by running the call yourself.
+
+Plan for **60–90 focused minutes per day**. Work through it asynchronously, but do not disappear into a
+problem for hours. The repository, official docs, and built-in recovery notes should get you most of the
+way; the team is there when they do not.
+
+## Before Day 1
+
+1. Complete <a href="./?path=/docs/onboarding-start-here-setup--docs" target="_top">setup and orientation</a>.
+2. Copy `progress/TEMPLATE.md` to `progress/<your-github-handle>.md`.
+3. Confirm the shared Chromatic project details with the course owner. Never put a project token in
+   a tracked file.
+4. Complete the days in order. Each one leaves something behind: working code, evidence, a customer
+   explanation, and a small checkpoint commit.
+5. Finish with the <a href="./?path=/docs/onboarding-reference-capstone-rubric--docs" target="_top">mock-demo capstone</a>.
+
+If you are running the course, read the <a href="./?path=/docs/onboarding-reference-facilitator-setup--docs" target="_top">facilitator setup</a> before assigning it.
+
+## The customer you will carry through the course
+
+You are advising **Trailhead Travel**, a fictional medium-sized enterprise. Its central design-system
+team uses React, while product groups ship Next.js, Angular, Web Components, and React Native Web.
+They have inconsistent UI test coverage, slow review cycles, and no shared way to discover components.
+
+The brief is bigger than installing tools. By the capstone, you should be able to discover what this
+customer actually needs, choose a useful demo path, explain the tradeoffs without bluffing, recover
+when a test fails, and recommend a sensible rollout.
+
+## Call a day done when
+
+A day is complete when all five statements are true:
+
+- You made the requested change on your personal branch.
+- The day's verification commands pass, or you recorded a product issue with reproducible evidence.
+- You captured the requested URL, screenshot, terminal result, or commit SHA in your progress file.
+- You wrote the customer-facing explanation in your own words.
+- You committed a focused checkpoint without secrets or generated build output.
+
+The official docs explain how each feature works. This lab gives you the customer story, the order of
+operations, and enough pressure to make the knowledge stick.
+
+</CoursePage>

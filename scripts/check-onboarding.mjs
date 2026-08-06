@@ -1,0 +1,105 @@
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
+import { dirname, extname, resolve } from 'node:path';
+
+const repositoryRoot = resolve(import.meta.dirname, '..');
+const guideRoot = resolve(repositoryRoot, 'docs/onboarding');
+
+function markdownFiles(directory) {
+  return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+    const path = resolve(directory, entry.name);
+    if (entry.isDirectory()) return markdownFiles(path);
+    return ['.md', '.mdx'].includes(extname(entry.name)) ? [path] : [];
+  });
+}
+
+const files = markdownFiles(guideRoot);
+const failures = [];
+const docsIds = new Set();
+
+function titleToDocsId(title) {
+  const slug = title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+  return `${slug}--docs`;
+}
+
+for (const file of files) {
+  const source = readFileSync(file, 'utf8');
+  const links = source.matchAll(/!?\[[^\]]*\]\(([^)]+)\)/g);
+  const metaTitle = source.match(/<Meta title="([^"]+)" \/>/)?.[1];
+
+  if (extname(file) === '.mdx') {
+    if (!metaTitle) {
+      failures.push(
+        `${file.slice(repositoryRoot.length + 1)} has no Meta title`,
+      );
+    } else {
+      docsIds.add(titleToDocsId(metaTitle));
+    }
+  }
+
+  for (const match of links) {
+    const destination = match[1].trim().replace(/^<|>$/g, '');
+    if (/^(?:https?:|mailto:|#)/.test(destination)) continue;
+
+    const path = decodeURIComponent(destination.split('#')[0]);
+    if (!path) continue;
+
+    const resolvedPath = resolve(dirname(file), path);
+    if (!existsSync(resolvedPath)) {
+      failures.push(
+        `${file.slice(repositoryRoot.length + 1)} -> ${destination}`,
+      );
+    }
+  }
+}
+
+for (let day = 1; day <= 15; day += 1) {
+  const prefix = `day-${String(day).padStart(2, '0')}-`;
+  if (!files.some((file) => file.split('/').at(-1).startsWith(prefix))) {
+    failures.push(`Onboarding guide is missing Day ${day}`);
+  }
+}
+
+const iframeNavigationSources = [
+  ...files,
+  resolve(repositoryRoot, 'packages/hub/src/onboarding/CoursePage.tsx'),
+];
+
+for (const file of iframeNavigationSources) {
+  const source = readFileSync(file, 'utf8');
+  if (/(?<!\.\/)\?path=\/docs\/onboarding-/.test(source)) {
+    failures.push(
+      `${file.slice(repositoryRoot.length + 1)} contains an iframe-unsafe query-only Storybook link`,
+    );
+  }
+}
+
+const navigationSources = [
+  ...iframeNavigationSources,
+  resolve(repositoryRoot, 'packages/hub/.storybook/main.ts'),
+];
+
+for (const file of navigationSources) {
+  const source = readFileSync(file, 'utf8');
+  const referencedIds = source.matchAll(/onboarding-[a-z0-9-]+--docs/g);
+
+  for (const match of referencedIds) {
+    if (!docsIds.has(match[0])) {
+      failures.push(
+        `${file.slice(repositoryRoot.length + 1)} references missing ${match[0]}`,
+      );
+    }
+  }
+}
+
+if (failures.length > 0) {
+  console.error('Onboarding guide validation failed:');
+  for (const failure of failures) console.error(`- ${failure}`);
+  process.exitCode = 1;
+} else {
+  console.log(
+    `Onboarding guide is valid (${files.length} MDX pages, ${docsIds.size} Storybook docs IDs, 15 linked days).`,
+  );
+}

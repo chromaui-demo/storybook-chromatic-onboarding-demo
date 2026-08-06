@@ -1,0 +1,78 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
+
+<Meta title="Onboarding/Core/03 Stories, docs & manifests" />
+
+<CoursePage
+  phase="Core"
+  day={3}
+  duration="75–90 minutes"
+  title="Make one story useful everywhere"
+  description="Write the component states people need, then inspect how the same source shows up in Controls, Docs, tests, and manifests."
+  customerProblem="Components exist, but consumers and AI agents cannot tell which states matter or how the API should be used."
+  outcome="You can write focused CSF 3 stories that make sense to a developer, a reviewer, and an agent."
+  previous={{ href: './?path=/docs/onboarding-core-02-agentic-setup--docs', label: 'Day 2 · Agentic setup' }}
+  next={{ href: './?path=/docs/onboarding-core-04-storybook-mcp--docs', label: 'Day 4 · Storybook MCP' }}
+>
+
+## Give yourself 90 minutes
+
+- 15 minutes: read and inspect
+- 45–55 minutes: author and document
+- 15 minutes: verify the human and machine views
+
+## Keep the official model close
+
+- [Writing stories](https://storybook.js.org/docs/10.5/writing-stories)
+- [Storybook documentation](https://storybook.js.org/docs/10.5/writing-docs)
+- [AI manifests](https://storybook.js.org/docs/10.5/ai/manifests)
+- [AI best practices](https://storybook.js.org/docs/10.5/ai/best-practices)
+
+## Turn one component into a useful catalog
+
+1. Add useful JSDoc to `ReservationCard`, its props, and the story meta. Explain intended use, not what
+   the TypeScript syntax already says.
+2. Add two meaningful story states. Choose states a travel product would need, such as sold out,
+   maximum guests, a very long property name, or a localized price. Keep state in args whenever
+   possible.
+3. Give each story a short description that explains why the case exists.
+4. Run the React Storybook and inspect:
+   - the generated Docs page;
+   - Controls and inferred prop types;
+   - `/manifests/components.html`;
+   - `/manifests/components.json`.
+5. Remove `ai-generated` only from stories you personally reviewed and verified. Use `!manifest` for
+   anything intentionally unsuitable for agent consumption, and explain that decision in your progress
+   file.
+
+Do not write application code that consumes the manifest JSON. Storybook 10.5 manifests are preview
+APIs; verify their usefulness through the user-facing tools instead of depending on their schema.
+
+## Check both audiences
+
+- The new stories appear in navigation and render independently.
+- Autodocs communicates component intent and prop meaning.
+- The components manifest includes the reviewed stories and useful prop information.
+- React type checking, story tests, and the static build pass.
+
+## Show the same source in each surface
+
+Show one story in Canvas, Docs, and the manifest debugger. Explain why the same source improves
+development, documentation, testing, and AI grounding.
+
+<details>
+<summary>Hint</summary>
+
+A good story has one recognizable purpose. If its name needs _and_, consider splitting it. Prefer args
+over custom render functions so consumers can explore the state through Controls.
+
+</details>
+
+## Save the story work
+
+```sh
+git add packages/react progress/<handle>.md
+git commit -m "onboarding(day-03): improve stories and manifests"
+```
+
+</CoursePage>
