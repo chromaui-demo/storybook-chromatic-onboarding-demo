@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  pull_request:
   workflow_dispatch:
 
 concurrency:
@@ -45,7 +46,3 @@ jobs:
       - name: Publish the onboarding Hub
         if: ${{ env.CHROMATIC_PROJECT_TOKEN != '' }}
         run: pnpm deploy:hub
-
-      - name: Chromatic setup is waiting for its project token
-        if: ${{ env.CHROMATIC_PROJECT_TOKEN == '' }}
-        run: echo "::notice::Add CHROMATIC_HUB_PROJECT_TOKEN to publish the separate onboarding Hub project."
