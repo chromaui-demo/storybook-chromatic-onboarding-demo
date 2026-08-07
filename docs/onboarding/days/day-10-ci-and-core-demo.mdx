@@ -10,7 +10,7 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
   title="Put Chromatic in CI, then tell the story"
   description="Wire the workflow to GitHub Actions and give a five-minute demo without touring every tab."
   customerProblem="Visual testing depends on a developer remembering to publish locally, so branch coverage and review checks are inconsistent."
-  outcome="You can trace a commit through CI and give the short version of the Storybook and Chromatic workflow."
+  outcome="You can trace a commit through CI and adapt the short Storybook and Chromatic demo for a presales or postsales call."
   previous={{ href: './?path=/docs/onboarding-core-09-visual-review--docs', label: 'Day 9 · Visual review' }}
   next={{ href: './?path=/docs/onboarding-advanced-11-modes--docs', label: 'Day 11 · Modes' }}
 >
@@ -44,20 +44,47 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
    policy is part of this day; changing repository-wide policy is not.
 5. Deliver the five-minute core demo below to a teammate or record it for asynchronous feedback.
 
+<section
+  className="value-role-grid"
+  aria-label="Choose a customer conversation"
+>
+  <article className="value-role-card">
+    <span>Presales practice</span>
+    <h2>Help a prospect evaluate the fit</h2>
+    <p>
+      Start with the risk they need to reduce. Show the smallest end-to-end
+      workflow that proves the product can help, then agree on what a useful
+      evaluation should validate.
+    </p>
+  </article>
+  <article className="value-role-card">
+    <span>Postsales practice</span>
+    <h2>Help a customer improve adoption</h2>
+    <p>
+      Start with the workflow they already use. Find one consequential gap in
+      states, tests, review, or CI and recommend the smallest next change that
+      closes it.
+    </p>
+  </article>
+</section>
+
 ## Run the five-minute version
 
-1. State Trailhead Travel's inconsistent UI-testing problem.
+1. State the customer problem in the language of your chosen call.
 2. Show an editable React story and its Autodocs.
 3. Switch among deterministic MSW states.
 4. Run an interaction and accessibility test.
 5. Open a Chromatic diff, explain the baseline, and show the passing CI result.
-6. Close with a practical adoption next step.
+6. Close with a practical next step:
+   - **Presales:** name what the customer should validate in a time-boxed evaluation.
+   - **Postsales:** name the coverage gap, the smallest change, and the evidence that would show it helped.
 
 ## Check the handoff from Git to Chromatic
 
 - The workflow uses full Git history and a repository secret.
 - The branch build is attached to the expected commit and surfaces its checks.
-- Your progress file contains feedback on the five-minute demo and one improvement for the capstone.
+- Your progress file names the call you practiced, contains feedback on the five-minute demo, and
+  records one improvement for the capstone.
 
 ## Be ready for the ancestry question
 

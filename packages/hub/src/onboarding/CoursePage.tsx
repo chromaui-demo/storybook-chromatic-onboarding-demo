@@ -2,7 +2,8 @@ import type { ReactNode } from 'react';
 
 import './course-page.css';
 
-type Phase = 'Advanced' | 'Core' | 'Reference' | 'Setup' | 'Welcome';
+type Phase =
+  'Advanced' | 'Core' | 'Orientation' | 'Reference' | 'Setup' | 'Welcome';
 
 type CourseDestination = {
   href: string;
@@ -173,10 +174,14 @@ export function CoursePage({
   const progress = day
     ? `${day} of 15`
     : phase === 'Setup'
-      ? 'Ready for Day 1'
-      : '10 core + 5 advanced';
+      ? 'Set up first'
+      : phase === 'Orientation'
+        ? 'Why before how'
+        : '10 core + 5 advanced';
   const progressLabel =
-    phase === 'Setup' ? 'Starting point' : 'Course progress';
+    phase === 'Setup' || phase === 'Orientation'
+      ? 'Starting point'
+      : 'Course progress';
 
   return (
     <article
@@ -256,17 +261,19 @@ export function CoursePage({
           <div className="onboarding-actions" aria-label="Get started">
             <a
               className="onboarding-button onboarding-button--primary"
-              href={storybookHref('onboarding-core-01-upgrade-orient--docs')}
-              target="_top"
-            >
-              Start Day 1 <span aria-hidden="true">→</span>
-            </a>
-            <a
-              className="onboarding-button"
               href={storybookHref('onboarding-start-here-setup--docs')}
               target="_top"
             >
-              Prepare your workspace
+              Set up the field lab <span aria-hidden="true">→</span>
+            </a>
+            <a
+              className="onboarding-button"
+              href={storybookHref(
+                'onboarding-start-here-why-the-workflow-matters--docs',
+              )}
+              target="_top"
+            >
+              Why the workflow matters
             </a>
           </div>
         )}

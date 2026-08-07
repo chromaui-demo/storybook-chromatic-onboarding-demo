@@ -141,6 +141,13 @@ the snapshot can represent the post-interaction state.
 Stories are organized per component in `*.stories.*` files. A component's default, responsive, edge,
 and interaction cases live together and appear as individual Storybook/Chromatic tests.
 
+The Hub also imports every MDX guide into a matching story under **Visual snapshots**. Edit the MDX
+source once; the documentation page and its Chromatic test update together. Run
+`pnpm check:onboarding` to verify that every guide has exactly one snapshot story. These stories carry
+the `docs-snapshot` tag for filtering and remove Storybook's built-in `test` tag because the Vitest
+integration replaces indexed MDX modules with metadata; they remain enabled for Chromatic visual
+snapshots.
+
 - **Add:** export another named story, with args, parameters, and optionally a `play` function.
 - **Update:** edit that export or its component; the story ID remains stable when the title and export
   name remain stable.

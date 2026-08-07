@@ -10,7 +10,7 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
   title="Publish the React Storybook to Chromatic"
   description="Take the catalog off your laptop and create a branch build the rest of the team can inspect."
   customerProblem="The Storybook works locally, but the team needs a durable, shared build and a visual-test baseline tied to Git history."
-  outcome="You can publish from your branch, find the resulting build, and keep the project token out of the repository."
+  outcome="You can explain what changes when Storybook leaves one laptop, publish the branch, and keep the project token out of the repository."
   previous={{ href: './?path=/docs/onboarding-core-07-accessibility--docs', label: 'Day 7 · Accessibility' }}
   next={{ href: './?path=/docs/onboarding-core-09-visual-review--docs', label: 'Day 9 · Visual review' }}
 >
@@ -21,6 +21,23 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
 - 20 minutes: configure the CLI
 - 20–35 minutes: publish and inspect
 - 10 minutes: explain and record
+
+## Why Chromatic now?
+
+By Day 7, the React Storybook can make important states reproducible and test them locally. That is a
+real improvement, but it still leaves several questions unanswered: Which build should a reviewer
+open? What changed on this branch? Is the change intentional? Which decision should block the merge?
+
+Chromatic adds the shared, persistent, Git-aware half of the workflow. It publishes the same stories,
+captures their rendered output, compares it with accepted history, and gives the team one place to
+inspect evidence and record a decision.
+
+Before touching the CLI, answer this in your progress file:
+
+> What can Trailhead Travel do after this build that it could not do when Storybook only ran on a
+> developer's laptop?
+
+A useful answer names a person, a decision, and the evidence that person can now inspect.
 
 ## Keep these docs open
 
@@ -68,7 +85,9 @@ foundation; branch comparisons are only useful with trustworthy ancestry.
 ## Practice the baseline story
 
 Explain what the first accepted build establishes, why each branch can have separate baselines, and
-why a passing `main` build matters after merges.
+why a passing `main` build matters after merges. Then connect it back to the customer: a baseline is
+not “the correct design.” It is accepted history that makes the next visual change visible enough for
+a human to judge.
 
 <details>
 <summary>Recovery</summary>

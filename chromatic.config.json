@@ -1,0 +1,12 @@
+{
+  "projectId": "6a7518bed9ede74ecc31655f",
+  "autoAcceptChanges": "main",
+  "exitOnceUploaded": true,
+  "externals": ["public/**"],
+  "onlyChanged": true,
+  "skip": "dependabot/**",
+  "exitZeroOnChanges": true,
+  "buildScriptName": "build-storybook:hub",
+  "storybookConfigDir": "packages/hub/.storybook",
+  "storybookBaseDir": "packages/hub"
+}

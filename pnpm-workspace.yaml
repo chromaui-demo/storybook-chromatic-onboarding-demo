@@ -17,7 +17,7 @@ catalog:
   '@vitest/browser-playwright': 4.1.10
   '@vitest/coverage-v8': 4.1.10
   '@vitest/runner': 4.1.10
-  chromatic: 16.10.0
+  chromatic: 18.1.0
   playwright: 1.62.1
   prettier: ^3.6.2
   react: 19.2.8

@@ -3,6 +3,11 @@ import { dirname, extname, resolve } from 'node:path';
 
 const repositoryRoot = resolve(import.meta.dirname, '..');
 const guideRoot = resolve(repositoryRoot, 'docs/onboarding');
+const hubGuideRoot = resolve(repositoryRoot, 'packages/hub/stories');
+const hubOnboardingRoot = resolve(
+  repositoryRoot,
+  'packages/hub/src/onboarding',
+);
 
 function markdownFiles(directory) {
   return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
@@ -15,6 +20,65 @@ function markdownFiles(directory) {
 const files = markdownFiles(guideRoot);
 const failures = [];
 const docsIds = new Set();
+
+const snapshotStoryFiles = readdirSync(hubOnboardingRoot, {
+  withFileTypes: true,
+})
+  .filter(
+    (entry) =>
+      entry.isFile() &&
+      entry.name.startsWith('GuideSnapshots') &&
+      entry.name.endsWith('.stories.tsx'),
+  )
+  .map((entry) => resolve(hubOnboardingRoot, entry.name));
+
+const snapshotGuideFiles = [
+  ...files.filter((file) => extname(file) === '.mdx'),
+  ...markdownFiles(hubGuideRoot).filter((file) => extname(file) === '.mdx'),
+];
+const snapshotCoverage = new Map(snapshotGuideFiles.map((file) => [file, []]));
+
+for (const storyFile of snapshotStoryFiles) {
+  const source = readFileSync(storyFile, 'utf8');
+  const imports = source.matchAll(
+    /import\s+(\w+)\s+from\s+['"]([^'"]+\.mdx)['"];?/g,
+  );
+
+  for (const match of imports) {
+    const [, localName, importPath] = match;
+    const guideFile = resolve(dirname(storyFile), importPath);
+    const coverage = snapshotCoverage.get(guideFile);
+
+    if (!coverage) continue;
+
+    const renderPattern = new RegExp(
+      `render:\\s*\\(\\)\\s*=>\\s*<${localName}\\s*/>`,
+    );
+
+    if (!renderPattern.test(source)) {
+      failures.push(
+        `${storyFile.slice(repositoryRoot.length + 1)} imports ${importPath} but does not render it in a story`,
+      );
+      continue;
+    }
+
+    coverage.push(storyFile);
+  }
+}
+
+for (const [guideFile, storyFiles] of snapshotCoverage) {
+  if (storyFiles.length === 0) {
+    failures.push(
+      `${guideFile.slice(repositoryRoot.length + 1)} has no visual snapshot story`,
+    );
+  }
+
+  if (storyFiles.length > 1) {
+    failures.push(
+      `${guideFile.slice(repositoryRoot.length + 1)} has duplicate visual snapshot stories`,
+    );
+  }
+}
 
 function titleToDocsId(title) {
   const slug = title
@@ -100,6 +164,6 @@ if (failures.length > 0) {
   process.exitCode = 1;
 } else {
   console.log(
-    `Onboarding guide is valid (${files.length} MDX pages, ${docsIds.size} Storybook docs IDs, 15 linked days).`,
+    `Onboarding guide is valid (${files.length} MDX pages, ${docsIds.size} Storybook docs IDs, ${snapshotGuideFiles.length} visual snapshot stories, 15 linked days).`,
   );
 }
