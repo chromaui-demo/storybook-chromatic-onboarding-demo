@@ -21,6 +21,31 @@ const files = markdownFiles(guideRoot);
 const failures = [];
 const docsIds = new Set();
 
+const setupGuide = readFileSync(resolve(guideRoot, 'SETUP.mdx'), 'utf8');
+const setupRequirements = [
+  [
+    'VS Code installation',
+    'https://code.visualstudio.com/docs/getstarted/overview',
+  ],
+  ['Codex installation', 'https://learn.chatgpt.com/docs/codex/ide'],
+  ['editor verification', 'code --version'],
+  [
+    'Node version manager',
+    'https://github.com/nvm-sh/nvm#installing-and-updating',
+  ],
+  ['Node installation', 'nvm install'],
+  ['workspace verification', 'pnpm check'],
+  ['local Storybooks', 'pnpm dev'],
+  ['port conflict recovery', 'STORYBOOK_PORT_OFFSET=100 pnpm dev'],
+  ['personal branch', 'git switch -c onboarding/<handle>'],
+];
+
+for (const [requirement, expectedText] of setupRequirements) {
+  if (!setupGuide.includes(expectedText)) {
+    failures.push(`Setup guide is missing ${requirement}: ${expectedText}`);
+  }
+}
+
 const snapshotStoryFiles = readdirSync(hubOnboardingRoot, {
   withFileTypes: true,
 })

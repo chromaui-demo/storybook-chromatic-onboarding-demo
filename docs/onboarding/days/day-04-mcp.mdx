@@ -7,22 +7,22 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
   phase="Core"
   day={4}
   duration="60–75 minutes"
-  title="Storybook MCP"
-  description="Connect an agent to the running Storybook so it can inspect the real components, stories, and test workflow."
-  customerProblem="AI-generated UI code invents component APIs because it lacks grounded access to the design system and its tests."
-  outcome="You can tell when an agent is using Storybook knowledge and when it is making an API up."
+  title="Ground Codex in the real Storybook"
+  description="Connect Codex to the running Storybook so it can inspect documented components, stories, and tests."
+  customerProblem="Coding agents invent component APIs when they cannot inspect the design system's real documentation and examples."
+  outcome="You can prove when Codex is using Storybook knowledge and catch an unsupported API before it reaches the code."
   previous={{ href: './?path=/docs/onboarding-core-03-stories-docs-manifests--docs', label: 'Day 3 · Stories & manifests' }}
   next={{ href: './?path=/docs/onboarding-core-05-mock-service-worker--docs', label: 'Day 5 · Mock Service Worker' }}
 >
 
-## Plan on 75 minutes
+## Plan your session
 
 - 15 minutes: read
 - 20 minutes: connect and smoke-test
 - 30 minutes: grounded authoring exercise
 - 10 minutes: verify and explain
 
-## Open the MCP docs
+## Read the MCP model
 
 - [Using Storybook with AI](https://storybook.js.org/docs/10.5/ai)
 - [MCP server overview](https://storybook.js.org/docs/10.5/ai/mcp/overview)
@@ -32,7 +32,7 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
 Storybook 10.5 MCP is preview and React-only for manifest-backed knowledge. A composed Angular or Web
 Components Storybook may still appear in the sidebar without offering equivalent manifest context.
 
-## Connect the agent to the live Storybook
+## Connect Codex to the live Storybook
 
 1. Start the React Storybook and keep it running:
 
@@ -40,26 +40,26 @@ Components Storybook may still appear in the sidebar without offering equivalent
    pnpm --filter @demo/react storybook
    ```
 
-2. Connect your agent to `http://localhost:6007/mcp`, adjusting the port if Storybook selected another.
-   Use your agent's documented project-level MCP configuration so the connection belongs to this
+2. Connect Codex to `http://localhost:6007/mcp`. Adjust the port if Storybook selected another.
+   Use Codex's documented project-level MCP configuration so the connection belongs to this
    repository rather than every project on your machine.
-3. Ask the agent to list documented components, retrieve `ReservationCard` details, and identify the
+3. Ask Codex to list documented components, retrieve `ReservationCard` details, and identify the
    available stories. Verify its answers in Storybook.
-4. Before asking it to write or modify a story, require it to retrieve Storybook's current story-writing
-   instructions. Ask it to add one bounded story using only documented props.
-5. Ask MCP to run the affected story tests. Compare the tool result with the Interactions panel and the
+4. Before Codex writes or modifies a story, require it to retrieve Storybook's current story-writing
+   instructions. Ask Codex to add one bounded story using only documented props.
+5. Ask Codex to run the affected story tests through MCP. Compare the result with the Interactions panel and the
    terminal test run.
-6. Add repository agent instructions that require docs lookup before using component props, current
+6. Add repository instructions that require docs lookup before using component props, current
    story instructions before authoring, and story tests after UI changes. Keep the wording independent
    of a single agent product.
 
-## Make sure it is actually grounded
+## Prove that Codex is grounded
 
 - The local MCP connection responds while Storybook is running and fails predictably when it is not.
-- The agent cites actual component/story knowledge rather than inferring props from display names.
+- Codex cites actual component and story knowledge instead of inferring props from display names.
 - The new or changed story passes MCP and terminal verification.
 
-## Tell the customer why this matters
+## Practice the SE answer
 
 Practice the boundary out loud: **What does MCP know, what is still local, and why is a published docs
 endpoint not a remote code-editing service?**
@@ -67,13 +67,13 @@ endpoint not a remote code-editing service?**
 <details>
 <summary>Recovery</summary>
 
-If the endpoint does not respond, confirm the actual React port, verify `@storybook/addon-mcp` is in
-the React add-on list, restart Storybook, and reconnect. Do not point the agent at the composition hub
+If the endpoint does not respond, confirm the React port, verify `@storybook/addon-mcp` is in
+the React add-on list, restart Storybook, and reconnect. Do not point Codex at the composition Hub
 unless you intentionally want the host's knowledge boundary.
 
 </details>
 
-## Save the agent instructions
+## Save the repository instructions
 
 ```sh
 git add packages/react AGENTS.md progress/<handle>.md

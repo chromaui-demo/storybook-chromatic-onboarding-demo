@@ -7,27 +7,27 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
   phase="Core"
   day={10}
   duration="75–90 minutes"
-  title="Put Chromatic in CI, then tell the story"
-  description="Wire the workflow to GitHub Actions and give a five-minute demo without touring every tab."
-  customerProblem="Visual testing depends on a developer remembering to publish locally, so branch coverage and review checks are inconsistent."
-  outcome="You can trace a commit through CI and adapt the short Storybook and Chromatic demo for a presales or postsales call."
+  title="Automate the workflow and demo the value"
+  description="Connect Chromatic to GitHub Actions, trace one commit, and lead a focused five-minute customer demo."
+  customerProblem="Visual testing depends on a developer remembering to publish, so branch coverage and review checks are inconsistent."
+  outcome="You can trace a commit through CI and adapt a short Storybook and Chromatic demo for presales or postsales."
   previous={{ href: './?path=/docs/onboarding-core-09-visual-review--docs', label: 'Day 9 · Visual review' }}
   next={{ href: './?path=/docs/onboarding-advanced-11-modes--docs', label: 'Day 11 · Modes' }}
 >
 
-## Give this 90 minutes
+## Plan your session
 
 - 15 minutes: read
 - 25–35 minutes: configure or audit CI
 - 20 minutes: verify the branch run
 - 15 minutes: deliver the core demo
 
-## Read before touching CI
+## Read before you change CI
 
 - [Chromatic with GitHub Actions](https://www.chromatic.com/docs/github-actions/)
 - [Chromatic access control](https://www.chromatic.com/docs/access/)
 
-## Put the workflow on rails
+## Make the workflow automatic
 
 1. Inspect the repository's Chromatic workflow. If the facilitator has not added it yet, create
    `.github/workflows/chromatic.yml` with:
@@ -36,8 +36,8 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
    - `pnpm install --frozen-lockfile`;
    - the token from `${{ secrets.CHROMATIC_PROJECT_TOKEN }}`;
    - `workingDir: packages/react`, so the action uses that package's Storybook build script and config;
-   - a `push` trigger for `main` and learner branches.
-2. Do not enable automatic acceptance, `exitZeroOnChanges`, or TurboSnap for learner branches.
+   - a `push` trigger for `main` and SE branches.
+2. Do not enable automatic acceptance, `exitZeroOnChanges`, or TurboSnap for SE branches.
 3. Push your branch and follow the action, Chromatic build, UI Tests, and UI Review checks from commit
    to result. Verify the build maps to the pushed commit rather than an ephemeral merge commit.
 4. Ask the facilitator before changing branch protection or required checks. Reading and explaining
@@ -68,7 +68,7 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
   </article>
 </section>
 
-## Run the five-minute version
+## Lead the five-minute demo
 
 1. State the customer problem in the language of your chosen call.
 2. Show an editable React story and its Autodocs.
@@ -79,14 +79,14 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
    - **Presales:** name what the customer should validate in a time-boxed evaluation.
    - **Postsales:** name the coverage gap, the smallest change, and the evidence that would show it helped.
 
-## Check the handoff from Git to Chromatic
+## Verify the handoff from Git to Chromatic
 
 - The workflow uses full Git history and a repository secret.
 - The branch build is attached to the expected commit and surfaces its checks.
 - Your progress file names the call you practiced, contains feedback on the five-minute demo, and
   records one improvement for the capstone.
 
-## Be ready for the ancestry question
+## Practice the ancestry answer
 
 Be ready when someone asks: **Why do we recommend building `main`, and why are push-based workflows
 often safer for baseline ancestry than default pull-request merge commits?**

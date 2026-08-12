@@ -7,35 +7,35 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
   phase="Advanced"
   day={13}
   duration="75–90 minutes"
-  title="Monorepo configuration and TurboSnap"
-  description="Trace one shared-code change through the workspace before asking Chromatic to skip anything."
-  customerProblem="Full visual builds are becoming expensive, but an optimization that skips an affected story would destroy trust in the test suite."
-  outcome="You can test TurboSnap's dependency assumptions and know when the optimization is safe to enable."
+  title="Earn the right to use TurboSnap"
+  description="Trace shared-code changes through the workspace before you allow Chromatic to skip a snapshot."
+  customerProblem="Full visual builds cost time, but an optimization that skips an affected story would destroy trust."
+  outcome="You can test TurboSnap's dependency assumptions and decide whether the optimization is safe for the customer."
   previous={{ href: './?path=/docs/onboarding-advanced-12-composition--docs', label: 'Day 12 · Composition' }}
   next={{ href: './?path=/docs/onboarding-advanced-14-storybook-11-readiness--docs', label: 'Day 14 · Storybook 11 readiness' }}
 >
 
-## Plan on 90 minutes
+## Plan your session
 
 - 20 minutes: read
 - 20 minutes: audit configuration and dependencies
 - 25–35 minutes: run controlled changed-file experiments
 - 10 minutes: explain
 
-## Read TurboSnap before turning it on
+## Understand TurboSnap before enabling it
 
 - [TurboSnap overview](https://www.chromatic.com/docs/turbosnap/)
 - [TurboSnap setup](https://www.chromatic.com/docs/turbosnap/setup/)
 - [TurboSnap best practices](https://www.chromatic.com/docs/turbosnap/best-practices/)
 - [Optimizing TurboSnap for monorepos](https://www.chromatic.com/docs/turbosnap/monorepo-usage/)
 
-## Earn the right to optimize
+## Confirm that the project is ready
 
 Do not enable TurboSnap just to finish the exercise. Confirm the shared project is eligible, has a
 trustworthy sequence of full builds, and the facilitator approves the change. If not, perform the audit
 and write the proposed config without publishing it.
 
-## Trace one change through the graph
+## Trace controlled changes through the graph
 
 1. From the repository root, inspect the Turbo task graph, package imports, React Storybook base
    directory, config directory, static directories, global preview imports, and shared
@@ -53,14 +53,14 @@ and write the proposed config without publishing it.
 6. Revert the controlled changes you do not want to keep. Preserve the validated configuration only
    if the results were trustworthy.
 
-## Try to make TurboSnap wrong
+## Test the risky boundaries
 
 - Component and story changes retest the expected stories.
 - Shared rendering/config changes do not incorrectly skip affected stories.
 - Git history is complete in CI.
 - Every `externals` or `untraced` entry has a written safety rationale.
 
-## Talk about trust before speed
+## Practice the SE answer
 
 If you cannot answer this yet, keep digging: **How does TurboSnap decide what changed, and why is a
 fast but incomplete build worse than a slower full build?**
@@ -74,7 +74,7 @@ and root dependency changes.
 
 </details>
 
-## Save the optimization
+## Save only the trusted configuration
 
 ```sh
 git add packages/react/chromatic.config.json progress/<handle>.md

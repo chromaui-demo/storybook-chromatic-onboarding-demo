@@ -7,22 +7,22 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
   phase="Core"
   day={8}
   duration="60–90 minutes"
-  title="Publish the React Storybook to Chromatic"
-  description="Take the catalog off your laptop and create a branch build the rest of the team can inspect."
-  customerProblem="The Storybook works locally, but the team needs a durable, shared build and a visual-test baseline tied to Git history."
-  outcome="You can explain what changes when Storybook leaves one laptop, publish the branch, and keep the project token out of the repository."
+  title="Publish a shared Chromatic build"
+  description="Publish the React Storybook so the team can inspect one durable build tied to your branch and commit."
+  customerProblem="The Storybook works locally, but reviewers need shared evidence and a visual baseline tied to Git history."
+  outcome="You can publish a branch build, locate its evidence, explain its Git context, and keep the project token safe."
   previous={{ href: './?path=/docs/onboarding-core-07-accessibility--docs', label: 'Day 7 · Accessibility' }}
   next={{ href: './?path=/docs/onboarding-core-09-visual-review--docs', label: 'Day 9 · Visual review' }}
 >
 
-## Give yourself 90 minutes
+## Plan your session
 
 - 15 minutes: read and confirm access
 - 20 minutes: configure the CLI
 - 20–35 minutes: publish and inspect
 - 10 minutes: explain and record
 
-## Why Chromatic now?
+## Explain what Chromatic adds
 
 By Day 7, the React Storybook can make important states reproducible and test them locally. That is a
 real improvement, but it still leaves several questions unanswered: Which build should a reviewer
@@ -39,19 +39,19 @@ Before touching the CLI, answer this in your progress file:
 
 A useful answer names a person, a decision, and the evidence that person can now inspect.
 
-## Keep these docs open
+## Use the official docs
 
 - [Chromatic quickstart](https://www.chromatic.com/docs/quickstart/)
 - [CLI authentication](https://www.chromatic.com/docs/cli/#authentication)
 - [Branches and baselines](https://www.chromatic.com/docs/branching-and-baselines/)
 
-## Check the shared project first
+## Confirm the shared project
 
 The facilitator must have connected one shared project, seeded a passing `main` build, and provided
 the token through the approved secret manager. If `main` has no accepted build, stop and ask for that
 foundation; branch comparisons are only useful with trustworthy ancestry.
 
-## Publish from your branch
+## Publish your branch
 
 1. Install the Chromatic CLI in the React workspace and add a `"chromatic": "chromatic"` script to
    `packages/react/package.json`:
@@ -75,14 +75,14 @@ foundation; branch comparisons are only useful with trustworthy ancestry.
    result if the feature is enabled for the project.
 6. Add the branch build URL to your progress file. Never add the token.
 
-## Make sure Chromatic built what you think it built
+## Verify the build and Git context
 
 - The build belongs to your personal branch and expected commit.
 - The published Storybook contains the React stories, including MSW and interaction states.
 - There are no external composed stories counted as React UI tests.
 - `git grep` does not find the token value in tracked or untracked course files.
 
-## Practice the baseline story
+## Practice the SE answer
 
 Explain what the first accepted build establishes, why each branch can have separate baselines, and
 why a passing `main` build matters after merges. Then connect it back to the customer: a baseline is
@@ -98,7 +98,7 @@ stop, notify the owner, and rotate it.
 
 </details>
 
-## Save the connection
+## Save the Chromatic configuration
 
 ```sh
 git add packages/react/package.json packages/react/chromatic.config.json pnpm-lock.yaml progress/<handle>.md

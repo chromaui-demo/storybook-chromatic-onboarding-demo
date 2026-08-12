@@ -27,62 +27,62 @@ export interface CoursePageProps {
 const coreDays = [
   [
     '01',
-    'Upgrade & orient',
-    'Migration confidence',
+    'Verify an upgrade',
+    'Explain a safe migration',
     'onboarding-core-01-upgrade-orient--docs',
   ],
   [
     '02',
-    'Agentic setup',
-    'AI with engineering judgment',
+    'Use Codex with judgment',
+    'Review AI-assisted changes',
     'onboarding-core-02-agentic-setup--docs',
   ],
   [
     '03',
-    'Stories & manifests',
-    'Human and machine-readable UI',
+    'Write useful stories',
+    'Serve people and agents',
     'onboarding-core-03-stories-docs-manifests--docs',
   ],
   [
     '04',
-    'Storybook MCP',
-    'Ground agents in real components',
+    'Connect Storybook MCP',
+    'Ground Codex in real components',
     'onboarding-core-04-storybook-mcp--docs',
   ],
   [
     '05',
-    'Mock Service Worker',
-    'Deterministic network states',
+    'Mock API states',
+    'Make demos repeatable',
     'onboarding-core-05-mock-service-worker--docs',
   ],
   [
     '06',
-    'Interaction tests',
-    'Prove behavior in the story',
+    'Test a user flow',
+    'Prove behavior, not clicks',
     'onboarding-core-06-interaction-tests--docs',
   ],
   [
     '07',
-    'Accessibility',
-    'Catch regressions earlier',
+    'Test accessibility',
+    'Set honest expectations',
     'onboarding-core-07-accessibility--docs',
   ],
   [
     '08',
-    'First Chromatic build',
-    'Create a shared branch build',
+    'Publish to Chromatic',
+    'Share durable evidence',
     'onboarding-core-08-first-chromatic-build--docs',
   ],
   [
     '09',
-    'Visual review',
+    'Review visual changes',
     'Separate intent from regression',
     'onboarding-core-09-visual-review--docs',
   ],
   [
     '10',
-    'CI & core demo',
-    'Automate and tell the story',
+    'Automate and demo',
+    'Connect CI to customer value',
     'onboarding-core-10-ci-core-demo--docs',
   ],
 ] as const;
@@ -90,31 +90,31 @@ const coreDays = [
 const advancedDays = [
   [
     '11',
-    'Modes',
-    'Responsive and theme matrices',
+    'Test with Modes',
+    'Choose a useful test matrix',
     'onboarding-advanced-11-modes--docs',
   ],
   [
     '12',
-    'Composition',
-    'One catalog across frameworks',
+    'Compose Storybooks',
+    'Unify discovery, not ownership',
     'onboarding-advanced-12-composition--docs',
   ],
   [
     '13',
-    'TurboSnap',
+    'Validate TurboSnap',
     'Optimize without losing trust',
     'onboarding-advanced-13-monorepo-turbosnap--docs',
   ],
   [
     '14',
-    'Storybook 11 readiness',
-    'Plan without speculation',
+    'Plan the next upgrade',
+    'Separate facts from roadmap',
     'onboarding-advanced-14-storybook-11-readiness--docs',
   ],
   [
     '15',
-    'Mock customer demo',
+    'Run the customer call',
     'Turn product fluency into value',
     'onboarding-advanced-15-mock-demo--docs',
   ],
@@ -174,9 +174,9 @@ export function CoursePage({
   const progress = day
     ? `${day} of 15`
     : phase === 'Setup'
-      ? 'Set up first'
+      ? 'Before Day 1'
       : phase === 'Orientation'
-        ? 'Why before how'
+        ? 'Customer context'
         : '10 core + 5 advanced';
   const progressLabel =
     phase === 'Setup' || phase === 'Orientation'
@@ -195,7 +195,7 @@ export function CoursePage({
               <span />
               <span />
             </span>
-            Storybook × Chromatic Field Lab
+            Storybook × Chromatic SE Field Lab
           </a>
           <a
             href={storybookHref('onboarding-start-here-setup--docs')}
@@ -215,7 +215,7 @@ export function CoursePage({
             <div className="onboarding-hero__meta" aria-label="Session details">
               <span>{phase}</span>
               <span>{duration ?? '60–90 minutes'}</span>
-              <span>Async-first</span>
+              <span>Hands-on lab</span>
             </div>
           </div>
 
@@ -241,13 +241,13 @@ export function CoursePage({
         <section className="onboarding-context" aria-label="Session brief">
           {customerProblem && (
             <div>
-              <span>Why this comes up</span>
+              <span>Why customers care</span>
               <p>{customerProblem}</p>
             </div>
           )}
           {outcome && (
             <div>
-              <span>By the end</span>
+              <span>What you can do</span>
               <p>{outcome}</p>
             </div>
           )}
@@ -264,7 +264,7 @@ export function CoursePage({
               href={storybookHref('onboarding-start-here-setup--docs')}
               target="_top"
             >
-              Set up the field lab <span aria-hidden="true">→</span>
+              Start with setup <span aria-hidden="true">→</span>
             </a>
             <a
               className="onboarding-button"
@@ -284,12 +284,12 @@ export function CoursePage({
           <div className="onboarding-paths">
             {renderPath(
               'Core',
-              'Ten sessions to a credible Storybook and Chromatic customer conversation.',
+              'Ten required sessions for a credible Storybook and Chromatic conversation.',
               coreDays,
             )}
             {renderPath(
               'Advanced',
-              'Five sessions for composition, scale, roadmap judgment, and demo readiness.',
+              'Five optional sessions for complex architectures, scale, and demo readiness.',
               advancedDays,
             )}
           </div>

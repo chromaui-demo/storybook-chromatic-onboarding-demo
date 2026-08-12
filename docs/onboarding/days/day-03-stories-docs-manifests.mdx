@@ -7,28 +7,28 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
   phase="Core"
   day={3}
   duration="75–90 minutes"
-  title="Make one story useful everywhere"
-  description="Write the component states people need, then inspect how the same source shows up in Controls, Docs, tests, and manifests."
-  customerProblem="Components exist, but consumers and AI agents cannot tell which states matter or how the API should be used."
-  outcome="You can write focused CSF 3 stories that make sense to a developer, a reviewer, and an agent."
+  title="Write stories that people and agents can use"
+  description="Capture meaningful component states, then trace the same source through Controls, Docs, tests, and manifests."
+  customerProblem="The components exist, but teams and coding agents cannot tell which states matter or how to use the API."
+  outcome="You can write focused CSF 3 stories for developers, reviewers, and grounded coding agents."
   previous={{ href: './?path=/docs/onboarding-core-02-agentic-setup--docs', label: 'Day 2 · Agentic setup' }}
   next={{ href: './?path=/docs/onboarding-core-04-storybook-mcp--docs', label: 'Day 4 · Storybook MCP' }}
 >
 
-## Give yourself 90 minutes
+## Plan your session
 
 - 15 minutes: read and inspect
 - 45–55 minutes: author and document
 - 15 minutes: verify the human and machine views
 
-## Keep the official model close
+## Use the official model
 
 - [Writing stories](https://storybook.js.org/docs/10.5/writing-stories)
 - [Storybook documentation](https://storybook.js.org/docs/10.5/writing-docs)
 - [AI manifests](https://storybook.js.org/docs/10.5/ai/manifests)
 - [AI best practices](https://storybook.js.org/docs/10.5/ai/best-practices)
 
-## Turn one component into a useful catalog
+## Turn one component into useful evidence
 
 1. Add useful JSDoc to `ReservationCard`, its props, and the story meta. Explain intended use, not what
    the TypeScript syntax already says.
@@ -48,14 +48,14 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
 Do not write application code that consumes the manifest JSON. Storybook 10.5 manifests are preview
 APIs; verify their usefulness through the user-facing tools instead of depending on their schema.
 
-## Check both audiences
+## Check the human and agent views
 
 - The new stories appear in navigation and render independently.
 - Autodocs communicates component intent and prop meaning.
 - The components manifest includes the reviewed stories and useful prop information.
 - React type checking, story tests, and the static build pass.
 
-## Show the same source in each surface
+## Demo one source across every surface
 
 Show one story in Canvas, Docs, and the manifest debugger. Explain why the same source improves
 development, documentation, testing, and AI grounding.
@@ -68,7 +68,7 @@ over custom render functions so consumers can explore the state through Controls
 
 </details>
 
-## Save the story work
+## Save the story changes
 
 ```sh
 git add packages/react progress/<handle>.md

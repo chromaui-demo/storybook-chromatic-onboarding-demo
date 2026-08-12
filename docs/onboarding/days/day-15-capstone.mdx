@@ -7,21 +7,21 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
   phase="Advanced"
   day={15}
   duration="75–90 minutes"
-  title="Run the customer call"
-  description="Use discovery to choose the right demo path, recover from one surprise, and make a recommendation you can defend."
-  customerProblem="Product knowledge matters only if you can connect it to the customer's situation, operate the product under pressure, and explain the next step honestly."
-  outcome="You can run a presales or postsales mock call, handle the recovery moment, and make a recommendation grounded in customer risk."
+  title="Lead the customer conversation"
+  description="Use discovery to choose the demo path, recover from one surprise, and recommend a next step you can defend."
+  customerProblem="Product knowledge helps only when an SE can connect it to the customer's risk and operate the workflow under pressure."
+  outcome="You can lead a presales or postsales mock call, recover from a failure, and make a measured recommendation."
   previous={{ href: './?path=/docs/onboarding-advanced-14-storybook-11-readiness--docs', label: 'Day 14 · Storybook 11 readiness' }}
 >
 
-## Block 90 minutes
+## Plan your session
 
 - 15 minutes: select the demo path and validate environments
 - 20 minutes: rehearse once
 - 20–30 minutes: deliver the mock call
 - 15 minutes: debrief and capture feedback
 
-## Prepare the room
+## Prepare the call
 
 Read the complete <a href="./?path=/docs/onboarding-reference-capstone-rubric--docs" target="_top">capstone brief and rubric</a>. Choose the presales evaluation track or the postsales adoption track
 before you pick a demo path. Ask a teammate to play the customer or record an asynchronous demo and
@@ -37,7 +37,7 @@ pnpm dev
 Also open your latest Chromatic branch build and CI run. Keep a known failing example or diff available
 for the recovery moment, but do not leave the live branch in a broken state.
 
-## Run the call
+## Lead the call
 
 1. Spend the first two to three minutes on discovery and reflect the customer's priorities back.
 2. Choose a coherent path through Storybook, tests, Chromatic review, and CI. Do not tour every tab.
@@ -48,14 +48,14 @@ for the recovery moment, but do not leave the live branch in a broken state.
    - **Postsales:** the next consequential coverage gap, the smallest change, and how the team will measure it.
 6. State one boundary. Be explicit about what you would not recommend yet and why.
 
-## Get specific feedback
+## Ask for specific feedback
 
 - The reviewer completes every section of the capstone rubric.
 - Your progress file includes the recording or meeting artifact, strongest moment, one explanation to
   tighten, one technical gap, and a follow-up owner/date.
 - Your branch ends with `pnpm check` passing and no secret or generated output committed.
 
-## Debrief while it is fresh
+## Debrief while the call is fresh
 
 Write a brief answer to each question:
 

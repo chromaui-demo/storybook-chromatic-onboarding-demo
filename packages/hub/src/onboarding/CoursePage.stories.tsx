@@ -8,9 +8,9 @@ const meta = {
   parameters: { layout: 'fullscreen' },
   args: {
     description:
-      'Build customer-ready fluency by working in the same Storybook you will eventually demonstrate.',
+      'Build customer-ready fluency in the same Storybook you will later demonstrate.',
     phase: 'Core',
-    title: 'A field guide that lives inside the product',
+    title: 'An SE field guide inside the product',
   },
 } satisfies Meta<typeof CoursePage>;
 
@@ -21,7 +21,7 @@ export const Welcome: Story = {
   args: {
     phase: 'Welcome',
     showPath: true,
-    title: 'Learn the product by using the product',
+    title: 'Learn the workflow well enough to lead the call',
     children: (
       <>
         <h2>The assignment</h2>
@@ -35,11 +35,11 @@ export const Welcome: Story = {
   play: async ({ canvas }) => {
     await expect(
       canvas.getByRole('heading', {
-        name: 'Learn the product by using the product',
+        name: 'Learn the workflow well enough to lead the call',
       }),
     ).toBeVisible();
     await expect(
-      canvas.getByRole('link', { name: /Set up the field lab/ }),
+      canvas.getByRole('link', { name: /Start with setup/ }),
     ).toHaveAttribute(
       'href',
       './?path=/docs/onboarding-start-here-setup--docs',
@@ -50,7 +50,7 @@ export const Welcome: Story = {
 export const CoreDay: Story = {
   args: {
     customerProblem:
-      'The team inherited several Storybooks and is afraid an upgrade will silently break them.',
+      'The team inherited several Storybooks and fears that an upgrade will silently break them.',
     day: 1,
     duration: '60–75 minutes',
     next: {
@@ -58,18 +58,18 @@ export const CoreDay: Story = {
       label: 'Day 2 · Agentic setup',
     },
     outcome:
-      'Explain the migration boundary and prove the React Storybook is healthy in development and production.',
+      'Explain a safe migration plan and show the evidence that makes an upgrade trustworthy.',
     phase: 'Core',
-    title: 'Upgrade boundary and product orientation',
+    title: 'Verify a Storybook upgrade',
     children: (
       <>
-        <h2>Your 75 minutes</h2>
+        <h2>Plan your session</h2>
         <ul>
           <li>10 min · Understand the migration boundary</li>
           <li>25 min · Run the health checks</li>
           <li>30 min · Inspect Storybook like a customer would</li>
         </ul>
-        <h2>Run the upgrade without hand-waving</h2>
+        <h2>Run the supported upgrade workflow</h2>
         <p>
           Start with the official migration guide, then inspect the workspace.
         </p>
@@ -91,14 +91,14 @@ export const CoreDay: Story = {
 export const Setup: Story = {
   args: {
     description:
-      'Install once, claim a branch, and prove the demo works before you change it.',
-    duration: '30–45 minutes',
+      'Install the tools, open the repository in VS Code, and prove the lab works before Day 1.',
+    duration: '60–90 minutes on a new machine',
     next: {
       href: './?path=/docs/onboarding-start-here-why-the-workflow-matters--docs',
       label: 'Why the workflow matters',
     },
     phase: 'Setup',
-    title: 'Get to a known-good starting point',
+    title: 'Set up your SE field lab',
     children: (
       <>
         <div className="setup-finish-line">
@@ -108,23 +108,23 @@ export const Setup: Story = {
           <div>
             <strong>Your finish line</strong>
             <p>
-              The Hub and React Storybook open, the repository checks pass, and
-              your progress file lives on a personal branch.
+              VS Code opens the repository, Codex can read it, and both
+              Storybooks load from your personal branch.
             </p>
           </div>
         </div>
         <section className="setup-readiness" aria-labelledby="setup-ready">
           <div className="setup-section-heading">
-            <h2 id="setup-ready">Bring four things</h2>
+            <h2 id="setup-ready">Confirm access before you install anything</h2>
             <p>
-              A current runtime, repository access, a browser, and a coding
-              agent that can talk to local Storybook.
+              Confirm GitHub, Chromatic, Codex, and computer access before Day
+              1.
             </p>
           </div>
           <ul className="setup-requirements">
             <li>
-              <strong>Node and pnpm</strong>
-              <span>Use the versions pinned by the repository.</span>
+              <strong>Computer access</strong>
+              <span>Install VS Code, Git, Node.js, pnpm, and Codex.</span>
             </li>
             <li>
               <strong>Chromatic access</strong>
@@ -138,13 +138,13 @@ export const Setup: Story = {
               1
             </span>
             <div className="setup-step__body">
-              <span className="setup-step__label">Workspace</span>
-              <h2>Install and claim your branch</h2>
+              <span className="setup-step__label">Editor</span>
+              <h2>Install Visual Studio Code</h2>
               <p>
-                Give yourself a clean place to work before the first exercise.
+                Install the stable release and add the code command to PATH.
               </p>
               <pre>
-                <code>pnpm install --frozen-lockfile</code>
+                <code>code --version</code>
               </pre>
             </div>
           </section>
@@ -155,7 +155,9 @@ export const Setup: Story = {
         >
           <div>
             <span>How this repo works</span>
-            <h2 id="setup-story-guardrails">A few lines we do not cross</h2>
+            <h2 id="setup-story-guardrails">
+              Keep the lab safe and recoverable
+            </h2>
           </div>
           <ul>
             <li>
@@ -167,8 +169,8 @@ export const Setup: Story = {
             </li>
             <li>
               <p>
-                Treat generated code as a first draft. Read it, run it, and be
-                ready to explain it.
+                Treat Codex output as a proposal. Review it, run the checks, and
+                explain why the result is safe.
               </p>
             </li>
           </ul>
@@ -179,12 +181,14 @@ export const Setup: Story = {
   play: async ({ canvas }) => {
     await expect(
       canvas.getByRole('heading', {
-        name: 'Get to a known-good starting point',
+        name: 'Set up your SE field lab',
       }),
     ).toBeVisible();
-    await expect(canvas.getByText('Set up first')).toBeVisible();
+    await expect(canvas.getByText('Before Day 1')).toBeVisible();
     await expect(
-      canvas.getByRole('heading', { name: 'A few lines we do not cross' }),
+      canvas.getByRole('heading', {
+        name: 'Keep the lab safe and recoverable',
+      }),
     ).toBeVisible();
   },
 };
@@ -192,19 +196,19 @@ export const Setup: Story = {
 export const Orientation: Story = {
   args: {
     customerProblem:
-      'Important UI states are hard to reproduce, reviews rely on screenshots, and regressions arrive late.',
+      'Important UI states are hard to reproduce, reviews depend on screenshots, and regressions appear late.',
     description:
-      'Learn the customer problem each part of the workflow solves before you configure the first tool.',
+      'Connect each part of the workflow to a customer problem before you configure or demo it.',
     duration: '35–45 minutes',
     outcome:
-      'You can explain why Storybook and Chromatic belong together and know when more coverage would actually help.',
+      'Explain why Storybook and Chromatic work together and avoid unnecessary coverage.',
     phase: 'Orientation',
-    title: 'Why this workflow matters',
+    title: 'Start with customer risk, not product features',
     children: (
       <>
         <section className="value-thesis">
-          <span className="value-eyebrow">The field answer</span>
-          <h2>Make UI risk visible before it reaches a customer</h2>
+          <span className="value-eyebrow">Your field answer</span>
+          <h2>Make UI risk visible before it reaches production</h2>
           <p>
             Storybook makes important UI states reproducible. Chromatic turns
             those states into shared evidence that a team can test and review.
@@ -213,12 +217,12 @@ export const Orientation: Story = {
         <section className="value-product-pair" aria-label="Product roles">
           <article>
             <span>Storybook</span>
-            <h2>Make the state real</h2>
+            <h2>Make the state repeatable</h2>
             <p>Develop, document, and test the UI outside the full app.</p>
           </article>
           <article>
             <span>Chromatic</span>
-            <h2>Make the change shared</h2>
+            <h2>Make the change reviewable</h2>
             <p>
               Capture, compare, and review those states against Git history.
             </p>
@@ -228,12 +232,12 @@ export const Orientation: Story = {
     ),
   },
   play: async ({ canvas }) => {
-    await expect(canvas.getByText('Why before how')).toBeVisible();
+    await expect(canvas.getByText('Customer context')).toBeVisible();
     await expect(
-      canvas.getByRole('heading', { name: 'Make the state real' }),
+      canvas.getByRole('heading', { name: 'Make the state repeatable' }),
     ).toBeVisible();
     await expect(
-      canvas.getByRole('heading', { name: 'Make the change shared' }),
+      canvas.getByRole('heading', { name: 'Make the change reviewable' }),
     ).toBeVisible();
   },
 };
@@ -247,7 +251,7 @@ export const AdvancedDay: Story = {
     outcome:
       'Validate the dependency and Git-history boundaries before enabling selective snapshots.',
     phase: 'Advanced',
-    title: 'Monorepo configuration and TurboSnap',
+    title: 'Earn the right to use TurboSnap',
     children: (
       <>
         <h2>Gate</h2>
@@ -266,7 +270,7 @@ export const ReferencePage: Story = {
     children: (
       <>
         <h2>Shared Chromatic project</h2>
-        <p>Seed a passing main build before learners branch.</p>
+        <p>Seed a passing main build before SEs branch.</p>
       </>
     ),
   },

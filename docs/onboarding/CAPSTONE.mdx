@@ -5,22 +5,21 @@ import { CoursePage } from '../../packages/hub/src/onboarding/CoursePage';
 
 <CoursePage
   phase="Reference"
-  title="Mock-demo capstone"
-  description="Twenty minutes. One customer. No canned feature tour. Find the useful path, handle a surprise, and earn the next step."
+  title="Prove you can lead the call"
+  description="In 20 minutes, discover the need, choose a focused demo path, recover from one surprise, and agree on a next step."
 >
 
-This is the moment the previous 14 days are for. You are not racing through tabs or trying to prove you
-remember every setting. You are helping a customer make a good decision while operating the product
-with confidence.
+The previous 14 sessions prepared you for this call. Do not race through tabs or recite settings. Help
+the customer make a sound decision while you operate the product with confidence.
 
-## Choose the call before you choose the demo
+## Choose the call before the demo path
 
 The reviewer assigns one track. Both use the same repository and product workflow; the customer has a
 different decision to make.
 
 <section className="value-role-grid" aria-label="Capstone call tracks">
   <article className="value-role-card">
-    <span>Track A · Presales</span>
+    <span>Track A · Presales evaluation</span>
     <h2>Evaluation and technical validation</h2>
     <p>
       Trailhead is deciding whether Storybook and Chromatic fit its component
@@ -29,7 +28,7 @@ different decision to make.
     </p>
   </article>
   <article className="value-role-card">
-    <span>Track B · Postsales</span>
+    <span>Track B · Postsales adoption</span>
     <h2>Adoption and coverage</h2>
     <p>
       Trailhead already publishes its React Storybook and runs visual tests.
@@ -72,9 +71,9 @@ Ask enough to choose a relevant demo path:
 
 The reviewer will answer with two priorities. Adapt the demo to those answers.
 
-## Required demo moments
+## Required evidence
 
-Demonstrate these as one narrative rather than six disconnected features:
+Show these items as one workflow, not six disconnected features:
 
 1. A React component expressed as editable, documented story states.
 2. Deterministic success/error data through MSW.
@@ -88,7 +87,7 @@ Demonstrate these as one narrative rather than six disconnected features:
 Composition, modes, MCP, and TurboSnap are optional demo moments. Include them only when discovery makes
 them relevant.
 
-## Seeded recovery moment
+## Recovery moment
 
 The reviewer chooses one interruption:
 
@@ -99,8 +98,8 @@ The reviewer chooses one interruption:
 - a TurboSnap result that retests more stories than expected;
 - a question about Storybook 11 or unsupported framework AI behavior.
 
-Diagnose aloud. State what evidence you would inspect, what you know, what you do not yet know, and the
-safest next action. You do not need to repair the issue live if doing so would derail the call.
+Diagnose aloud. State the evidence you would inspect, what you know, what remains unknown, and the
+safest next action. You do not need to repair an issue live if the repair would derail the call.
 
 ## Scoring rubric
 
@@ -110,7 +109,7 @@ Score each dimension from 1–4. A passing capstone has no score below 2 and a t
 | :----------------------- | :---------------------------------------- | :-------------------------------- | :----------------------------------------------------- | :------------------------------------------------------------ |
 | Discovery                | Starts a fixed feature tour               | Asks questions but barely adapts  | Reflects priorities and adapts                         | Surfaces constraints and reframes the path insightfully       |
 | Storybook fluency        | Cannot connect story/config/test concepts | Operates the happy path with help | Explains and operates the core workflow                | Connects architecture and tradeoffs clearly                   |
-| Chromatic fluency        | Misstates baselines or review             | Completes review with prompting   | Correctly explains branch, baseline, tests, and review | Anticipates ancestry, CI, and adoption risks                  |
+| Chromatic fluency        | Misstates baselines or review             | Completes review with prompting   | Explains branch, baseline, tests, and review correctly | Anticipates ancestry, CI, and adoption risks                  |
 | Technical recovery       | Guesses or hides the failure              | Identifies a plausible check      | Uses evidence and chooses a safe next step             | Diagnoses systematically while preserving customer confidence |
 | Customer communication   | Jargon-heavy feature list                 | Some outcome language             | Concise narrative tied to stated needs                 | Teaches complex boundaries simply and honestly                |
 | Value and recommendation | No next step or pushes more usage         | Broad next step                   | Ties a measured next step to a real gap                | Balances value, risk, ownership, boundaries, and expansion    |
@@ -125,6 +124,6 @@ The reviewer provides:
 - one recommended next practice call;
 - the rubric score with brief evidence.
 
-The learner records that feedback in `progress/<handle>.md` and names an owner/date for the follow-up.
+The SE records that feedback in `progress/<handle>.md` and names an owner and date for the follow-up.
 
 </CoursePage>

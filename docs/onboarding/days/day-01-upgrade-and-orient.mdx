@@ -7,22 +7,22 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
   phase="Core"
   day={1}
   duration="60–75 minutes"
-  title="Upgrade Storybook without guessing"
-  description="Run the supported upgrade path, inspect what it changed, and leave the React Storybook in a state you trust."
-  customerProblem="Trailhead Travel inherited several Storybooks and is afraid an upgrade will silently break them."
-  outcome="You can walk a customer through the migration boundary and show the checks that make an upgrade safe."
+  title="Verify a Storybook upgrade"
+  description="Use the supported upgrade path, inspect every change, and prove that the React Storybook still works."
+  customerProblem="Trailhead inherited several Storybooks. The team fears that an upgrade will silently break a catalog."
+  outcome="You can explain a safe migration plan and show the evidence that makes an upgrade trustworthy."
   previous={{ href: './?path=/docs/onboarding-start-here-why-the-workflow-matters--docs', label: 'Why the workflow matters' }}
   next={{ href: './?path=/docs/onboarding-core-02-agentic-setup--docs', label: 'Day 2 · Agentic setup' }}
 >
 
-## Your first 75 minutes
+## Plan your session
 
 - 10 minutes: read
 - 20 minutes: inspect the workspace and upgrade plan
 - 25 minutes: verify development and static builds
 - 10 minutes: explain and record
 
-## Know the migration boundary
+## Understand the migration boundary
 
 - [Migrate to Storybook 10](https://storybook.js.org/docs/10.5/releases/migration-guide)
 - [Upgrade Storybook](https://storybook.js.org/docs/10.5/releases/upgrading)
@@ -30,7 +30,7 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
 Pay attention to Node requirements, ESM-only configuration, automigrations, aligned Storybook
 package versions, and upgrading one major at a time.
 
-## Run the upgrade without hand-waving
+## Run the supported upgrade workflow
 
 1. Inspect `.nvmrc`, `pnpm-workspace.yaml`, `packages/react/package.json`, and
    `packages/react/.storybook/main.ts`.
@@ -53,13 +53,13 @@ package versions, and upgrading one major at a time.
 If your facilitator supplied `course/storybook-9-start`, branch from that tag instead and follow the
 migration guide's major-by-major path. Capture the dependency/config diff before continuing.
 
-## Before you move on
+## Confirm the result
 
 - `doctor`, type checking, and the static build pass.
 - The React Storybook renders at its local URL.
 - Your progress file identifies at least three upgrade risks and how you verified them.
 
-## Practice the customer answer
+## Practice the SE answer
 
 Imagine this comes up on a customer call: **How do we upgrade without treating the automigration as a
 black box?** Give yourself two minutes to answer.
@@ -73,7 +73,7 @@ upgrade.
 
 </details>
 
-## Leave a clean checkpoint
+## Save a clean checkpoint
 
 ```sh
 git add docs/onboarding progress/<handle>.md

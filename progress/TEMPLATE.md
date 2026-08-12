@@ -4,7 +4,7 @@ Branch: `onboarding/<handle>`
 Started: YYYY-MM-DD  
 Chromatic branch URL: add after Day 8
 
-## Before Day 1: my field answer
+## Before Day 1: my customer answer
 
 Write this before the technical work, then revise it after Days 8, 10, and 15.
 
@@ -12,7 +12,7 @@ Write this before the technical work, then revise it after Days 8, 10, and 15.
 - Three discovery questions that reveal risk, ownership, or missing evidence: 1. 2. 3.
 - One situation where I would not recommend more coverage:
 
-## Daily checkpoints
+## Daily evidence
 
 | Day | Complete | Commit | Evidence or URL | One-sentence takeaway |
 | --: | :------: | :----- | :-------------- | :-------------------- |
@@ -34,7 +34,7 @@ Write this before the technical work, then revise it after Days 8, 10, and 15.
 
 ## Customer value notebook
 
-Do not collect definitions. Connect each capability to a customer problem and proof you can show.
+Do not copy definitions. Connect each capability to customer risk, an outcome, and proof you can show.
 
 | Capability                 | Customer pain or risk | Customer outcome | Proof I can show | Discovery question or boundary |
 | :------------------------- | :-------------------- | :--------------- | :--------------- | :----------------------------- |
