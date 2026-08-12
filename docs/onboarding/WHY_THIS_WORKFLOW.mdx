@@ -6,24 +6,24 @@ import { CoursePage } from '../../packages/hub/src/onboarding/CoursePage';
 <CoursePage
   phase="Orientation"
   duration="35–45 minutes"
-  title="Why this workflow matters"
-  description="Learn the customer problem each part of the workflow solves before you configure the first tool."
-  customerProblem="Important UI states are hard to reproduce, reviews rely on screenshots, and regressions arrive late."
-  outcome="You can explain why Storybook and Chromatic belong together, ask useful discovery questions, and recognize when more coverage would actually help."
+  title="Start with customer risk, not product features"
+  description="Connect each part of the workflow to a customer problem before you configure or demo it."
+  customerProblem="Important UI states are hard to reproduce, reviews depend on screenshots, and regressions appear late."
+  outcome="You can explain why Storybook and Chromatic work together, ask useful discovery questions, and avoid unnecessary coverage."
   previous={{ href: './?path=/docs/onboarding-start-here-setup--docs', label: 'Setup' }}
   next={{ href: './?path=/docs/onboarding-core-01-upgrade-orient--docs', label: 'Day 1 · Upgrade & orient' }}
 >
 
 <section className="value-thesis" aria-labelledby="value-thesis-heading">
-  <span className="value-eyebrow">The field answer</span>
+  <span className="value-eyebrow">Your field answer</span>
   <h2 id="value-thesis-heading">
-    Make UI risk visible before it reaches a customer
+    Make UI risk visible before it reaches production
   </h2>
   <p>
     Storybook makes important UI states reproducible. Chromatic turns those
     states into a shared, automated quality and review workflow. Together, they
-    help teams understand what they support, test what can break, and decide
-    whether a change is safe to ship.
+    help teams see supported states, test meaningful risks, and decide whether a
+    change is safe to ship.
   </p>
 </section>
 
@@ -55,7 +55,7 @@ import { CoursePage } from '../../packages/hub/src/onboarding/CoursePage';
 <section className="value-product-pair" aria-label="The role of each product">
   <article>
     <span>Storybook</span>
-    <h2>Make the state real</h2>
+    <h2>Make the state repeatable</h2>
     <p>
       A story is a small, named, runnable example of UI. It gives the team a
       stable place to develop, document, and test a state without driving the
@@ -70,13 +70,13 @@ import { CoursePage } from '../../packages/hub/src/onboarding/CoursePage';
       </li>
     </ul>
     <p className="value-boundary">
-      <strong>The boundary:</strong> local Storybook alone does not preserve a
-      Git-aware visual history or give a remote team a shared review decision.
+      <strong>The boundary:</strong> a local Storybook does not preserve visual
+      history or give a remote team one recorded review decision.
     </p>
   </article>
   <article>
     <span>Chromatic</span>
-    <h2>Make the change shared</h2>
+    <h2>Make the change reviewable</h2>
     <p>
       Chromatic publishes the Storybook, captures its stories, compares them
       with accepted baselines, and puts the result next to the branch and commit
@@ -98,22 +98,22 @@ import { CoursePage } from '../../packages/hub/src/onboarding/CoursePage';
   <div className="value-section-heading">
     <h2 id="value-loop-heading">The loop you will build</h2>
     <p>
-      Every course day strengthens one part of this path. On a call, move
-      through it as one workflow, not as a tour of separate tabs.
+      Each session strengthens one part of this path. On a call, explain it as
+      one workflow instead of touring separate tabs.
     </p>
   </div>
   <ol aria-label="Customer quality workflow">
     <li>Find the risk</li>
     <li>Name the state</li>
     <li>Check behavior</li>
-    <li>Capture in cloud</li>
-    <li>Compare change</li>
+    <li>Publish the build</li>
+    <li>Compare the change</li>
     <li>Make a decision</li>
     <li>Report to CI</li>
   </ol>
 </section>
 
-## Translate product mechanics into customer outcomes
+## Translate product behavior into customer outcomes
 
 <div className="value-map">
   <article>
@@ -150,12 +150,12 @@ import { CoursePage } from '../../packages/hub/src/onboarding/CoursePage';
 
 <section className="value-coverage" aria-labelledby="coverage-heading">
   <div>
-    <span>The expansion conversation</span>
+    <span>The coverage conversation</span>
     <h2 id="coverage-heading">Talk about risk coverage, not snapshot volume</h2>
     <p>
-      Anchor the recommendation in a blind spot: a consequential state, variant,
-      or ownership boundary that can change without the right evidence. Snapshot
-      volume follows from that choice; it is not the goal.
+      Start with a meaningful blind spot: a state, variant, or ownership
+      boundary that can change without the right evidence. Snapshot volume is a
+      result of that choice, not the goal.
     </p>
   </div>
   <div>
@@ -184,11 +184,11 @@ import { CoursePage } from '../../packages/hub/src/onboarding/CoursePage';
   aria-label="Practice by customer conversation"
 >
   <article className="value-role-card">
-    <span>Presales lens</span>
+    <span>Presales call</span>
     <h2>Prove that the workflow fits</h2>
     <p>
-      Discover the consequence, show the shortest believable path from story to
-      decision, and leave the customer with a concrete way to validate the fit.
+      Discover the consequence. Show the shortest credible path from story to
+      decision. Agree on how the customer will validate the fit.
     </p>
     <ul>
       <li>What breaks or slows down today?</li>
@@ -197,11 +197,11 @@ import { CoursePage } from '../../packages/hub/src/onboarding/CoursePage';
     </ul>
   </article>
   <article className="value-role-card">
-    <span>Postsales lens</span>
+    <span>Postsales call</span>
     <h2>Find the next useful coverage gap</h2>
     <p>
-      Inspect what the customer already uses, locate a material blind spot, and
-      recommend the smallest capability or practice that improves the signal.
+      Inspect the current workflow. Find a meaningful blind spot. Recommend the
+      smallest change that improves the evidence.
     </p>
     <ul>
       <li>Which states are not represented yet?</li>
@@ -216,8 +216,8 @@ import { CoursePage } from '../../packages/hub/src/onboarding/CoursePage';
     <span className="value-eyebrow">Before Day 1</span>
     <h2 id="value-practice-heading">Say it out loud</h2>
     <p>
-      Put these in your progress file. You will sharpen them as the product
-      becomes familiar.
+      Add these items to your progress file. Revise them as you learn the
+      product.
     </p>
   </div>
   <ul>

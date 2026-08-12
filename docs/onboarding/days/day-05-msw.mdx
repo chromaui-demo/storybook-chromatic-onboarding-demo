@@ -7,27 +7,27 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
   phase="Core"
   day={5}
   duration="75–90 minutes"
-  title="Make every network state repeatable"
-  description="Put success, loading, empty, and error states one click away without waiting on a live backend."
-  customerProblem="Network-dependent components are unreliable in local development and visual tests, and error states are difficult to reproduce."
-  outcome="You can use MSW to reproduce the states a customer cares about and keep them stable in tests."
+  title="Make API states repeatable"
+  description="Put loading, success, empty, and error states one click away without depending on a live backend."
+  customerProblem="Network-dependent components create flaky demos and tests. Important error states are difficult to reproduce."
+  outcome="You can use MSW to reproduce customer-relevant states and keep those states stable in development and tests."
   previous={{ href: './?path=/docs/onboarding-core-04-storybook-mcp--docs', label: 'Day 4 · Storybook MCP' }}
   next={{ href: './?path=/docs/onboarding-core-06-interaction-tests--docs', label: 'Day 6 · Interaction tests' }}
 >
 
-## Give this one 90 minutes
+## Plan your session
 
 - 10 minutes: read
 - 20 minutes: install and configure
 - 40–50 minutes: build states
 - 10 minutes: verify and explain
 
-## Start with the network boundary
+## Understand the network boundary
 
 - [Mocking network requests](https://storybook.js.org/docs/10.5/writing-stories/mocking-data-and-modules/mocking-network-requests)
 - [Storybook loaders](https://storybook.js.org/docs/10.5/writing-stories/loaders)
 
-## Make the unhappy paths boringly repeatable
+## Make every response state repeatable
 
 1. Install MSW in the React workspace and generate its worker:
 
@@ -47,14 +47,14 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
    deliberate, documented exception.
 6. Run Storybook with the browser network panel open and prove that no real service is contacted.
 
-## Check every response state
+## Confirm every response state
 
 - Refreshing each story produces the same state.
 - Success, empty, and error paths can be opened directly by story URL.
 - The service worker is served by Storybook, but generated build output remains untracked.
 - Type checking, story tests, and the static build pass.
 
-## Explain why MSW belongs in Storybook
+## Practice the SE answer
 
 Try the customer version: **Why is an API mock part of a trustworthy visual-testing strategy instead
 of just a local development convenience?**
@@ -67,7 +67,7 @@ tests wait for the state the user would observe.
 
 </details>
 
-## Commit the fixtures
+## Save the fixtures
 
 ```sh
 git add packages/react pnpm-lock.yaml progress/<handle>.md

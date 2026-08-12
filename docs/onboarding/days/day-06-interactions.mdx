@@ -7,26 +7,26 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
   phase="Core"
   day={6}
   duration="60–90 minutes"
-  title="Interaction tests"
-  description="Drive the reservation flow in the browser and assert what a guest can actually see and do."
-  customerProblem="Static screenshots cannot prove that a guest can choose dates and complete the reservation flow."
-  outcome="You can write a focused play function, debug it in Storybook, and run it with the Vitest addon."
+  title="Test a user flow, not a code path"
+  description="Drive the reservation flow in the browser and verify what a guest can see and do."
+  customerProblem="A static screenshot cannot prove that a guest can choose a date and complete a reservation."
+  outcome="You can write, debug, and explain a focused play function that verifies customer-visible behavior."
   previous={{ href: './?path=/docs/onboarding-core-05-mock-service-worker--docs', label: 'Day 5 · Mock Service Worker' }}
   next={{ href: './?path=/docs/onboarding-core-07-accessibility--docs', label: 'Day 7 · Accessibility' }}
 >
 
-## Set aside 75 minutes
+## Plan your session
 
 - 15 minutes: read
 - 35–50 minutes: write and debug tests
 - 15 minutes: run and explain
 
-## Keep the test model handy
+## Understand the test model
 
 - [Interaction testing](https://storybook.js.org/docs/10.5/writing-tests/interaction-testing)
 - [Vitest addon](https://storybook.js.org/docs/10.5/writing-tests/integrations/vitest-addon)
 
-## Drive the reservation like a user
+## Test the reservation like a user
 
 1. Run `ReservationCard / Reservation interaction` in the Interactions panel. Step through its
    `play` function and connect each log entry to the source.
@@ -44,13 +44,13 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
 6. Introduce one temporary assertion failure, inspect it in Storybook and the terminal, then restore
    the correct behavior. Record which surface made diagnosis faster and why.
 
-## Watch the test fail for the right reason
+## Confirm the failure and the fix
 
 - The `play` function fails for the intended bad assertion and passes after the fix.
 - The test asserts a customer-visible outcome, not implementation detail.
 - Type checking, story tests, and the static build pass.
 
-## Demo behavior, not test syntax
+## Demo the behavior, not the syntax
 
 Explain the testing layers: every story gets a render test; important behavior gets an interaction
 test; broad appearance is covered by visual tests; narrow logic may still deserve unit tests.
@@ -64,7 +64,7 @@ than expecting a screenshot after every step.
 
 </details>
 
-## Save the behavior
+## Save the interaction test
 
 ```sh
 git add packages/react progress/<handle>.md

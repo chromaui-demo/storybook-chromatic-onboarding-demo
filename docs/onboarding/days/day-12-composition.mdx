@@ -7,28 +7,28 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
   phase="Advanced"
   day={12}
   duration="60–90 minutes"
-  title="Bring five Storybooks into one catalog"
-  description="Run the Hub as a product team sees it and keep each framework team's ownership intact."
-  customerProblem="Trailhead Travel has independently owned component catalogs across frameworks, but product teams need one place to discover them."
-  outcome="You can operate the composition Hub and explain what it brings together, and what it leaves alone."
+  title="Compose catalogs without merging ownership"
+  description="Run the Hub as a product team sees it while each framework keeps its own build, deployment, and tests."
+  customerProblem="Trailhead has independently owned catalogs across frameworks, but product teams need one place to discover them."
+  outcome="You can operate the composition Hub and explain what composition combines and what remains separate."
   previous={{ href: './?path=/docs/onboarding-advanced-11-modes--docs', label: 'Day 11 · Modes' }}
   next={{ href: './?path=/docs/onboarding-advanced-13-monorepo-turbosnap--docs', label: 'Day 13 · TurboSnap' }}
 >
 
-## Give yourself 75 minutes
+## Plan your session
 
 - 15 minutes: read
 - 25 minutes: inspect and run composition
 - 25–35 minutes: change one reference and verify boundaries
 - 10 minutes: explain
 
-## Read the composition model
+## Understand the composition model
 
 - [Storybook composition](https://storybook.js.org/docs/10.5/sharing/storybook-composition)
 - [Chromatic composition](https://www.chromatic.com/docs/composition/)
 - [Chromatic monorepos](https://www.chromatic.com/docs/monorepos/)
 
-## Run the catalog as a customer sees it
+## Use the catalog as a customer sees it
 
 1. Inspect `packages/hub/.storybook/main.ts` and `scripts/dev.mjs`. Draw the relationship among the
    hub, React, Next.js, Angular, Web Components, and React Native Web Storybooks.
@@ -41,13 +41,13 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
 5. Compare the React Chromatic test count before and after composition. Confirm externally referenced
    stories are browsable but are not captured as React project UI Tests.
 
-## Check the ownership boundaries
+## Verify the ownership boundaries
 
 - All five references load in the hub and independently.
 - You can identify the ownership, deployment, and test boundary for each catalog.
 - You can explain why one-project composition is not the same as independently testing five projects.
 
-## Explain what composition does not do
+## Practice the architecture answer
 
 Give a three-minute architecture explanation for a platform lead choosing between one combined
 Storybook and independently published Storybooks composed for discovery.
@@ -60,7 +60,7 @@ permalink follows a moving branch build; a commit permalink pins a fixed publish
 
 </details>
 
-## Save what changed
+## Save the evidence
 
 ```sh
 git add packages/hub progress/<handle>.md

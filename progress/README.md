@@ -1,5 +1,5 @@
 # Learner progress
 
-Each learner copies `progress/TEMPLATE.md` to `progress/<github-handle>.md` on their
-personal branch. Progress files capture evidence and reflection; they must not contain project tokens
-or other secrets.
+Each SE copies `progress/TEMPLATE.md` to `progress/<github-handle>.md` on a personal branch. Use the
+file for daily evidence, customer explanations, open questions, and capstone feedback. Never include a
+project token or another secret.

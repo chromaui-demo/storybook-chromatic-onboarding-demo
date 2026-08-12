@@ -7,22 +7,22 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
   phase="Core"
   day={9}
   duration="75–90 minutes"
-  title="Decide what changed and what should ship"
-  description="Create one intentional change and one regression, then use Chromatic to review each on its merits."
-  customerProblem="The team needs to distinguish an intentional design change from a regression and understand what accepting a snapshot actually means."
-  outcome="You can accept the intended change, deny the regression, fix it, and explain what each decision changed."
+  title="Review a visual change with intent"
+  description="Create one intended change and one regression. Use Chromatic to make the right decision for each."
+  customerProblem="The team must separate intended design changes from regressions and understand what snapshot acceptance changes."
+  outcome="You can accept the intended change, deny and fix the regression, and explain the effect of each decision."
   previous={{ href: './?path=/docs/onboarding-core-08-first-chromatic-build--docs', label: 'Day 8 · First Chromatic build' }}
   next={{ href: './?path=/docs/onboarding-core-10-ci-core-demo--docs', label: 'Day 10 · CI & core demo' }}
 >
 
-## Plan on 90 minutes
+## Plan your session
 
 - 15 minutes: read
 - 15 minutes: create controlled changes
 - 30–45 minutes: review and recover
 - 10 minutes: explain
 
-## Keep the review model straight
+## Separate UI Tests from UI Review
 
 - [Visual testing](https://www.chromatic.com/docs/visual/)
 - [UI Review](https://www.chromatic.com/docs/review/)
@@ -31,7 +31,7 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
 UI Tests compare snapshots with accepted baselines for that story, mode, and branch. UI Review helps
 stakeholders review the PR changeset against its merge base. They are related but not interchangeable.
 
-## Create one good change and one bad one
+## Create one intended change and one regression
 
 1. Make one intentional UI change to `ReservationCard`, such as a reviewed spacing or badge treatment.
 2. Add one accidental regression, such as clipped long text, a missing focus indicator, or a broken
@@ -45,7 +45,7 @@ stakeholders review the PR changeset against its merge base. They are related bu
 7. Open UI Review for the branch or pull request and explain how its purpose differs from baseline
    maintenance.
 
-## Follow the evidence
+## Record the evidence
 
 Record links or screenshots for the initial diff, the denial, and the passing rebuild. In your progress
 file, answer:
@@ -54,7 +54,7 @@ file, answer:
 - What remained unchanged when you denied the regression?
 - Which ancestor supplied the baseline?
 
-## Demo the decision, not the pixels
+## Demo the decision, not the pixel count
 
 Demonstrate an intentional change and a regression without claiming that Chromatic decides whether
 the UI is correct. Chromatic surfaces change; a reviewer supplies intent and judgment.
@@ -68,7 +68,7 @@ Git provider app.
 
 </details>
 
-## Commit the repair
+## Save the repair
 
 ```sh
 git add packages/react progress/<handle>.md

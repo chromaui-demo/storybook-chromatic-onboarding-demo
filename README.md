@@ -1,18 +1,18 @@
-# Multi-framework Storybook composition demo
+# Storybook and Chromatic SE field lab
 
-> **New sales or solutions engineer?** Start with the
-> [Storybook + Chromatic onboarding guide](docs/onboarding/README.mdx). It is a ten-day React-first
-> core path with five optional advanced days, designed for 60–90 minutes of asynchronous work per
-> day and ending in a mock customer demo.
+This repository is a hands-on product lab for sales and solutions engineers. The ten-session core
+builds Storybook and Chromatic fluency. Five optional sessions cover composition, scale, upgrade
+judgment, and a mock customer call.
 
-[Open the hosted onboarding Hub](https://ethriel3695.github.io/storybook-multi-framework-demo/), or
-clone the repository to complete the hands-on labs.
+- [Open the hosted field lab](https://ethriel3695.github.io/storybook-multi-framework-demo/).
+- [Read the course overview](docs/onboarding/README.mdx).
+- [Set up a new computer](docs/onboarding/SETUP.mdx), including VS Code and Codex.
 
-This standalone pnpm/Turborepo workspace mirrors the Chromatic Engineering monorepo criteria for newer projects. It is a minimal example of Storybook composition using the `@storybook/manager-webpack5` and
-`@storybook/preview-webpack5` packages, plus the `@storybook/addon-interactions`. It demonstrates one customer-facing Storybook that composes five
-separately built and tested catalogs:
+The pnpm and Turborepo workspace contains one Hub and five framework-specific Storybooks. The Hub uses
+Storybook composition to give customers one entry point while each framework keeps its own renderer,
+build, and tests.
 
-The onboarding Hub is designed to be published separately from the learner's React Storybook. See
+The onboarding Hub is designed to be published separately from the SE's React Storybook. See
 [the deployment runbook](docs/DEPLOYMENT.md) for the reasoning, CI setup, and hosted-composition
 options.
 
@@ -25,10 +25,11 @@ options.
 | `@demo/web-components`   | 6010 | Lit custom element                          |
 | `@demo/react-native-web` | 6011 | React Native primitives rendered on the web |
 
-## Prerequisites
+## Quick start for an existing development environment
 
 - Node.js 20
-- pnpm 10.19
+- pnpm 10.19 through Corepack
+- Git
 
 ## Run the demo
 
@@ -37,37 +38,36 @@ pnpm install
 pnpm dev
 ```
 
-Open [http://localhost:6006](http://localhost:6006). Turbo starts the hub and all five referenced
-Storybooks together. The other ports remain available for showing that each catalog is independently
-deployable.
+Open [http://localhost:6006](http://localhost:6006). The command starts the Hub and all five referenced
+Storybooks. Use the setup guide if VS Code, Codex, Git, Node.js, or pnpm is not installed yet.
 
 If another project already uses this range, shift all six ports together. For example,
 `STORYBOOK_PORT_OFFSET=100 pnpm dev` serves the Hub at `http://localhost:6106` and React at
 `http://localhost:6107`.
 
-Useful verification commands:
+Verify the workspace before you change it:
 
 ```sh
 pnpm typecheck
 pnpm build-storybook
 ```
 
-## Suggested customer walkthrough
+## Suggested SE demo path
 
-1. Start in the hub and point out the five framework sections in one sidebar. Keep this README open as
-   the presenter notes.
-2. Open the React **ReservationCard / Responsive coverage** story. Use the viewport toolbar to switch
+1. Ask which frameworks and ownership boundaries matter before you open a story.
+2. Start in the Hub and show the relevant framework sections in one sidebar.
+3. Open the React **ReservationCard / Responsive coverage** story. Use the viewport toolbar to switch
    between compact (360 px), the canonical breakpoint (640 px), and desktop (1200 px).
-3. Explain that the component itself remains fluid between those widths, while Chromatic `modes`
+4. Explain that the component remains fluid between those widths. Chromatic `modes`
    deliberately sample named widths for stable visual baselines.
-4. Open React **Reservation interaction**. Run or step through the `play` function: it increments the
+5. Open React **Reservation interaction**. Run or step through the `play` function. It increments the
    guest count, clicks Reserve, validates the callback payload, and confirms the rendered status.
-5. Open Angular **Output interaction** to show the same user journey validating an Angular `@Output`.
-6. Open Web Components **Custom event interaction** to show a bubbling, composed `CustomEvent`
+6. If relevant, open Angular **Output interaction** to show the same journey with an Angular `@Output`.
+7. If relevant, open Web Components **Custom event interaction** to show a bubbling `CustomEvent`
    crossing the shadow-DOM boundary with a validated payload.
-7. Open Next.js **App Router link** and **Favorite interaction** to show framework-aware navigation and
+8. Open Next.js **App Router link** and **Favorite interaction** to show framework-aware navigation and
    browser behavior.
-8. Open React Native Web **Mobile web** and **Press interaction**. Be explicit that this provides mobile
+9. Open React Native Web **Mobile web** and **Press interaction**. State that this provides mobile
    browser coverage for native primitives, not native iOS/Android screenshots.
 
 ## Talking points mapped to the agenda

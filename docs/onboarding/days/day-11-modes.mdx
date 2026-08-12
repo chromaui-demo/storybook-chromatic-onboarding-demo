@@ -7,27 +7,27 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
   phase="Advanced"
   day={11}
   duration="60–90 minutes"
-  title="Build the smallest useful test matrix"
-  description="Add the mobile, desktop, light, and dark combinations that earn their place, then count the cost."
-  customerProblem="The customer supports mobile, desktop, light, and dark experiences but cannot afford an uncontrolled multiplication of snapshots."
-  outcome="You can add narrowly scoped modes and explain why each one deserves its own baseline."
+  title="Test only the variants that matter"
+  description="Choose useful viewport and theme combinations, add them with Modes, and count the added snapshots."
+  customerProblem="The customer supports multiple viewports and themes but cannot maintain an uncontrolled snapshot matrix."
+  outcome="You can add narrowly scoped Modes and explain why each selected variant deserves its own baseline."
   previous={{ href: './?path=/docs/onboarding-core-10-ci-core-demo--docs', label: 'Day 10 · CI & core demo' }}
   next={{ href: './?path=/docs/onboarding-advanced-12-composition--docs', label: 'Day 12 · Composition' }}
 >
 
-## Plan on 75 minutes
+## Plan your session
 
 - 15 minutes: read and audit
 - 35–50 minutes: implement modes
 - 15 minutes: inspect and explain
 
-## Open the Modes docs
+## Read the Modes model
 
 - [Chromatic Modes](https://www.chromatic.com/docs/modes/)
 - [Viewport modes](https://www.chromatic.com/docs/modes/viewports/)
 - [Themes](https://www.chromatic.com/docs/themes/)
 
-## Design the smallest useful matrix
+## Build the smallest useful matrix
 
 1. Inspect `config/responsive.ts` and `ReservationCard / Responsive coverage`. Identify which widths
    represent intentional product decisions and which would only add cost.
@@ -41,14 +41,14 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
 5. Calculate the snapshot count before and after your change. Record why your selected matrix is
    valuable enough to keep.
 
-## Count the cost
+## Verify the coverage and cost
 
 - Light and dark can be explored locally through Storybook globals.
 - The selected story produces the intended named Chromatic modes.
 - Other stories are not multiplied without a reason.
 - Each mode remains deterministic and passes interaction/accessibility checks.
 
-## Explain the tradeoff
+## Practice the SE answer
 
 Explain it without reaching for jargon: **How do modes turn one story into a test matrix, and how do
 we prevent that matrix from becoming noise?**
@@ -62,7 +62,7 @@ current Modes API is the preferred direction for viewport coverage; avoid leadin
 
 </details>
 
-## Commit the matrix
+## Save the matrix
 
 ```sh
 git add config packages/react pnpm-lock.yaml progress/<handle>.md

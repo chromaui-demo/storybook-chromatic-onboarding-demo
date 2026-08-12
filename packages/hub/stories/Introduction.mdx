@@ -2,10 +2,10 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta title="Demo guide/Start here" />
 
-# One catalog, five rendering environments
+# One entry point, five rendering environments
 
-This Storybook is the customer-facing entry point. Each sidebar section is a separately built
-Storybook composed into this hub with Storybook `refs`.
+Use this page as presenter notes for the multi-framework demo. Each framework owns a separate
+Storybook. The Hub combines their navigation with Storybook `refs`.
 
 | Section          | Local URL        | What to demonstrate                                   |
 | ---------------- | ---------------- | ----------------------------------------------------- |
@@ -15,19 +15,16 @@ Storybook composed into this hub with Storybook `refs`.
 | Web Components   | `localhost:6010` | Custom elements and bubbling `CustomEvent` payloads   |
 | React Native Web | `localhost:6011` | Mobile-sized browser rendering with native primitives |
 
-## Suggested customer walkthrough
+## Five-minute customer walkthrough
 
-1. Expand each framework section and open the equivalent reservation-card example.
-2. Switch the viewport toolbar between compact, breakpoint, and desktop widths.
-3. Open a `Responsive coverage` story and explain that each named mode has its own Chromatic
-   baseline.
-4. Run an interaction story and step through the user events and assertions.
-5. Show that adding or removing an exported story adds or removes an individual test case.
+1. Ask which framework and ownership boundaries matter to the customer.
+2. Open the equivalent reservation-card story in two relevant frameworks.
+3. Show compact, breakpoint, and desktop coverage in the React Storybook.
+4. Run one interaction story and connect the assertions to customer risk.
+5. Explain that each framework still owns its build, tests, and Chromatic project.
 
 ## Important boundaries
 
-- Composition gives the team one branded entry URL, while the referenced Storybooks remain separately
-  deployed and separately tested.
-- React Native Web is browser coverage. It is not a native iOS or Android screenshot.
-- Responsive visual tests sample deliberate widths; they do not continuously sweep every possible
-  fluid width.
+- Composition gives teams one discovery URL. It does not merge build, deployment, or test ownership.
+- React Native Web provides browser coverage for native primitives. It does not capture native iOS or Android output.
+- Responsive visual tests sample chosen widths. They do not test every width in a fluid layout.
