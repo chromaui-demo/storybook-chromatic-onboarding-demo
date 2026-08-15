@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
 
-<Meta title="Onboarding/Advanced/13 Monorepo & TurboSnap" />
+<Meta title="Onboarding/Post-sales technical training/Advanced/13 Monorepo & TurboSnap" />
 
 <CoursePage
   phase="Advanced"
@@ -11,8 +11,8 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
   description="Trace shared-code changes through the workspace before you allow Chromatic to skip a snapshot."
   customerProblem="Full visual builds cost time, but an optimization that skips an affected story would destroy trust."
   outcome="You can test TurboSnap's dependency assumptions and decide whether the optimization is safe for the customer."
-  previous={{ href: './?path=/docs/onboarding-advanced-12-composition--docs', label: 'Day 12 · Composition' }}
-  next={{ href: './?path=/docs/onboarding-advanced-14-storybook-11-readiness--docs', label: 'Day 14 · Storybook 11 readiness' }}
+  previous={{ href: './?path=/docs/onboarding-post-sales-technical-training-advanced-12-composition--docs', label: 'Day 12 · Composition' }}
+  next={{ href: './?path=/docs/onboarding-post-sales-technical-training-advanced-14-storybook-11-readiness--docs', label: 'Day 14 · Storybook 11 readiness' }}
 >
 
 ## Plan your session
@@ -21,6 +21,14 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
 - 20 minutes: audit configuration and dependencies
 - 25–35 minutes: run controlled changed-file experiments
 - 10 minutes: explain
+
+<aside className="learning-callout learning-callout--why">
+  <strong>Why this day matters</strong>
+  <div>
+    TurboSnap saves time by skipping unaffected stories. The optimization is
+    safe only when the dependency graph and Git history can be trusted.
+  </div>
+</aside>
 
 ## Understand TurboSnap before enabling it
 
@@ -48,8 +56,8 @@ and write the proposed config without publishing it.
    - a change inside `ReservationCard.tsx`;
    - a change to its story only;
    - a change to shared preview, theme, or responsive configuration.
-5. For each build, predict the affected stories before opening Chromatic. Compare prediction with the
-   changed-story result and record any full-build reason.
+5. For each build, predict the affected stories before opening Chromatic. Compare the prediction with
+   the changed-story result and explain any full-build reason.
 6. Revert the controlled changes you do not want to keep. Preserve the validated configuration only
    if the results were trustworthy.
 
@@ -60,7 +68,14 @@ and write the proposed config without publishing it.
 - Git history is complete in CI.
 - Every `externals` or `untraced` entry has a written safety rationale.
 
-## Practice the SE answer
+## Questions to think through
+
+- Which shared file could affect every story?
+- What makes a dependency invisible to static tracing?
+- When is a full build the correct result?
+- Which evidence would make you disable the optimization?
+
+## How would you respond?
 
 If you cannot answer this yet, keep digging: **How does TurboSnap decide what changed, and why is a
 fast but incomplete build worse than a slower full build?**
@@ -77,7 +92,7 @@ and root dependency changes.
 ## Save only the trusted configuration
 
 ```sh
-git add packages/react/chromatic.config.json progress/<handle>.md
+git add packages/react/chromatic.config.json
 git commit -m "onboarding(day-13): validate monorepo TurboSnap tracing"
 ```
 

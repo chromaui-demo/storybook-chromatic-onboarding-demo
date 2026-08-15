@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
 
-<Meta title="Onboarding/Core/09 Visual review" />
+<Meta title="Onboarding/Post-sales technical training/Core/09 Visual review" />
 
 <CoursePage
   phase="Core"
@@ -11,8 +11,8 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
   description="Create one intended change and one regression. Use Chromatic to make the right decision for each."
   customerProblem="The team must separate intended design changes from regressions and understand what snapshot acceptance changes."
   outcome="You can accept the intended change, deny and fix the regression, and explain the effect of each decision."
-  previous={{ href: './?path=/docs/onboarding-core-08-first-chromatic-build--docs', label: 'Day 8 · First Chromatic build' }}
-  next={{ href: './?path=/docs/onboarding-core-10-ci-core-demo--docs', label: 'Day 10 · CI & core demo' }}
+  previous={{ href: './?path=/docs/onboarding-post-sales-technical-training-core-08-first-chromatic-build--docs', label: 'Day 8 · First Chromatic build' }}
+  next={{ href: './?path=/docs/onboarding-post-sales-technical-training-core-10-storybook-test-ci--docs', label: 'Day 10 · Storybook Test in CI' }}
 >
 
 ## Plan your session
@@ -21,6 +21,14 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
 - 15 minutes: create controlled changes
 - 30–45 minutes: review and recover
 - 10 minutes: explain
+
+<aside className="learning-callout learning-callout--why">
+  <strong>Why this day matters</strong>
+  <div>
+    Chromatic can show what changed. A reviewer still supplies product intent.
+    Trust depends on knowing the baseline, branch, story, and decision.
+  </div>
+</aside>
 
 ## Separate UI Tests from UI Review
 
@@ -45,16 +53,24 @@ stakeholders review the PR changeset against its merge base. They are related bu
 7. Open UI Review for the branch or pull request and explain how its purpose differs from baseline
    maintenance.
 
-## Record the evidence
+## Understand the evidence
 
-Record links or screenshots for the initial diff, the denial, and the passing rebuild. In your progress
-file, answer:
+Keep links or screenshots with the pull request or issue when they will help the team. Answer:
 
 - What changed when you accepted the intended snapshot?
 - What remained unchanged when you denied the regression?
 - Which ancestor supplied the baseline?
 
-## Demo the decision, not the pixel count
+## Questions to think through
+
+- Who has the product context to accept this change?
+- What changes when a snapshot is accepted?
+- What remains unchanged when a regression is denied?
+- Which ancestor supplied the baseline?
+
+## How would you respond?
+
+> “If Chromatic found a visual difference, why can it not tell us whether the UI is correct?”
 
 Demonstrate an intentional change and a regression without claiming that Chromatic decides whether
 the UI is correct. Chromatic surfaces change; a reviewer supplies intent and judgment.
@@ -71,7 +87,7 @@ Git provider app.
 ## Save the repair
 
 ```sh
-git add packages/react progress/<handle>.md
+git add packages/react
 git commit -m "onboarding(day-09): practice visual review and recovery"
 ```
 

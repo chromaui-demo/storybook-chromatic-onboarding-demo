@@ -1,0 +1,135 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import {
+  CoursePage,
+  CourseTable,
+} from '../../../packages/hub/src/onboarding/CoursePage';
+
+<Meta title="Onboarding/Core onboarding/05 Storybook Test in CI" />
+
+<CoursePage
+  phase="Onboarding"
+  day={5}
+  duration="45–60 minutes"
+  title="Connect Storybook Test to CI"
+  description="Move the same browser tests from a developer's machine into a repeatable pull-request check."
+  customerProblem="Local tests help one developer, but the team still merges changes without consistent component-level proof."
+  outcome="You can explain what CI adds, trace a Storybook test result to a pull request, and distinguish functional and visual checks."
+  previous={{ href: './?path=/docs/onboarding-core-onboarding-04-storybook-test-locally--docs', label: 'Session 4 · Storybook Test locally' }}
+  next={{ href: './?path=/docs/onboarding-core-onboarding-06-chromatic-evidence--docs', label: 'Session 6 · Chromatic evidence' }}
+>
+
+## What you are learning
+
+- What changes when the same browser test moves from a laptop to CI.
+- Why a pull-request check creates shared evidence.
+- How a team can return from a failed check to the exact story.
+- Why functional and visual checks answer different questions.
+
+<aside className="learning-callout learning-callout--why">
+  <strong>Why this matters</strong>
+  <div>
+    Local feedback helps one developer. CI makes the same proof part of the
+    team's change process, even when someone forgets to run the test manually.
+  </div>
+</aside>
+
+## Teach what CI changes
+
+Local testing answers, “Does this work for me now?” Continuous integration answers, “Did the same
+proof run for this change before the team merged it?”
+
+CI adds:
+
+- a consistent environment;
+- a repeatable command;
+- a result attached to the commit or pull request;
+- a shared gate that does not depend on a developer remembering to click Run.
+
+CI does not improve a weak story or assertion. The quality of the check still starts with the states and
+behavior the team chose to represent.
+
+## See the same test in a different place
+
+Open `.github/workflows/storybook-test.yml`. Point out only four parts:
+
+1. The workflow runs for pull requests.
+2. It installs the pinned workspace dependencies.
+3. It uses a browser environment with Playwright.
+4. It runs `pnpm test:storybook`.
+
+Run the same command locally:
+
+```sh
+pnpm test:storybook
+```
+
+Then open a prepared pull request or workflow run. Match the local Reservation interaction test to the
+CI result.
+
+## Explain the pull-request decision
+
+Use a short decision chain:
+
+1. A developer changes the ReservationCard.
+2. Storybook Test runs the documented states in a browser.
+3. A failed behavior blocks or warns on the pull request according to team policy.
+4. The failure links the team back to the story it can reproduce locally.
+5. The team fixes the behavior before merge.
+
+The benefit is not “more tests.” The benefit is earlier, shared evidence on the change under review.
+
+## Separate functional and visual proof
+
+<CourseTable
+  label="Functional and visual checks"
+  columns={['Check', 'Question it answers', 'Example']}
+  rows={[
+    [
+      'Storybook Test',
+      'Did the state render and behave as expected?',
+      'The Reserve action reports the chosen guest count',
+    ],
+    [
+      'Chromatic visual test',
+      'Did the rendered appearance change?',
+      'The card layout shifted at the compact viewport',
+    ],
+  ]}
+/>
+
+Many customer workflows need both. A functionally correct component can still be visually broken. A
+pixel-perfect component can still fail when a user clicks it.
+
+## Questions to think through
+
+- What new confidence does CI add to a test that already passes locally?
+- Which failure should block a merge, and which should only start a conversation?
+- How does a developer get from the CI result back to a reproducible story?
+- What would make this check noisy enough for the team to ignore?
+- Which additional question does Chromatic answer?
+
+## How would you respond?
+
+> “Developers can run these tests locally. Why should we spend CI time running them again?”
+
+Start in the Storybook UI, then move to CI:
+
+> We debug the component test beside the story locally. CI runs the same proof for every pull request,
+> so the team sees a regression before merge and can return to the exact state that failed.
+
+Close by previewing the next session: Chromatic adds shared visual evidence and review history.
+
+<aside className="learning-callout learning-callout--practice">
+  <strong>Try it in the demo</strong>
+  <div>
+    Match one local Storybook Test to its pull-request result. Explain the
+    decision the result supports without walking through the YAML.
+  </div>
+</aside>
+
+## Before you move on
+
+You should be able to explain what CI adds without saying only “automation.” Name the shared evidence,
+the pull-request decision, and the path back to the failing state.
+
+</CoursePage>

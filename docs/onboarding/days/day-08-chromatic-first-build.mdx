@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
 
-<Meta title="Onboarding/Core/08 First Chromatic build" />
+<Meta title="Onboarding/Post-sales technical training/Core/08 First Chromatic build" />
 
 <CoursePage
   phase="Core"
@@ -11,8 +11,8 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
   description="Publish the React Storybook so the team can inspect one durable build tied to your branch and commit."
   customerProblem="The Storybook works locally, but reviewers need shared evidence and a visual baseline tied to Git history."
   outcome="You can publish a branch build, locate its evidence, explain its Git context, and keep the project token safe."
-  previous={{ href: './?path=/docs/onboarding-core-07-accessibility--docs', label: 'Day 7 · Accessibility' }}
-  next={{ href: './?path=/docs/onboarding-core-09-visual-review--docs', label: 'Day 9 · Visual review' }}
+  previous={{ href: './?path=/docs/onboarding-post-sales-technical-training-core-07-accessibility--docs', label: 'Day 7 · Accessibility' }}
+  next={{ href: './?path=/docs/onboarding-post-sales-technical-training-core-09-visual-review--docs', label: 'Day 9 · Visual review' }}
 >
 
 ## Plan your session
@@ -20,7 +20,16 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
 - 15 minutes: read and confirm access
 - 20 minutes: configure the CLI
 - 20–35 minutes: publish and inspect
-- 10 minutes: explain and record
+- 10 minutes: explain and discuss
+
+<aside className="learning-callout learning-callout--why">
+  <strong>Why this day matters</strong>
+  <div>
+    Publishing turns a local Storybook into shared, Git-aware evidence. The
+    build becomes useful when the right people can inspect it and make a clear
+    decision.
+  </div>
+</aside>
 
 ## Explain what Chromatic adds
 
@@ -32,7 +41,7 @@ Chromatic adds the shared, persistent, Git-aware half of the workflow. It publis
 captures their rendered output, compares it with accepted history, and gives the team one place to
 inspect evidence and record a decision.
 
-Before touching the CLI, answer this in your progress file:
+Before touching the CLI, answer this aloud or in your preferred notes:
 
 > What can Trailhead Travel do after this build that it could not do when Storybook only ran on a
 > developer's laptop?
@@ -66,14 +75,15 @@ foundation; branch comparisons are only useful with trustworthy ancestry.
    put the project token in this file and do not enable `onlyChanged` yet.
 
 2. Export `CHROMATIC_PROJECT_TOKEN` in your current shell from the team's secret manager. Do not place
-   its value in shell history, `package.json`, the config file, your progress file, or a screenshot.
+   its value in shell history, `package.json`, the config file, course notes, or a screenshot.
 3. Confirm your Git branch is `onboarding/<handle>`, your working tree is committed, and it descends
    from the latest passing `main`.
 4. Run `pnpm --filter @demo/react chromatic`. Let Chromatic invoke the React package's
    `build-storybook` script so you experience the same production path CI will use.
 5. Open the build. Locate its Git commit and branch, Storybook URL, UI Tests result, and accessibility
    result if the feature is enabled for the project.
-6. Add the branch build URL to your progress file. Never add the token.
+6. Keep the branch build URL in the pull request, issue, or system your team uses for technical work.
+   Never add the token.
 
 ## Verify the build and Git context
 
@@ -82,7 +92,14 @@ foundation; branch comparisons are only useful with trustworthy ancestry.
 - There are no external composed stories counted as React UI tests.
 - `git grep` does not find the token value in tracked or untracked course files.
 
-## Practice the SE answer
+## Questions to think through
+
+- Who can inspect the build now that could not inspect the local Storybook?
+- Which branch and commit produced the evidence?
+- What does the first accepted baseline establish?
+- Which permission is necessary, and which would be excessive?
+
+## How would you respond?
 
 Explain what the first accepted build establishes, why each branch can have separate baselines, and
 why a passing `main` build matters after merges. Then connect it back to the customer: a baseline is
@@ -101,7 +118,7 @@ stop, notify the owner, and rotate it.
 ## Save the Chromatic configuration
 
 ```sh
-git add packages/react/package.json packages/react/chromatic.config.json pnpm-lock.yaml progress/<handle>.md
+git add packages/react/package.json packages/react/chromatic.config.json pnpm-lock.yaml
 git commit -m "onboarding(day-08): connect the React Storybook to Chromatic"
 ```
 

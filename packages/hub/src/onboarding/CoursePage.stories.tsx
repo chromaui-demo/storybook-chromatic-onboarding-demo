@@ -8,9 +8,9 @@ const meta = {
   parameters: { layout: 'fullscreen' },
   args: {
     description:
-      'Build customer-ready fluency in the same Storybook you will later demonstrate.',
+      'Start with shared product understanding, then continue into post-sales technical training when your role requires it.',
     phase: 'Core',
-    title: 'An SE field guide inside the product',
+    title: 'One shared foundation, then deeper technical training',
   },
 } satisfies Meta<typeof CoursePage>;
 
@@ -21,13 +21,13 @@ export const Welcome: Story = {
   args: {
     phase: 'Welcome',
     showPath: true,
-    title: 'Learn the workflow well enough to lead the call',
+    title: 'Start with the customer value',
     children: (
       <>
-        <h2>The assignment</h2>
+        <h2>How the course works</h2>
         <p>
-          Help Trailhead Travel turn fragmented component catalogs into a
-          dependable development and review workflow.
+          Every SE completes core onboarding. SEs who support implementation
+          continue into post-sales technical training.
         </p>
       </>
     ),
@@ -35,15 +35,61 @@ export const Welcome: Story = {
   play: async ({ canvas }) => {
     await expect(
       canvas.getByRole('heading', {
-        name: 'Learn the workflow well enough to lead the call',
+        name: 'Start with the customer value',
       }),
     ).toBeVisible();
     await expect(
-      canvas.getByRole('link', { name: /Start with setup/ }),
+      canvas.getByRole('link', { name: /See the learning path/ }),
+    ).toHaveAttribute('href', '#course-tracks');
+    await expect(
+      canvas.getByRole('link', { name: 'Set up the project' }),
     ).toHaveAttribute(
       'href',
       './?path=/docs/onboarding-start-here-setup--docs',
     );
+    await expect(
+      canvas.getByRole('heading', {
+        name: 'Understand why the workflow matters',
+      }),
+    ).toBeVisible();
+    await expect(
+      canvas.getByRole('heading', {
+        name: 'Implement, diagnose, and expand the workflow',
+      }),
+    ).toBeVisible();
+  },
+};
+
+export const OnboardingSession: Story = {
+  args: {
+    customerProblem:
+      'The prospect sees AI-generated UI as fast but unreliable because the agent does not know its component library.',
+    day: 3,
+    duration: '45–60 minutes',
+    next: {
+      href: './?path=/docs/onboarding-core-onboarding-04-storybook-test-locally--docs',
+      label: 'Session 4 · Storybook Test locally',
+    },
+    outcome:
+      'Teach why documented component context improves an agent response and show the boundary of the current preview.',
+    phase: 'Onboarding',
+    title: 'Explain why Storybook MCP matters',
+    children: (
+      <>
+        <h2>Teach, show, connect</h2>
+        <ul>
+          <li>Teach the customer problem</li>
+          <li>Show the grounded agent workflow</li>
+          <li>Connect the proof to an evaluation</li>
+        </ul>
+      </>
+    ),
+  },
+  play: async ({ canvas }) => {
+    await expect(canvas.getByText('3 of 8')).toBeVisible();
+    await expect(canvas.getByText('Learning track')).toBeVisible();
+    await expect(canvas.getByText('Core onboarding')).toBeVisible();
+    await expect(canvas.getByText('Session 03')).toBeVisible();
   },
 };
 
@@ -54,13 +100,13 @@ export const CoreDay: Story = {
     day: 1,
     duration: '60–75 minutes',
     next: {
-      href: './?path=/docs/onboarding-core-02-agentic-setup--docs',
+      href: './?path=/docs/onboarding-post-sales-technical-training-core-02-agentic-setup--docs',
       label: 'Day 2 · Agentic setup',
     },
     outcome:
       'Explain a safe migration plan and show the evidence that makes an upgrade trustworthy.',
     phase: 'Core',
-    title: 'Verify a Storybook upgrade',
+    title: 'Prove the Storybook 10 upgrade',
     children: (
       <>
         <h2>Plan your session</h2>
@@ -91,14 +137,14 @@ export const CoreDay: Story = {
 export const Setup: Story = {
   args: {
     description:
-      'Install the tools, open the repository in VS Code, and prove the lab works before Day 1.',
+      'Install the shared tools and reach the finish line for core onboarding or technical training.',
     duration: '60–90 minutes on a new machine',
     next: {
       href: './?path=/docs/onboarding-start-here-why-the-workflow-matters--docs',
       label: 'Why the workflow matters',
     },
     phase: 'Setup',
-    title: 'Set up your SE field lab',
+    title: 'Set up the shared SE project',
     children: (
       <>
         <div className="setup-finish-line">
@@ -117,8 +163,8 @@ export const Setup: Story = {
           <div className="setup-section-heading">
             <h2 id="setup-ready">Confirm access before you install anything</h2>
             <p>
-              Confirm GitHub, Chromatic, Codex, and computer access before Day
-              1.
+              Confirm GitHub, Chromatic, Codex, and computer access before
+              session 1.
             </p>
           </div>
           <ul className="setup-requirements">
@@ -128,7 +174,7 @@ export const Setup: Story = {
             </li>
             <li>
               <strong>Chromatic access</strong>
-              <span>Join the shared organization before Day 8.</span>
+              <span>Get the project role required by your training stage.</span>
             </li>
           </ul>
         </section>
@@ -162,9 +208,9 @@ export const Setup: Story = {
           <ul>
             <li>
               <p>
-                Do the required implementation work in{' '}
-                <code>packages/react</code>. The Hub and other frameworks are
-                here for composition and comparison.
+                Make only the changes your training stage requests in{' '}
+                <code>packages/react</code>. Use the Hub and other frameworks
+                for composition and comparison.
               </p>
             </li>
             <li>
@@ -181,10 +227,10 @@ export const Setup: Story = {
   play: async ({ canvas }) => {
     await expect(
       canvas.getByRole('heading', {
-        name: 'Set up your SE field lab',
+        name: 'Set up the shared SE project',
       }),
     ).toBeVisible();
-    await expect(canvas.getByText('Before Day 1')).toBeVisible();
+    await expect(canvas.getByText('Before session 1')).toBeVisible();
     await expect(
       canvas.getByRole('heading', {
         name: 'Keep the lab safe and recoverable',
@@ -232,7 +278,7 @@ export const Orientation: Story = {
     ),
   },
   play: async ({ canvas }) => {
-    await expect(canvas.getByText('Customer context')).toBeVisible();
+    await expect(canvas.getByText('Why customers care')).toBeVisible();
     await expect(
       canvas.getByRole('heading', { name: 'Make the state repeatable' }),
     ).toBeVisible();
@@ -260,6 +306,12 @@ export const AdvancedDay: Story = {
         </blockquote>
       </>
     ),
+  },
+  play: async ({ canvas }) => {
+    await expect(
+      canvas.getByText('Post-sales technical training · Advanced'),
+    ).toBeVisible();
+    await expect(canvas.getByText('Technical training')).toBeVisible();
   },
 };
 

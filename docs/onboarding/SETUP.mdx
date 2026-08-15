@@ -5,8 +5,8 @@ import { CoursePage } from '../../packages/hub/src/onboarding/CoursePage';
 
 <CoursePage
   phase="Setup"
-  title="Set up your SE field lab"
-  description="Install the tools, confirm your access, open the repository in VS Code, and prove the lab works before Day 1."
+  title="Set up the shared SE project"
+  description="Install the shared tools, open the repository in VS Code, and run the prepared project before core onboarding."
   duration="60–90 minutes on a new machine"
   next={{ href: './?path=/docs/onboarding-start-here-why-the-workflow-matters--docs', label: 'Why the workflow matters' }}
 >
@@ -18,18 +18,52 @@ import { CoursePage } from '../../packages/hub/src/onboarding/CoursePage';
   <div>
     <strong>Your finish line</strong>
     <div className="setup-finish-line__copy">
-      VS Code opens the repository, Codex can read it, <code>pnpm check</code>
-      passes, both Storybooks open, and your progress file is on your branch.
+      VS Code opens the repository, Codex can read it, and both Storybooks open.
+      That is enough to begin core onboarding.
     </div>
   </div>
 </div>
+
+<section
+  className="value-role-grid"
+  aria-label="Setup requirements by training stage"
+>
+  <article className="value-role-card">
+    <span>Core onboarding · Everyone</span>
+    <h2>Run the prepared demo project</h2>
+    <p>
+      Install the shared tools, open both Storybooks, and confirm Codex can read
+      the project. A facilitator can pair with you on terminal setup.
+    </p>
+    <ul>
+      <li>You will use guided questions and existing stories.</li>
+      <li>You do not need to diagnose the workspace architecture.</li>
+      <li>You will use prepared CI and Chromatic evidence when needed.</li>
+    </ul>
+  </article>
+  <article className="value-role-card">
+    <span>Post-sales technical training</span>
+    <h2>Prepare for hands-on implementation</h2>
+    <p>
+      Complete the full health check. You will edit configuration, run tests,
+      publish builds, and diagnose failures throughout the 15-session program.
+    </p>
+    <ul>
+      <li>
+        <code>pnpm check</code> must pass before Day 1.
+      </li>
+      <li>You need GitHub and Chromatic write access.</li>
+      <li>You will create a personal branch before technical Day 1.</li>
+    </ul>
+  </article>
+</section>
 
 <section className="setup-readiness" aria-labelledby="setup-ready">
   <div className="setup-section-heading">
     <h2 id="setup-ready">Confirm access before you install anything</h2>
     <div className="setup-section-heading__copy">
       A missing account or permission can stop the lab later. Resolve these
-      items before Day 1.
+      items before session 1.
     </div>
   </div>
   <ul className="setup-requirements">
@@ -43,15 +77,15 @@ import { CoursePage } from '../../packages/hub/src/onboarding/CoursePage';
     <li>
       <strong>GitHub access</strong>
       <span>
-        Read and write access to the repository, including permission to push a
-        personal branch.
+        Read access for core onboarding. Technical training also needs
+        permission to push a personal branch.
       </span>
     </li>
     <li>
       <strong>Chromatic access</strong>
       <span>
-        Access to the team's organization, training project, and approved secret
-        manager.
+        Read-only access is enough for core onboarding. Technical training also
+        needs the approved project role and secret manager.
       </span>
     </li>
     <li>
@@ -172,10 +206,10 @@ import { CoursePage } from '../../packages/hub/src/onboarding/CoursePage';
     <span className="setup-step__number" aria-hidden="true">4</span>
     <div className="setup-step__body">
       <span className="setup-step__label">Repository</span>
-      <h2>Clone the lab and create your branch</h2>
+      <h2>Clone the lab and open it in VS Code</h2>
       <div className="setup-step__intro">
-        Replace <code>{'<handle>'}</code> with your GitHub handle. Use this
-        branch and progress file for all 15 days.
+        Core onboarding uses the prepared project. You do not need to create a
+        progress file or make a course branch.
       </div>
 
       ```sh
@@ -184,15 +218,20 @@ import { CoursePage } from '../../packages/hub/src/onboarding/CoursePage';
       nvm use
       corepack enable
       pnpm install --frozen-lockfile
-      git switch main
-      git pull --ff-only
-      git switch -c onboarding/<handle>
-      cp progress/TEMPLATE.md progress/<handle>.md
       code .
       ```
 
       In Codex, choose **Open folder** and select this repository if Codex did
       not follow VS Code into the folder.
+
+      <aside className="setup-note">
+        <strong>Continuing into post-sales technical training?</strong>
+        <div className="setup-note__copy">
+          Create a personal branch before technical Day 1. Keep implementation
+          evidence in the pull request, Linear issue, Notion page, or another
+          system your team already uses.
+        </div>
+      </aside>
 
       <aside className="setup-note">
         <strong>Cannot clone or push?</strong>
@@ -210,10 +249,10 @@ import { CoursePage } from '../../packages/hub/src/onboarding/CoursePage';
     <span className="setup-step__number" aria-hidden="true">5</span>
     <div className="setup-step__body">
       <span className="setup-step__label">Health check</span>
-      <h2>Prove the repository works before you change it</h2>
+      <h2>Prove the prepared project works</h2>
       <div className="setup-step__intro">
-        A failure now is a setup issue. A new failure after Day 1 is more likely
-        to come from your change.
+      A failure now is a setup issue. A new failure after session 1 is more likely
+      to come from your change.
       </div>
 
       ```sh
@@ -238,10 +277,19 @@ import { CoursePage } from '../../packages/hub/src/onboarding/CoursePage';
       <div className="setup-success">
         <strong>You are ready when</strong>
         <span>
-          <code>pnpm check</code> passes and both Storybooks load without an
-          error banner.
+          Both Storybooks load without an error banner. Technical-training
+          learners must also confirm that <code>pnpm check</code> passes.
         </span>
       </div>
+
+      <aside className="setup-note">
+        <strong>Core onboarding</strong>
+        <div className="setup-note__copy">
+          Ask the facilitator for help if the install or health check fails.
+          Core onboarding teaches the product through the prepared project. It
+          does not assess environment troubleshooting.
+        </div>
+      </aside>
     </div>
 
   </section>
@@ -262,8 +310,9 @@ import { CoursePage } from '../../packages/hub/src/onboarding/CoursePage';
         <li><strong>Long localized content</strong><span>Find a layout risk that the happy path hides.</span></li>
       </ul>
       <div className="setup-step__outro">
-        Record the React URL in your progress file. You will use it for the MCP
-        connection on Day 4. Stop the dev processes with <code>Ctrl+C</code>.
+        Bookmark the React URL if that helps. You will use it throughout core
+        onboarding and technical training. Stop the dev processes with{' '}
+        <code>Ctrl+C</code>.
       </div>
     </div>
   </section>
@@ -276,8 +325,10 @@ import { CoursePage } from '../../packages/hub/src/onboarding/CoursePage';
   </div>
   <ul>
     <li>
-      Complete the core implementation work in `packages/react`. Use the Hub and
-      other frameworks for composition and comparison.
+      Core onboarding uses the prepared project and does not require source
+      changes. Post-sales technical training completes implementation work in
+      `packages/react`. Use the Hub and other frameworks for composition and
+      comparison.
     </li>
     <li>
       Never commit `CHROMATIC_PROJECT_TOKEN`, populated `.env` files,
@@ -297,8 +348,8 @@ import { CoursePage } from '../../packages/hub/src/onboarding/CoursePage';
 <aside className="setup-help">
   <strong>Stuck?</strong>
   <div className="setup-help__copy">
-    Share the day, the exact command, the complete error, what you expected, and
-    the last step that worked. Never include a token or secret.
+    Share the session, the exact command, the complete error, what you expected,
+    and the last step that worked. Never include a token or secret.
   </div>
 </aside>
 

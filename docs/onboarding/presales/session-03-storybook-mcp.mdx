@@ -1,0 +1,118 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
+
+<Meta title="Onboarding/Core onboarding/03 Storybook MCP" />
+
+<CoursePage
+  phase="Onboarding"
+  day={3}
+  duration="45–60 minutes"
+  title="Understand why Storybook MCP matters"
+  description="See how Storybook gives a coding agent documented component context, then connect that proof to customer trust and delivery speed."
+  customerProblem="The prospect can generate UI quickly, but agents invent component APIs and produce code that does not follow the design system."
+  outcome="You can explain a grounded agent workflow, identify credible proof, and state the limits of the current preview."
+  previous={{ href: './?path=/docs/onboarding-core-onboarding-02-stories-demo-states--docs', label: 'Session 2 · Stories and demo states' }}
+  next={{ href: './?path=/docs/onboarding-core-onboarding-04-storybook-test-locally--docs', label: 'Session 4 · Storybook Test locally' }}
+>
+
+## What you are learning
+
+- Why coding agents make plausible but unsupported UI choices.
+- What Storybook MCP contributes to the agent's context.
+- How to tell whether an answer is grounded in the customer's Storybook.
+- Which decisions still belong to the engineer.
+
+<aside className="learning-callout learning-callout--why">
+  <strong>Why this matters</strong>
+  <div>
+    Faster code generation does not help when the agent invents props or ignores
+    the design system. Grounded context shortens the path to a useful,
+    reviewable result.
+  </div>
+</aside>
+
+## Teach context before generation
+
+An agent without design-system context can guess a component name, prop, or pattern. A plausible answer
+can still be wrong.
+
+Storybook MCP connects the agent to documented components, stories, usage examples, and tests. The
+agent can inspect what the team actually supports before it writes UI. It can then preview and test the
+result in the same environment.
+
+The value is not “AI writes more code.” The value is a shorter path from a request to code that uses the
+team's real UI system and comes with visible evidence.
+
+## State the preview boundary
+
+The current Storybook MCP and manifest capabilities are in preview. The documented component toolset
+currently supports React projects. The API and supported renderers can change.
+
+Say this early. A clear boundary builds more trust than a broad promise.
+
+Read the [official Storybook MCP overview](https://storybook.js.org/docs/ai/mcp/overview) before you
+teach the feature.
+
+## See a grounded response
+
+Keep the React Storybook running. In Codex, ask:
+
+> Use the Storybook MCP tools to inspect the documented ReservationCard. List the supported props and
+> relevant stories. Do not edit files.
+
+Confirm that Codex uses Storybook before you continue. Then ask:
+
+> Propose one story that would improve the Trailhead Travel demo. Use only documented props. Explain
+> the customer risk it covers. Do not edit files yet.
+
+Review the proposal. Ask what evidence would make the proposal safe to implement. You do not need to
+edit code to understand the workflow.
+
+## Narrate the proof
+
+Point out the sequence:
+
+1. The agent discovers the documented component.
+2. The agent reads supported usage instead of guessing.
+3. The agent proposes a state tied to a customer risk.
+4. The agent writes or edits the story.
+5. Storybook renders and tests the result.
+6. The SE reviews the code and visible evidence.
+
+MCP improves context. It does not replace code review, product judgment, or test design.
+
+## Questions to think through
+
+- What could an agent get wrong without access to the customer's component documentation?
+- What would prove that the response came from Storybook rather than model memory?
+- When should the SE reject a grounded proposal even if the props are valid?
+- Which part of the workflow still requires code review and product judgment?
+- How would the current React-only preview boundary affect an evaluation?
+
+## How would you respond?
+
+> “Our coding agent can already read the repository. Why does it need Storybook MCP?”
+
+Use this structure:
+
+1. **Problem:** Generic agents do not know the team's supported components.
+2. **Mechanism:** Storybook MCP exposes documented component and story context.
+3. **Proof:** The agent inspects, writes, previews, and tests against the real Storybook.
+4. **Value:** The team spends less time correcting invented APIs and disconnected UI.
+5. **Boundary:** The current AI capabilities are preview and the docs toolset is React-only.
+
+<aside className="learning-callout learning-callout--practice">
+  <strong>Try it in the demo</strong>
+  <div>
+    Ask Codex to inspect ReservationCard without editing files. Point out the
+    documented component, relevant stories, and one unsupported guess the lookup
+    prevents.
+  </div>
+</aside>
+
+## Before you move on
+
+You should be able to explain the difference between repository access and structured Storybook
+context. You should also be comfortable saying that MCP improves context; it does not remove review.
+
+</CoursePage>

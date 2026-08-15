@@ -1,0 +1,114 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
+
+<Meta title="Onboarding/Core onboarding/06 Chromatic evidence" />
+
+<CoursePage
+  phase="Onboarding"
+  day={6}
+  duration="45–60 minutes"
+  title="Add shared visual evidence"
+  description="Connect the local Storybook workflow to a published build, visual comparison, and recorded review decision."
+  customerProblem="The team can run Storybook locally, but reviewers still trade screenshots in chat and cannot tell which commit produced them."
+  outcome="You can explain what Chromatic adds to Storybook and identify the people, evidence, and decision in a visual review."
+  previous={{ href: './?path=/docs/onboarding-core-onboarding-05-storybook-test-in-ci--docs', label: 'Session 5 · Storybook Test in CI' }}
+  next={{ href: './?path=/docs/onboarding-core-onboarding-07-customer-narrative--docs', label: 'Session 7 · Customer narrative' }}
+>
+
+## What you are learning
+
+- What Chromatic adds to a local Storybook.
+- How baselines, Git context, and review decisions work together.
+- Why a visual difference is evidence, not a verdict.
+- How functional tests and visual tests complement each other.
+
+<aside className="learning-callout learning-callout--why">
+  <strong>Why this matters</strong>
+  <div>
+    Customers need more than a screenshot. They need to know which commit
+    produced the change, what it changed, and who decided whether it was
+    intended.
+  </div>
+</aside>
+
+## Teach what Chromatic adds
+
+Storybook makes component states reproducible. Chromatic publishes those states, captures them in a
+consistent environment, compares them with accepted baselines, and records the review decision beside
+the branch and commit.
+
+Use this distinction:
+
+- **Storybook:** Develop, document, and test the state.
+- **Storybook Test:** Prove that the state renders and behaves.
+- **Chromatic:** Preserve visual evidence and coordinate the review decision.
+
+Do not present Chromatic as storage for screenshots. The value comes from Git context, baselines,
+change detection, and recorded intent.
+
+## Follow one change from start to decision
+
+Use a facilitator-prepared branch build or publish your own approved training branch.
+
+1. Open the branch build and identify the commit.
+2. Open one changed ReservationCard story.
+3. Compare the baseline and branch capture.
+4. Explain whether the change is intended.
+5. Accept the intended change or deny the regression.
+6. Show the result reported to the pull request.
+
+Keep one simple visual change ready. Do not spend the session searching for an interesting diff.
+
+## Connect the three focal themes
+
+Tell the complete story:
+
+1. Storybook 10 provides the current platform.
+2. Storybook MCP helps an agent use the documented component system.
+3. Storybook Test checks the resulting stories locally and in CI.
+4. Chromatic adds visual comparison and human review to the same states.
+
+These are separate capabilities. The value comes from their shared source: useful stories.
+
+## State the review boundary
+
+Chromatic can show that pixels changed. It cannot decide whether the change matches product intent.
+That decision needs the right reviewer and enough context.
+
+Likewise, a passing visual test does not prove every behavior. Keep the functional Storybook Test result
+in the demo path.
+
+## Questions to think through
+
+- Who should decide whether this visual change is intended?
+- What does the baseline represent, and what does it not prove?
+- Which Git detail would you check before trusting the comparison?
+- What behavior could still be broken when the visual test passes?
+- When would a screenshot in chat be insufficient evidence?
+
+## How would you respond?
+
+> “Is Chromatic just screenshot storage, and does accepting a change mean the design is correct?”
+
+Begin with the local story and end with the pull request. Use one sentence for each transition:
+
+- state to test;
+- local test to CI;
+- CI result to visual comparison;
+- visual comparison to human decision.
+
+<aside className="learning-callout learning-callout--practice">
+  <strong>Try it in the demo</strong>
+  <div>
+    Use a prepared build if needed. Identify the changed story, baseline,
+    branch, intended reviewer, and decision. Publishing access is not part of
+    core onboarding.
+  </div>
+</aside>
+
+## Before you move on
+
+You should be able to explain why Chromatic is more than screenshot storage. Your answer should connect
+the visual evidence to Git history and human intent.
+
+</CoursePage>

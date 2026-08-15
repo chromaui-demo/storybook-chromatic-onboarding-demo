@@ -1,8 +1,15 @@
-# Storybook and Chromatic SE field lab
+# Storybook and Chromatic SE academy
 
-This repository is a hands-on product lab for sales and solutions engineers. The ten-session core
-builds Storybook and Chromatic fluency. Five optional sessions cover composition, scale, upgrade
-judgment, and a mock customer call.
+This repository has two stages for solutions engineers:
+
+- **Core onboarding:** Eight sessions that help every SE understand the customer value and practice
+  useful conversations through a prepared demo.
+- **Post-sales technical training:** Ten technical foundations plus five advanced implementation and
+  adoption sessions.
+
+Both stages cover the Storybook 10 upgrade case, Storybook MCP, and Storybook Test locally and in CI.
+Every SE starts with core onboarding. SEs who support hands-on delivery continue into technical
+training.
 
 - [Open the hosted field lab](https://ethriel3695.github.io/storybook-multi-framework-demo/).
 - [Read the course overview](docs/onboarding/README.mdx).
@@ -45,30 +52,25 @@ If another project already uses this range, shift all six ports together. For ex
 `STORYBOOK_PORT_OFFSET=100 pnpm dev` serves the Hub at `http://localhost:6106` and React at
 `http://localhost:6107`.
 
-Verify the workspace before you change it:
+Verify the workspace and the React Storybook tests before you change it:
 
 ```sh
-pnpm typecheck
-pnpm build-storybook
+pnpm check
+pnpm test:storybook
 ```
 
-## Suggested SE demo path
+## Shared SE demo spine
 
-1. Ask which frameworks and ownership boundaries matter before you open a story.
-2. Start in the Hub and show the relevant framework sections in one sidebar.
+1. Ask which UI risk and customer decision matter before you open a story.
+2. Explain why Storybook 10 is the platform step and state the ESM and runtime boundary.
 3. Open the React **ReservationCard / Responsive coverage** story. Use the viewport toolbar to switch
    between compact (360 px), the canonical breakpoint (640 px), and desktop (1200 px).
-4. Explain that the component remains fluid between those widths. Chromatic `modes`
-   deliberately sample named widths for stable visual baselines.
-5. Open React **Reservation interaction**. Run or step through the `play` function. It increments the
+4. Use Storybook MCP to show that Codex inspects documented component context before proposing UI.
+5. Open React **Reservation interaction**. Run Storybook Test locally. It increments the
    guest count, clicks Reserve, validates the callback payload, and confirms the rendered status.
-6. If relevant, open Angular **Output interaction** to show the same journey with an Angular `@Output`.
-7. If relevant, open Web Components **Custom event interaction** to show a bubbling `CustomEvent`
-   crossing the shadow-DOM boundary with a validated payload.
-8. Open Next.js **App Router link** and **Favorite interaction** to show framework-aware navigation and
-   browser behavior.
-9. Open React Native Web **Mobile web** and **Press interaction**. State that this provides mobile
-   browser coverage for native primitives, not native iOS/Android screenshots.
+6. Show the same Storybook Test result in CI.
+7. Open one Chromatic diff and connect the visual evidence to the pull-request decision.
+8. Add multi-framework composition only when the customer's ownership model makes it relevant.
 
 ## Talking points mapped to the agenda
 

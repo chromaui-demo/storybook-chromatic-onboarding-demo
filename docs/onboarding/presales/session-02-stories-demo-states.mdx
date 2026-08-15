@@ -1,0 +1,131 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import {
+  CoursePage,
+  CourseTable,
+} from '../../../packages/hub/src/onboarding/CoursePage';
+
+<Meta title="Onboarding/Core onboarding/02 Stories & demo states" />
+
+<CoursePage
+  phase="Onboarding"
+  day={2}
+  duration="45–60 minutes"
+  title="Understand why stories matter"
+  description="Use named component states to understand the Storybook model and connect each demo moment to a customer problem."
+  customerProblem="The prospect sees Storybook as a component gallery and does not yet see how stories improve development, testing, or collaboration."
+  outcome="You can explain a story as reusable product evidence and choose a small set of states that answer a customer question."
+  previous={{ href: './?path=/docs/onboarding-core-onboarding-01-storybook-10-value--docs', label: 'Session 1 · Storybook 10 value' }}
+  next={{ href: './?path=/docs/onboarding-core-onboarding-03-storybook-mcp--docs', label: 'Session 3 · Storybook MCP' }}
+>
+
+## What you are learning
+
+- Why a story is more useful than a screenshot or component gallery entry.
+- How one story can support development, testing, documentation, and review.
+- How to choose states based on customer risk instead of sidebar coverage.
+
+<aside className="learning-callout learning-callout--why">
+  <strong>Why this matters</strong>
+  <div>
+    A story gives the team a shared place to see and discuss a UI state. The
+    value comes from making an important state repeatable, not from documenting
+    every possible prop combination.
+  </div>
+</aside>
+
+## Teach one source of product evidence
+
+A story is a named, runnable example of a UI state. The same story can support development,
+documentation, browser tests, accessibility checks, visual tests, and review.
+
+Teach the value in this order:
+
+1. **Reproduce the state.** The team does not need to drive the whole application into position.
+2. **Name the state.** Developers, designers, testers, and agents can refer to the same example.
+3. **Reuse the state.** The team can test and review the example instead of rebuilding a fixture for
+   each tool.
+
+Do not begin with Component Story Format syntax. The file format supports the workflow; it is not the
+customer outcome.
+
+## See three kinds of proof
+
+Open the React Storybook at `http://localhost:6007`. Use the ReservationCard stories to show:
+
+<CourseTable
+  label="Story moments and the proof they provide"
+  columns={['Story moment', 'What to show', 'What it proves']}
+  rows={[
+    [
+      'Default state',
+      'Change an input through Controls',
+      'The state is isolated and editable',
+    ],
+    [
+      'Responsive coverage',
+      'Move between named widths',
+      'Important layout risks are explicit',
+    ],
+    [
+      'Reservation interaction',
+      'Run the play function',
+      'The example can also prove behavior',
+    ],
+  ]}
+/>
+
+If a state does not support your customer scenario, do not show it. A focused sequence is stronger
+than a complete sidebar tour.
+
+## Questions to think through
+
+Choose one customer problem to discuss:
+
+- a product team cannot reproduce edge cases;
+- designers review screenshots with no runnable context;
+- interaction failures appear during end-to-end testing;
+- teams cannot tell which responsive states are supported.
+
+- Which state is difficult to reproduce in the full application?
+- Who needs to inspect that state before the change ships?
+- What could a screenshot hide that a runnable story would reveal?
+- Which three states would answer three different customer questions?
+- Which state would you leave out, and why?
+
+If you keep notes, use any tool that fits your workflow. The course does not require a progress file.
+
+## Connect stories to the rest of the track
+
+Use this transition at the end of the demo:
+
+> These stories are more than examples. Next, we will use the same documented states to ground an
+> agent, run browser tests, protect a pull request, and review visual changes.
+
+The transition makes the later features feel like one workflow instead of separate add-ons.
+
+## How would you respond?
+
+> “We already have a component gallery and screenshots in our design files. What does a story add?”
+
+A strong response should explain:
+
+- why isolated states shorten the path to useful feedback;
+- why named states improve cross-functional communication;
+- why story quality determines test and review quality;
+- why Storybook does not remove the need for application-level tests.
+
+<aside className="learning-callout learning-callout--practice">
+  <strong>Try it in the demo</strong>
+  <div>
+    Open three ReservationCard stories. For each story, state the customer
+    question before you show the UI. Remove any story that repeats the same
+    proof.
+  </div>
+</aside>
+
+## Before you move on
+
+You should be able to describe a story without mentioning Component Story Format first. Start with the
+state, the people who need it, and the decision the state supports.
+
+</CoursePage>

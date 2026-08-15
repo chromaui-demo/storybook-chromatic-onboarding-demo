@@ -1,38 +1,71 @@
 import { Meta } from '@storybook/addon-docs/blocks';
-import { CoursePage } from '../../packages/hub/src/onboarding/CoursePage';
+import {
+  CoursePage,
+  CourseTable,
+} from '../../packages/hub/src/onboarding/CoursePage';
 
 <Meta title="Onboarding/Reference/Facilitator setup" />
 
 <CoursePage
   phase="Reference"
-  title="Prepare the lab before SEs arrive"
-  description="Set up the repository, accounts, Chromatic project, and support path so each SE can work independently without exposing secrets."
+  title="Prepare both training stages before SEs arrive"
+  description="Give every SE a reliable learning project. Give technical-training learners the access needed to implement, publish, and diagnose the workflow."
 >
 
 An SE should be able to start without waiting for a meeting. Complete this work before you assign the
 setup page.
 
+<aside className="learning-callout learning-callout--why">
+  <strong>Protect the learning goal</strong>
+  <div>
+    Core onboarding measures customer understanding, not terminal fluency or a
+    specific note-taking habit. Prepare working evidence so setup problems do
+    not replace the product conversation.
+  </div>
+</aside>
+
 ## Learner access
 
-Confirm each SE has:
+Confirm every SE has:
 
 - an approved computer with permission to install VS Code, Git, Node.js, pnpm, and Codex;
 - a ChatGPT account with Codex access;
 - read and write access to the GitHub repository;
-- access to the Chromatic organization and training project;
-- access to the approved secret manager and support channel.
+- access to the support channel.
+
+Core onboarding can use a read-only Chromatic project and prepared CI evidence. Learners do not need a
+project token or permission to accept baselines. Post-sales technical training needs the approved
+secret manager, the training project, and the least role required for the implementation work.
 
 ## Repository readiness
 
 1. Publish this repository with a protected `main` branch and a passing initial commit.
 2. Run `pnpm test:onboarding:setup` on Node 20 to test a clean clone, install, branch, checks, Hub, and React Storybook.
-3. Decide whether SEs may merge course branches or whether branches remain disposable.
-4. Give every SE write access and reserve the `onboarding/<handle>` branch namespace.
+3. Confirm that `pnpm test:storybook` passes and that `.github/workflows/storybook-test.yml` runs on a
+   pull request.
+4. Decide whether SEs may merge course branches or whether branches remain disposable.
+5. Give technical-training learners write access and reserve the `onboarding/<handle>` branch namespace.
 
 The checked-in repository already pins Storybook 10.5.5. Day 1 therefore performs a real upgrade
 health check and migration review, but the upgrade command should be a no-op. If a cohort must perform
 a live Storybook 9-to-10 migration, maintain a tested `course/storybook-9-start` tag separately and
-have every SE branch from that tag. Do not downgrade shared `main` during a cohort.
+have technical-training learners branch from that tag. Core onboarding should explore the upgrade from
+the working Storybook 10 project. Do not downgrade shared `main` during a cohort.
+
+## Core onboarding learning environment
+
+Prepare these assets before Session 1:
+
+1. A working React Storybook 10 project with the ReservationCard stories.
+2. A connected Storybook MCP endpoint and one verified read-only prompt.
+3. A passing local Storybook Test result and one safe failure example.
+4. A passing pull request run from `.github/workflows/storybook-test.yml`.
+5. A Chromatic branch build with one clear visual change and recorded decision.
+6. Backup screenshots or recordings for every hosted surface.
+
+Do not turn core onboarding into an access exercise. Pair on installation and provide prepared hosted
+evidence. Focus feedback on customer understanding, thoughtful questions, clear explanations, and
+honest boundaries.
 
 ## Shared Chromatic project
 
@@ -42,18 +75,23 @@ have every SE branch from that tag. Do not downgrade shared `main` during a coho
    cohort so baseline ancestry remains trustworthy.
 4. Store `CHROMATIC_PROJECT_TOKEN` as a GitHub repository secret. Share it locally only through the
    team's approved secret manager; never paste it into course docs, chat transcripts, or source.
-5. Give SEs the least role needed for the exercise. Use Reviewer for assigned peer review and
-   Developer only when SEs must accept their own UI Test baselines.
+5. Give SEs the least role needed for the exercise. Read-only access is enough for core onboarding.
+   Use Reviewer for assigned peer review and Developer only when technical-training learners must
+   accept their own UI Test baselines.
 6. Fill in and share these values through the approved internal channel:
 
-| Setting                | Value       |
-| :--------------------- | :---------- |
-| Chromatic organization | `<fill in>` |
-| Chromatic project      | `<fill in>` |
-| Project URL            | `<fill in>` |
-| Support channel        | `<fill in>` |
-| Course owner           | `<fill in>` |
-| Demo reviewer          | `<fill in>` |
+<CourseTable
+  label="Shared Chromatic project settings"
+  columns={['Setting', 'Value']}
+  rows={[
+    ['Chromatic organization', <code>&lt;fill in&gt;</code>],
+    ['Chromatic project', <code>&lt;fill in&gt;</code>],
+    ['Project URL', <code>&lt;fill in&gt;</code>],
+    ['Support channel', <code>&lt;fill in&gt;</code>],
+    ['Course owner', <code>&lt;fill in&gt;</code>],
+    ['Demo reviewer', <code>&lt;fill in&gt;</code>],
+  ]}
+/>
 
 ## Cohort guardrails
 
@@ -62,11 +100,16 @@ have every SE branch from that tag. Do not downgrade shared `main` during a coho
 - Do not enable automatic acceptance on SE branches.
 - Do not enable TurboSnap until the project has enough successful full builds and the SE can
   explain the dependency graph.
-- Archive or delete stale course branches only after progress and feedback have been captured.
+- Archive or delete stale course branches only after useful feedback and technical evidence have been
+  captured in the team's normal system.
 
 ## Facilitator checkpoints
 
-Review progress after Days 5, 10, and 15. Let the SE drive the product and explain each decision.
-Ask what the customer gains or risks. Do not grade only on whether the SE remembered a flag.
+Check in after core onboarding Sessions 3, 5, and 7. Ask learners to explain the Storybook 10 decision,
+grounded MCP value, and local-to-CI test story in their own words.
+
+Review technical readiness after Days 5, 10, and 15. Let the SE operate the product and explain each
+decision. Ask what the customer gains or risks. Do not grade either stage on memorized commands or a
+specific note-taking format.
 
 </CoursePage>

@@ -1,0 +1,177 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import {
+  CoursePage,
+  CourseTable,
+} from '../../../packages/hub/src/onboarding/CoursePage';
+
+<Meta title="Onboarding/Core onboarding/07 Customer narrative" />
+
+<CoursePage
+  phase="Onboarding"
+  day={7}
+  duration="45–60 minutes"
+  title="Connect the ideas in one customer story"
+  description="Turn the first six sessions into one focused explanation with a clear customer decision and next step."
+  customerProblem="A complete feature tour asks the prospect to connect the value alone and leaves no clear technical evaluation."
+  outcome="You can connect the problem, proof, value, boundary, and next step for the three focal themes."
+  previous={{ href: './?path=/docs/onboarding-core-onboarding-06-chromatic-evidence--docs', label: 'Session 6 · Chromatic evidence' }}
+  next={{ href: './?path=/docs/onboarding-core-onboarding-08-customer-conversation--docs', label: 'Session 8 · Customer conversation' }}
+>
+
+## What you are learning
+
+- How to make several product capabilities feel like one workflow.
+- How to choose demo moments based on one customer decision.
+- How to state value and boundaries without turning the session into a feature tour.
+- How to close with a practical next step.
+
+<aside className="learning-callout learning-callout--why">
+  <strong>Why this matters</strong>
+  <div>
+    Customers should not have to connect the features themselves. A useful SE
+    narrative explains how each capability reduces the same customer risk.
+  </div>
+</aside>
+
+## Choose one decision
+
+Use this default customer decision:
+
+> Can Trailhead upgrade to Storybook 10 and use its stories as trusted input for AI-assisted UI work
+> and automated component testing?
+
+Change the decision only when another scenario better fits your work. Do not combine several unrelated
+customer profiles.
+
+## Follow a 12-minute path
+
+<CourseTable
+  label="Suggested 12-minute customer narrative"
+  columns={['Time', 'Teach', 'Show', 'Connect']}
+  rows={[
+    [
+      '0:00–2:00',
+      'Customer problem and desired outcome',
+      'One risky ReservationCard state',
+      'Confirm the decision to prove',
+    ],
+    [
+      '2:00–4:00',
+      'Why Storybook 10 matters',
+      'The working 10.x Storybook and upgrade boundary',
+      'Define a safe evaluation',
+    ],
+    [
+      '4:00–7:00',
+      'Why Storybook MCP matters',
+      'The agent inspects documented component context',
+      'Connect grounded output to consistency',
+    ],
+    [
+      '7:00–9:30',
+      'Why Storybook Test matters locally',
+      'Run and replay the browser test',
+      'Connect visible debugging to speed',
+    ],
+    [
+      '9:30–11:00',
+      'What CI and Chromatic add',
+      'Show the PR test and visual review',
+      'Connect proof to team trust',
+    ],
+    [
+      '11:00–12:00',
+      'Evaluation next step',
+      'Show success criteria',
+      'Name the owner and finish line',
+    ],
+  ]}
+/>
+
+This is a guide, not a script. Spend more time on the customer's highest-risk question.
+
+## Use one teaching pattern for every feature
+
+For each feature, state:
+
+1. **Problem:** What goes wrong today?
+2. **Mechanism:** What does the feature do?
+3. **Proof:** What can the customer see in the demo?
+4. **Value:** What changes for the team?
+5. **Boundary:** What does the feature not solve?
+
+If a demo moment cannot answer all five, tighten it or remove it.
+
+## Questions to think through
+
+- What decision should the customer be ready to make at the end?
+- Which demo moment is essential to that decision?
+- Which feature is interesting but unnecessary for this customer?
+- Where could your explanation become too technical?
+- What honest boundary will increase trust?
+- What is the smallest useful evaluation the customer could run next?
+
+## Prepare the demo project
+
+Before rehearsal:
+
+```sh
+pnpm check
+pnpm test:storybook
+pnpm dev
+```
+
+Confirm:
+
+- the three story links open;
+- the MCP server is connected;
+- the local Storybook test passes;
+- the prepared CI result is available;
+- the Chromatic build opens without a permission request;
+- no secret appears in the repository or presenter notes.
+
+Keep a screenshot or recording for any external page that could be unavailable during the call.
+
+## Remove technical drag
+
+Delete a step when it exists only to prove that you know a command. Keep technical detail when it helps
+the customer understand a constraint, trust the evidence, or define the evaluation.
+
+Do not live-code in the capstone unless the customer decision requires it. The project should be ready
+before the call.
+
+## How would you respond?
+
+> “This all looks useful, but what should our team actually try first?”
+
+Close with:
+
+End with:
+
+- the repository or component scope;
+- the customer owner;
+- the three proofs to collect;
+- the date or event that ends the evaluation;
+- the decision the evidence will support.
+
+Example:
+
+> Trailhead will upgrade one React Storybook, connect its documented components to Codex, and run the
+> ReservationCard stories through Storybook Test in CI. The platform lead owns the evaluation. It ends
+> when the static build, grounded agent task, and pull-request tests pass on the pilot branch.
+
+<aside className="learning-callout learning-callout--practice">
+  <strong>Try it out loud</strong>
+  <div>
+    Explain the full path in 12 minutes. Remove any step that does not support
+    the same customer decision. Keep notes wherever you normally prepare for a
+    customer conversation.
+  </div>
+</aside>
+
+## Before you move on
+
+Your explanation should feel like one story: a customer risk, useful states, grounded AI, local and CI
+tests, visual evidence, and a clear decision. It should not feel like six unrelated product demos.
+
+</CoursePage>

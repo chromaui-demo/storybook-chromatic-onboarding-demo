@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
 
-<Meta title="Onboarding/Core/05 Mock Service Worker" />
+<Meta title="Onboarding/Post-sales technical training/Core/05 Mock Service Worker" />
 
 <CoursePage
   phase="Core"
@@ -11,8 +11,8 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
   description="Put loading, success, empty, and error states one click away without depending on a live backend."
   customerProblem="Network-dependent components create flaky demos and tests. Important error states are difficult to reproduce."
   outcome="You can use MSW to reproduce customer-relevant states and keep those states stable in development and tests."
-  previous={{ href: './?path=/docs/onboarding-core-04-storybook-mcp--docs', label: 'Day 4 · Storybook MCP' }}
-  next={{ href: './?path=/docs/onboarding-core-06-interaction-tests--docs', label: 'Day 6 · Interaction tests' }}
+  previous={{ href: './?path=/docs/onboarding-post-sales-technical-training-core-04-storybook-mcp--docs', label: 'Day 4 · Storybook MCP' }}
+  next={{ href: './?path=/docs/onboarding-post-sales-technical-training-core-06-storybook-test-locally--docs', label: 'Day 6 · Storybook Test locally' }}
 >
 
 ## Plan your session
@@ -21,6 +21,14 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
 - 20 minutes: install and configure
 - 40–50 minutes: build states
 - 10 minutes: verify and explain
+
+<aside className="learning-callout learning-callout--why">
+  <strong>Why this day matters</strong>
+  <div>
+    Repeatable network states make rare errors and empty results easy to see,
+    test, and discuss without depending on a live backend.
+  </div>
+</aside>
 
 ## Understand the network boundary
 
@@ -54,7 +62,14 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
 - The service worker is served by Storybook, but generated build output remains untracked.
 - Type checking, story tests, and the static build pass.
 
-## Practice the SE answer
+## Questions to think through
+
+- Which backend states are hardest for the team to reproduce?
+- Which mock belongs at the project, component, or story level?
+- How would an unhandled request weaken the test?
+- When should the team still use a real integration environment?
+
+## How would you respond?
 
 Try the customer version: **Why is an API mock part of a trustworthy visual-testing strategy instead
 of just a local development convenience?**
@@ -70,7 +85,7 @@ tests wait for the state the user would observe.
 ## Save the fixtures
 
 ```sh
-git add packages/react pnpm-lock.yaml progress/<handle>.md
+git add packages/react pnpm-lock.yaml
 git commit -m "onboarding(day-05): add deterministic MSW scenarios"
 ```
 

@@ -12,7 +12,7 @@ import Day09Guide from '../../../../docs/onboarding/days/day-09-visual-review.md
 import Day10Guide from '../../../../docs/onboarding/days/day-10-ci-and-core-demo.mdx';
 
 const meta = {
-  title: 'Visual snapshots/Onboarding/Core',
+  title: 'Visual snapshots/Onboarding/Post-sales technical training/Core',
   parameters: { layout: 'fullscreen' },
   tags: ['docs-snapshot', '!test'],
 } satisfies Meta;
