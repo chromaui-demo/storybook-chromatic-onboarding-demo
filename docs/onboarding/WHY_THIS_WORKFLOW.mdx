@@ -11,7 +11,7 @@ import { CoursePage } from '../../packages/hub/src/onboarding/CoursePage';
   customerProblem="Important UI states are hard to reproduce, reviews depend on screenshots, and regressions appear late."
   outcome="You can explain why Storybook and Chromatic work together, ask useful discovery questions, and avoid unnecessary coverage."
   previous={{ href: './?path=/docs/onboarding-start-here-setup--docs', label: 'Setup' }}
-  next={{ href: './?path=/docs/onboarding-core-01-upgrade-orient--docs', label: 'Day 1 · Upgrade & orient' }}
+  next={{ href: './?path=/docs/onboarding-welcome--docs', label: 'Start core onboarding' }}
 >
 
 <section className="value-thesis" aria-labelledby="value-thesis-heading">
@@ -26,6 +26,35 @@ import { CoursePage } from '../../packages/hub/src/onboarding/CoursePage';
     change is safe to ship.
   </p>
 </section>
+
+## Use the same value spine throughout the course
+
+<div className="value-map">
+  <article>
+    <span>Platform decision</span>
+    <strong>Upgrade to Storybook 10</strong>
+    <p>
+      Move to the current ESM platform, verify the migration, and create a safe
+      base for current testing and AI workflows.
+    </p>
+  </article>
+  <article>
+    <span>Agent context</span>
+    <strong>Connect Storybook MCP</strong>
+    <p>
+      Give coding agents documented component and story context before they
+      propose, write, preview, or test UI.
+    </p>
+  </article>
+  <article>
+    <span>Shared proof</span>
+    <strong>Run Storybook Test locally and in CI</strong>
+    <p>
+      Debug story-defined browser tests beside the component, then run the same
+      proof for every pull request.
+    </p>
+  </article>
+</div>
 
 <section className="value-scenario" aria-labelledby="value-scenario-heading">
   <div className="value-scenario__brief">
@@ -51,6 +80,14 @@ import { CoursePage } from '../../packages/hub/src/onboarding/CoursePage';
     who needs to see them, and how the team decides that a change is safe.
   </p>
 </blockquote>
+
+## Questions to think through
+
+- Which UI states are important but difficult to reproduce today?
+- Who needs to inspect those states before a change ships?
+- Where does the current review process lose context or ownership?
+- Which evidence would help the team make a faster, safer decision?
+- Where would more automated coverage create noise instead of confidence?
 
 <section className="value-product-pair" aria-label="The role of each product">
   <article>
@@ -179,13 +216,10 @@ import { CoursePage } from '../../packages/hub/src/onboarding/CoursePage';
   </div>
 </section>
 
-<section
-  className="value-role-grid"
-  aria-label="Practice by customer conversation"
->
+<section className="value-role-grid" aria-label="Practice by training stage">
   <article className="value-role-card">
-    <span>Presales call</span>
-    <h2>Prove that the workflow fits</h2>
+    <span>Core onboarding · Every SE</span>
+    <h2>Understand why the workflow fits</h2>
     <p>
       Discover the consequence. Show the shortest credible path from story to
       decision. Agree on how the customer will validate the fit.
@@ -197,8 +231,8 @@ import { CoursePage } from '../../packages/hub/src/onboarding/CoursePage';
     </ul>
   </article>
   <article className="value-role-card">
-    <span>Postsales call</span>
-    <h2>Find the next useful coverage gap</h2>
+    <span>Post-sales technical training</span>
+    <h2>Implement the next useful improvement</h2>
     <p>
       Inspect the current workflow. Find a meaningful blind spot. Recommend the
       smallest change that improves the evidence.
@@ -213,11 +247,11 @@ import { CoursePage } from '../../packages/hub/src/onboarding/CoursePage';
 
 <section className="value-practice" aria-labelledby="value-practice-heading">
   <div>
-    <span className="value-eyebrow">Before Day 1</span>
+    <span className="value-eyebrow">Before session 1</span>
     <h2 id="value-practice-heading">Say it out loud</h2>
     <p>
-      Add these items to your progress file. Revise them as you learn the
-      product.
+      Think through these prompts before you start. Discuss them with a teammate
+      or keep notes in any tool that helps you learn.
     </p>
   </div>
   <ul>
@@ -235,6 +269,15 @@ import { CoursePage } from '../../packages/hub/src/onboarding/CoursePage';
     </li>
   </ul>
 </section>
+
+<aside className="learning-callout learning-callout--practice">
+  <strong>How would you respond?</strong>
+  <div>
+    A customer says, “We already have tests and design files. Why do we need
+    Storybook and Chromatic?” Start with the risk they cannot see today. Then
+    connect a repeatable state to the evidence and decision it enables.
+  </div>
+</aside>
 
 <ul className="value-reading" aria-label="Official product reading">
   <li>

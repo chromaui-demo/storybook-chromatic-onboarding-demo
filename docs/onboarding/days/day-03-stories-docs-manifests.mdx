@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
 
-<Meta title="Onboarding/Core/03 Stories, docs & manifests" />
+<Meta title="Onboarding/Post-sales technical training/Core/03 Stories, docs & manifests" />
 
 <CoursePage
   phase="Core"
@@ -11,8 +11,8 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
   description="Capture meaningful component states, then trace the same source through Controls, Docs, tests, and manifests."
   customerProblem="The components exist, but teams and coding agents cannot tell which states matter or how to use the API."
   outcome="You can write focused CSF 3 stories for developers, reviewers, and grounded coding agents."
-  previous={{ href: './?path=/docs/onboarding-core-02-agentic-setup--docs', label: 'Day 2 · Agentic setup' }}
-  next={{ href: './?path=/docs/onboarding-core-04-storybook-mcp--docs', label: 'Day 4 · Storybook MCP' }}
+  previous={{ href: './?path=/docs/onboarding-post-sales-technical-training-core-02-agentic-setup--docs', label: 'Day 2 · Agentic setup' }}
+  next={{ href: './?path=/docs/onboarding-post-sales-technical-training-core-04-storybook-mcp--docs', label: 'Day 4 · Storybook MCP' }}
 >
 
 ## Plan your session
@@ -20,6 +20,15 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
 - 15 minutes: read and inspect
 - 45–55 minutes: author and document
 - 15 minutes: verify the human and machine views
+
+<aside className="learning-callout learning-callout--why">
+  <strong>Why this day matters</strong>
+  <div>
+    Useful stories give people and agents the same source of truth. Thin or
+    confusing stories weaken development, tests, documentation, and AI context
+    at the same time.
+  </div>
+</aside>
 
 ## Use the official model
 
@@ -42,8 +51,8 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
    - `/manifests/components.html`;
    - `/manifests/components.json`.
 5. Remove `ai-generated` only from stories you personally reviewed and verified. Use `!manifest` for
-   anything intentionally unsuitable for agent consumption, and explain that decision in your progress
-   file.
+   anything intentionally unsuitable for agent consumption, and explain that decision to a teammate or
+   in your preferred notes.
 
 Do not write application code that consumes the manifest JSON. Storybook 10.5 manifests are preview
 APIs; verify their usefulness through the user-facing tools instead of depending on their schema.
@@ -55,7 +64,16 @@ APIs; verify their usefulness through the user-facing tools instead of depending
 - The components manifest includes the reviewed stories and useful prop information.
 - React type checking, story tests, and the static build pass.
 
-## Demo one source across every surface
+## Questions to think through
+
+- Which states carry real customer risk?
+- What should the story name tell a developer or agent?
+- Which prop description changes how someone uses the component?
+- When should a story stay out of an agent manifest?
+
+## How would you respond?
+
+> “Why should we spend time improving stories and documentation if the component already works?”
 
 Show one story in Canvas, Docs, and the manifest debugger. Explain why the same source improves
 development, documentation, testing, and AI grounding.
@@ -71,7 +89,7 @@ over custom render functions so consumers can explore the state through Controls
 ## Save the story changes
 
 ```sh
-git add packages/react progress/<handle>.md
+git add packages/react
 git commit -m "onboarding(day-03): improve stories and manifests"
 ```
 

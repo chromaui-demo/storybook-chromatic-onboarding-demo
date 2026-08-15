@@ -1,5 +1,6 @@
-# Learner progress
+# Optional reflection prompts
 
-Each SE copies `progress/TEMPLATE.md` to `progress/<github-handle>.md` on a personal branch. Use the
-file for daily evidence, customer explanations, open questions, and capstone feedback. Never include a
-project token or another secret.
+The course does not require a progress file. `progress/TEMPLATE.md` contains optional prompts that an
+SE can copy into Notion, Obsidian, Linear, a document, or another preferred system.
+
+Do not store project tokens or other secrets in course notes.

@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
 
-<Meta title="Onboarding/Core/07 Accessibility" />
+<Meta title="Onboarding/Post-sales technical training/Core/07 Accessibility" />
 
 <CoursePage
   phase="Core"
@@ -11,8 +11,8 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
   description="Create one accessibility issue, watch the tooling find it, fix it, and finish with a keyboard check."
   customerProblem="Trailhead finds accessibility problems after components have already spread across applications."
   outcome="You can fix an automated accessibility failure and explain what the automated check still misses."
-  previous={{ href: './?path=/docs/onboarding-core-06-interaction-tests--docs', label: 'Day 6 · Interaction tests' }}
-  next={{ href: './?path=/docs/onboarding-core-08-first-chromatic-build--docs', label: 'Day 8 · First Chromatic build' }}
+  previous={{ href: './?path=/docs/onboarding-post-sales-technical-training-core-06-storybook-test-locally--docs', label: 'Day 6 · Storybook Test locally' }}
+  next={{ href: './?path=/docs/onboarding-post-sales-technical-training-core-08-first-chromatic-build--docs', label: 'Day 8 · First Chromatic build' }}
 >
 
 ## Plan your session
@@ -21,6 +21,14 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
 - 15 minutes: configure
 - 30–45 minutes: reproduce and fix
 - 10 minutes: verify and explain
+
+<aside className="learning-callout learning-callout--why">
+  <strong>Why this day matters</strong>
+  <div>
+    Accessibility feedback is most useful while the component state is still
+    easy to reproduce and the engineer can fix the source before it spreads.
+  </div>
+</aside>
 
 ## Set the right expectation
 
@@ -40,14 +48,14 @@ screen-reader, zoom, motion, or other manual evaluation.
 
 2. Add the addon to the React Storybook and configure project-level
    `parameters.a11y.test: 'error'` so the Vitest integration enforces violations.
-3. Run the accessibility panel across the required React stories. Record violations, passes, and
-   incomplete checks separately.
+3. Run the accessibility panel across the required React stories. Distinguish violations, passes, and
+   incomplete checks.
 4. Create one short-lived, intentional violation in a story branch, such as removing a form label or
    accessible button name. Confirm local Storybook and the story test identify it.
 5. Fix the underlying component or story context. Avoid disabling the rule. If a real migration needs
    time, use a narrowly scoped `'todo'` with an owner and explanation; do not normalize `'off'`.
-6. Perform a keyboard-only pass through the reservation interaction and record anything automation
-   did not tell you.
+6. Perform a keyboard-only pass through the reservation interaction. Note anything automation did not
+   tell you in your preferred system if follow-up is needed.
 
 ## Verify with automation and the keyboard
 
@@ -56,9 +64,17 @@ pnpm --filter @demo/react exec vitest run --project=storybook
 pnpm --filter @demo/react build-storybook
 ```
 
-Capture evidence of the failing check and the passing fix in your progress file.
+Keep the failing check and passing fix with the pull request, issue, or review system that owns the
+change.
 
-## Practice the SE answer
+## Questions to think through
+
+- Which issues can automated axe checks find reliably?
+- Which user experiences still require manual evaluation?
+- When is a scoped `todo` more honest than disabling a rule?
+- Who owns the follow-up when a full fix cannot ship now?
+
+## How would you respond?
 
 Answer the harder version: **How do local Storybook checks and Chromatic accessibility regressions
 reinforce each other, and what do they still miss?**
@@ -74,7 +90,7 @@ through its loader, MSW handler, or `play` function. A fixed delay is the last r
 ## Save the fix
 
 ```sh
-git add packages/react pnpm-lock.yaml progress/<handle>.md
+git add packages/react pnpm-lock.yaml
 git commit -m "onboarding(day-07): enforce accessible stories"
 ```
 

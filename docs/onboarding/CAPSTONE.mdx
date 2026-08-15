@@ -1,118 +1,261 @@
 import { Meta } from '@storybook/addon-docs/blocks';
-import { CoursePage } from '../../packages/hub/src/onboarding/CoursePage';
+import {
+  CoursePage,
+  CourseTable,
+} from '../../packages/hub/src/onboarding/CoursePage';
 
 <Meta title="Onboarding/Reference/Capstone rubric" />
 
 <CoursePage
   phase="Reference"
-  title="Prove you can lead the call"
-  description="In 20 minutes, discover the need, choose a focused demo path, recover from one surprise, and agree on a next step."
+  title="Practice the conversation, then prove technical readiness"
+  description="Core onboarding ends with a customer conversation. Post-sales technical training adds implementation, diagnosis, and recovery."
 >
 
-The previous 14 sessions prepared you for this call. Do not race through tabs or recite settings. Help
-the customer make a sound decision while you operate the product with confidence.
+The two stages share a customer and product spine. They have different finish lines.
 
-## Choose the call before the demo path
-
-The reviewer assigns one track. Both use the same repository and product workflow; the customer has a
-different decision to make.
-
-<section className="value-role-grid" aria-label="Capstone call tracks">
+<section className="value-role-grid" aria-label="Course finish lines">
   <article className="value-role-card">
-    <span>Track A · Presales evaluation</span>
-    <h2>Evaluation and technical validation</h2>
+    <span>Core onboarding · 15-minute conversation</span>
+    <h2>Help the customer understand the value</h2>
     <p>
-      Trailhead is deciding whether Storybook and Chromatic fit its component
-      workflow. Discover the risk worth proving, run a focused demo, and propose
-      a concrete evaluation with success criteria.
+      Teach the value of Storybook 10, Storybook MCP, and Storybook Test through
+      one prepared project. Close with a bounded technical evaluation.
     </p>
   </article>
   <article className="value-role-card">
-    <span>Track B · Postsales adoption</span>
-    <h2>Adoption and coverage</h2>
+    <span>Post-sales technical training · 20-minute assessment</span>
+    <h2>Help the customer implement and improve</h2>
     <p>
-      Trailhead already publishes its React Storybook and runs visual tests.
-      Adoption is uneven. Find a material blind spot and recommend the smallest
-      next practice or capability that closes it.
+      Discover a material adoption gap, operate the workflow, recover from one
+      seeded failure, and recommend the smallest useful change.
     </p>
   </article>
 </section>
 
-## Customer brief
+## Shared customer brief
 
 You are meeting Trailhead Travel's design-system lead, frontend platform engineer, and engineering
 manager.
 
-- The design system is React, but product teams also use Next.js, Angular, Web Components, and React
+- The design system uses React. Product teams also use Next.js, Angular, Web Components, and React
   Native Web.
 - Storybook exists in pockets with inconsistent stories and duplicated configuration.
-- Pull requests rely on manual screenshots and reviewers often miss responsive regressions.
-- Several components call unstable development APIs, making tests flaky.
-- Accessibility issues are found during release hardening.
-- Leadership wants faster review without creating a test suite nobody trusts.
+- Pull requests rely on manual screenshots and reviewers miss responsive regressions.
+- Component behavior tests and examples drift apart.
+- Leadership wants faster review without creating a suite the teams do not trust.
 
-For the postsales track, assume the design-system Storybook and a passing `main` baseline already
-exist. Only happy paths are consistently covered, some teams still approve screenshots in chat, and
-CI is not required across every owning team.
+During core onboarding, Trailhead is deciding whether to upgrade and pilot the current Storybook
+workflow. During technical training, assume the React Storybook and a passing Chromatic baseline
+already exist, but adoption is uneven.
 
-The customer has 20 minutes. Reserve at least two minutes for discovery and three minutes for questions.
+## Core onboarding conversation
 
-## Discovery prompts
+### The purpose
 
-Ask enough to choose a relevant demo path:
+Help the customer make a sound evaluation decision. Use the prepared demo project and your own words.
+Do not live-code or diagnose a seeded technical failure.
 
-1. Which team owns component quality and Storybook configuration today?
-2. Is the immediate priority development, documentation, testing, review, or cross-team discovery?
-3. Which frameworks need independent ownership and deployment?
-4. How are intentional visual changes approved today?
-5. What makes current CI slow or unreliable?
-6. What accessibility policy or release gate already exists?
-7. If Chromatic is already in place, where does evidence or review still leave the workflow?
+<aside className="learning-callout learning-callout--why">
+  <strong>This is practice, not a script recital</strong>
+  <div>
+    The goal is to connect product knowledge to the customer's situation. Ask
+    questions, adapt the path, state boundaries, and make the next step clear.
+  </div>
+</aside>
 
-The reviewer will answer with two priorities. Adapt the demo to those answers.
+### Required proof
 
-## Required evidence
+Show these moments as one customer story:
 
-Show these items as one workflow, not six disconnected features:
+1. **Storybook 10:** Explain the platform value, ESM or runtime boundary, and safe evaluation plan.
+2. **Useful stories:** Show the prepared component states that represent the customer's risk.
+3. **Storybook MCP:** Prove that the agent inspected documented component context before proposing UI.
+4. **Storybook Test locally:** Run one browser test beside the rendered component.
+5. **Storybook Test in CI:** Show the same proof attached to a pull request or prepared CI run.
+6. **Chromatic:** Show one visual comparison and the review decision.
+7. **Evaluation close:** Name the scope, owner, success evidence, and finish line.
 
-1. A React component expressed as editable, documented story states.
-2. Deterministic success/error data through MSW.
-3. One interaction test and one accessibility result.
-4. A Chromatic visual diff with a correct baseline explanation.
-5. A CI/branch result and the review decision needed to move forward.
-6. A recommendation that matches the track:
-   - **Presales:** a bounded evaluation, named owner, and proof of success.
-   - **Postsales:** a specific coverage gap, smallest useful change, and measurement.
+State the current MCP preview and React-only docs-tool boundary. Distinguish Storybook Test from
+Chromatic visual tests.
 
-Composition, modes, MCP, and TurboSnap are optional demo moments. Include them only when discovery makes
-them relevant.
+### Questions to think through
 
-## Recovery moment
+- What decision is Trailhead trying to make?
+- Which proof best addresses its current constraint?
+- Which feature would you leave out of this conversation?
+- Where might you need to slow down and define a technical term?
+- Which boundary would make your recommendation more trustworthy?
+
+### Demo continuity
+
+If an external page fails, use prepared backup evidence and continue. Environment troubleshooting is
+not part of core onboarding.
+
+### Conversation feedback
+
+Use these dimensions for useful feedback. A numeric score is optional.
+
+<CourseTable
+  label="Core onboarding conversation feedback rubric"
+  columns={[
+    'Dimension',
+    '1: Needs work',
+    '2: Developing',
+    '3: Ready',
+    '4: Strong',
+  ]}
+  rows={[
+    [
+      'Customer framing',
+      'Starts with features',
+      'Names a broad problem',
+      'Teaches one clear decision',
+      'Reframes the decision around risk and proof',
+    ],
+    [
+      'Storybook 10 value',
+      'Recites a version number',
+      'Names a benefit',
+      'Connects value, boundary, and evaluation',
+      'Makes the upgrade case concise and specific',
+    ],
+    [
+      'MCP value',
+      'Calls it generic AI',
+      'Shows a prompt with little proof',
+      'Shows grounded component context and limits',
+      'Makes the before-and-after trust difference obvious',
+    ],
+    [
+      'Local and CI tests',
+      'Blends every test type',
+      'Shows a test in one place',
+      'Connects the same browser proof across local and CI',
+      'Explains feedback speed, shared gating, and test boundaries',
+    ],
+    [
+      'Demo narrative',
+      'Tours tabs',
+      'Has useful moments but weak transitions',
+      'Uses one problem-to-proof story',
+      'Removes every step that does not support the decision',
+    ],
+    [
+      'Evaluation close',
+      'Gives no next step',
+      'Suggests a broad pilot',
+      'Names scope, owner, evidence, and finish line',
+      "Creates a low-risk evaluation tied to the customer's decision",
+    ],
+  ]}
+/>
+
+## Post-sales technical assessment
+
+### The assignment
+
+Find a consequential adoption or coverage gap. Operate the workflow, diagnose one seeded problem, and
+recommend the smallest change that improves the customer's evidence.
+
+### Discovery prompts
+
+Ask enough to choose a relevant implementation path:
+
+1. Which team owns Storybook configuration and component quality today?
+2. Where do local tests, CI checks, or review still depend on memory?
+3. Which important states are missing or unreliable?
+4. How are visual changes approved?
+5. Which framework and repository boundaries affect ownership?
+6. What would prove that the adoption change helped?
+
+The reviewer answers with two priorities. Adapt the call to those answers.
+
+### Required proof
+
+Show the evidence relevant to the adoption gap. The call must include:
+
+1. the current Storybook 10 platform and upgrade status;
+2. one grounded Storybook MCP workflow or a clear reason it does not fit;
+3. one Storybook Test result locally and in CI;
+4. one Chromatic build, baseline, or review decision;
+5. the ownership and policy needed to sustain the change;
+6. a specific adoption recommendation and measurement.
+
+Modes, composition, MSW, and TurboSnap are optional. Use them only when discovery makes them relevant.
+
+### Recovery moment
 
 The reviewer chooses one interruption:
 
-- a denied visual regression;
+- a Storybook Test that fails only in CI;
 - an interaction test that never reaches its expected state;
 - an MSW request that escapes to the network;
-- a composed Storybook reference that is unavailable;
-- a TurboSnap result that retests more stories than expected;
-- a question about Storybook 11 or unsupported framework AI behavior.
+- a denied visual regression;
+- an unavailable composed Storybook;
+- a TurboSnap result that retests more stories than expected.
 
-Diagnose aloud. State the evidence you would inspect, what you know, what remains unknown, and the
-safest next action. You do not need to repair an issue live if the repair would derail the call.
+Diagnose aloud. State what you know, what remains unknown, which evidence you will inspect, and the
+safest next action. You do not need to finish a long repair during the call.
 
-## Scoring rubric
+### Technical readiness rubric
 
 Score each dimension from 1–4. A passing capstone has no score below 2 and a total of at least 18/24.
 
-| Dimension                | 1: Needs work                             | 2: Developing                     | 3: Ready                                               | 4: Strong                                                     |
-| :----------------------- | :---------------------------------------- | :-------------------------------- | :----------------------------------------------------- | :------------------------------------------------------------ |
-| Discovery                | Starts a fixed feature tour               | Asks questions but barely adapts  | Reflects priorities and adapts                         | Surfaces constraints and reframes the path insightfully       |
-| Storybook fluency        | Cannot connect story/config/test concepts | Operates the happy path with help | Explains and operates the core workflow                | Connects architecture and tradeoffs clearly                   |
-| Chromatic fluency        | Misstates baselines or review             | Completes review with prompting   | Explains branch, baseline, tests, and review correctly | Anticipates ancestry, CI, and adoption risks                  |
-| Technical recovery       | Guesses or hides the failure              | Identifies a plausible check      | Uses evidence and chooses a safe next step             | Diagnoses systematically while preserving customer confidence |
-| Customer communication   | Jargon-heavy feature list                 | Some outcome language             | Concise narrative tied to stated needs                 | Teaches complex boundaries simply and honestly                |
-| Value and recommendation | No next step or pushes more usage         | Broad next step                   | Ties a measured next step to a real gap                | Balances value, risk, ownership, boundaries, and expansion    |
+<CourseTable
+  label="Post-sales technical readiness rubric"
+  columns={[
+    'Dimension',
+    '1: Needs work',
+    '2: Developing',
+    '3: Ready',
+    '4: Strong',
+  ]}
+  rows={[
+    [
+      'Discovery',
+      'Runs a fixed feature tour',
+      'Asks questions but barely adapts',
+      'Finds a material adoption gap',
+      'Connects the gap to ownership, policy, and consequence',
+    ],
+    [
+      'Storybook fluency',
+      'Cannot connect stories and tests',
+      'Operates the happy path with help',
+      'Implements and explains the core workflow',
+      'Chooses the right state and test boundary confidently',
+    ],
+    [
+      'CI and Chromatic fluency',
+      'Misstates tests or baselines',
+      'Follows the result with prompting',
+      'Explains local tests, CI, Git context, and review',
+      'Anticipates ancestry, permissions, and adoption risks',
+    ],
+    [
+      'Technical recovery',
+      'Guesses or hides the failure',
+      'Identifies a plausible check',
+      'Diagnoses from evidence and chooses a safe step',
+      'Preserves customer confidence while narrowing the cause',
+    ],
+    [
+      'Customer communication',
+      'Uses jargon without context',
+      'Mixes features and outcomes',
+      'Explains the recommendation in customer terms',
+      'Teaches complex boundaries simply and precisely',
+    ],
+    [
+      'Adoption recommendation',
+      'Pushes broad usage',
+      'Suggests a general next step',
+      'Names the smallest useful change and measurement',
+      'Balances value, risk, ownership, and future expansion',
+    ],
+  ]}
+/>
 
 ## Feedback format
 
@@ -120,10 +263,11 @@ The reviewer provides:
 
 - one moment to keep;
 - one explanation to tighten;
-- one technical topic to revisit;
-- one recommended next practice call;
-- the rubric score with brief evidence.
+- one product boundary to clarify;
+- one next practice for the learner;
+- the track-specific rubric score with brief evidence.
 
-The SE records that feedback in `progress/<handle>.md` and names an owner and date for the follow-up.
+Keep the feedback in the system that supports your development: Notion, Obsidian, Linear, a document,
+or your team's learning platform. Add an owner and date only when the feedback needs follow-up.
 
 </CoursePage>

@@ -1,18 +1,18 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
 
-<Meta title="Onboarding/Core/06 Interaction tests" />
+<Meta title="Onboarding/Post-sales technical training/Core/06 Storybook Test locally" />
 
 <CoursePage
   phase="Core"
   day={6}
   duration="60–90 minutes"
-  title="Test a user flow, not a code path"
-  description="Drive the reservation flow in the browser and verify what a guest can see and do."
+  title="Run Storybook Test locally"
+  description="Turn the reservation stories into browser tests, debug them beside the component, and verify what a guest can see and do."
   customerProblem="A static screenshot cannot prove that a guest can choose a date and complete a reservation."
-  outcome="You can write, debug, and explain a focused play function that verifies customer-visible behavior."
-  previous={{ href: './?path=/docs/onboarding-core-05-mock-service-worker--docs', label: 'Day 5 · Mock Service Worker' }}
-  next={{ href: './?path=/docs/onboarding-core-07-accessibility--docs', label: 'Day 7 · Accessibility' }}
+  outcome="You can run Storybook Test locally and write, debug, and explain a focused play function that verifies customer-visible behavior."
+  previous={{ href: './?path=/docs/onboarding-post-sales-technical-training-core-05-mock-service-worker--docs', label: 'Day 5 · Mock Service Worker' }}
+  next={{ href: './?path=/docs/onboarding-post-sales-technical-training-core-07-accessibility--docs', label: 'Day 7 · Accessibility' }}
 >
 
 ## Plan your session
@@ -21,10 +21,24 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
 - 35–50 minutes: write and debug tests
 - 15 minutes: run and explain
 
-## Understand the test model
+<aside className="learning-callout learning-callout--why">
+  <strong>Why this day matters</strong>
+  <div>
+    Storybook Test keeps customer-visible behavior beside the state that defines
+    it. The same place helps developers understand, debug, and automate the
+    test.
+  </div>
+</aside>
 
-- [Interaction testing](https://storybook.js.org/docs/10.5/writing-tests/interaction-testing)
-- [Vitest addon](https://storybook.js.org/docs/10.5/writing-tests/integrations/vitest-addon)
+## Understand Storybook Test
+
+- [Testing with Storybook](https://storybook.js.org/docs/writing-tests)
+- [Interaction testing](https://storybook.js.org/docs/writing-tests/interaction-testing)
+- [Vitest addon](https://storybook.js.org/docs/writing-tests/integrations/vitest-addon)
+
+Storybook Test uses the Vitest addon to turn stories into browser tests. Every story can prove that a
+state renders. A play function can also prove customer-visible behavior. The testing widget keeps the
+test result and debugging steps beside the rendered state.
 
 ## Test the reservation like a user
 
@@ -38,11 +52,11 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
 5. Run the React story tests in headless Chromium:
 
    ```sh
-   pnpm --filter @demo/react exec vitest run --project=storybook
+   pnpm --filter @demo/react test:storybook
    ```
 
 6. Introduce one temporary assertion failure, inspect it in Storybook and the terminal, then restore
-   the correct behavior. Record which surface made diagnosis faster and why.
+   the correct behavior. Compare which surface made diagnosis faster and why.
 
 ## Confirm the failure and the fix
 
@@ -50,7 +64,16 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
 - The test asserts a customer-visible outcome, not implementation detail.
 - Type checking, story tests, and the static build pass.
 
-## Demo the behavior, not the syntax
+## Questions to think through
+
+- Which behavior matters enough to test at the component level?
+- Which query best matches what the user can perceive?
+- What does the visible Storybook failure reveal that terminal output does not?
+- Which behavior still belongs in an end-to-end test?
+
+## How would you respond?
+
+> “Why add an interaction test here if we already test the full reservation flow?”
 
 Explain the testing layers: every story gets a render test; important behavior gets an interaction
 test; broad appearance is covered by visual tests; narrow logic may still deserve unit tests.
@@ -67,7 +90,7 @@ than expecting a screenshot after every step.
 ## Save the interaction test
 
 ```sh
-git add packages/react progress/<handle>.md
+git add packages/react
 git commit -m "onboarding(day-06): test the reservation interaction"
 ```
 

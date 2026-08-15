@@ -1,0 +1,134 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import {
+  CoursePage,
+  CourseTable,
+} from '../../../packages/hub/src/onboarding/CoursePage';
+
+<Meta title="Onboarding/Core onboarding/04 Storybook Test locally" />
+
+<CoursePage
+  phase="Onboarding"
+  day={4}
+  duration="45–60 minutes"
+  title="Understand Storybook Test locally"
+  description="See how the same stories become browser tests, then connect fast feedback and visible debugging to the developer experience."
+  customerProblem="The prospect maintains examples and component tests separately, so states drift and failures take too long to reproduce."
+  outcome="You can explain render, interaction, and accessibility feedback locally without teaching test syntax line by line."
+  previous={{ href: './?path=/docs/onboarding-core-onboarding-03-storybook-mcp--docs', label: 'Session 3 · Storybook MCP' }}
+  next={{ href: './?path=/docs/onboarding-core-onboarding-05-storybook-test-in-ci--docs', label: 'Session 5 · Storybook Test in CI' }}
+>
+
+## What you are learning
+
+- How a story becomes a browser test.
+- What render, interaction, and accessibility tests each prove.
+- Why visible local debugging can shorten the feedback loop.
+- Where Storybook Test fits beside unit, end-to-end, and visual tests.
+
+<aside className="learning-callout learning-callout--why">
+  <strong>Why this matters</strong>
+  <div>
+    A test is easier to trust when the developer can open the exact state,
+    replay the behavior, and see why it failed beside the component.
+  </div>
+</aside>
+
+## Teach the reuse, not the runner
+
+Storybook Test uses the Vitest addon to turn stories into browser tests. A story can provide several
+levels of proof:
+
+- **Render test:** The story renders without an error.
+- **Interaction test:** A play function drives the UI and checks visible behavior.
+- **Accessibility test:** Automated checks find common accessibility violations in the rendered state.
+
+The value is one maintained state that a developer can see, run, debug, and automate. The team does not
+need a separate fixture for every tool.
+
+Read the current [Storybook testing overview](https://storybook.js.org/docs/writing-tests) before the
+session.
+
+## See the fast local loop
+
+Open the React Storybook at `http://localhost:6007`.
+
+1. Open **Reservation interaction**.
+2. Run the story test from the testing widget.
+3. Replay the interaction steps.
+4. Point to the visible assertion and final state.
+5. Turn on watch mode and explain that related tests rerun after a change.
+
+Then run the same project from the terminal:
+
+```sh
+pnpm --filter @demo/react test:storybook
+```
+
+The UI is the teaching and debugging surface. The command is the automation surface. They run the same
+story-defined behavior.
+
+## Make one failure useful
+
+Use Codex to make a temporary, reversible assertion change in the interaction story. Run the test and
+show:
+
+- which story failed;
+- which step failed;
+- what the browser rendered;
+- how the failure links back to the visible story.
+
+Restore the correct assertion and rerun the test. Do not leave the branch failing.
+
+## Explain what belongs where
+
+<CourseTable
+  label="Questions and their best testing starting points"
+  columns={['Question', 'Best starting point']}
+  rows={[
+    ['Does this state render?', 'Story render test'],
+    ['Can a user complete this component flow?', 'Story interaction test'],
+    [
+      'Does this state have a common accessibility violation?',
+      'Story accessibility test',
+    ],
+    ['Does the whole application journey work?', 'End-to-end test'],
+    ['Did the presentation change?', 'Chromatic visual test'],
+  ]}
+/>
+
+Storybook Test complements application tests. It does not replace every test layer.
+
+## Questions to think through
+
+- Which customer-visible behavior deserves an interaction test?
+- What can the Storybook UI show that a terminal failure cannot?
+- When is a render test enough?
+- Which workflow still needs an application-level end-to-end test?
+- How would you explain the difference between functional and visual proof?
+
+## How would you respond?
+
+> “We already run unit and end-to-end tests. Is Storybook Test just another test suite to maintain?”
+
+Explain the loop without opening the source file:
+
+> The story already describes the state. Storybook Test runs that state in a real browser, drives the
+> interaction, shows the result beside the component, and reruns the relevant test while the developer
+> works.
+
+Then state what moves to CI in the next session: the same proof, run for every pull request.
+
+<aside className="learning-callout learning-callout--practice">
+  <strong>Try it in the demo</strong>
+  <div>
+    Run Reservation interaction. Replay one step, describe the customer behavior
+    it proves, and name one behavior that still belongs in an end-to-end test.
+  </div>
+</aside>
+
+## Before you move on
+
+You should be able to show both the component and its test result without teaching the source code.
+You should also know what Storybook Test does not replace.
+
+</CoursePage>

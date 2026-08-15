@@ -1,0 +1,125 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
+
+<Meta title="Onboarding/Core onboarding/01 Storybook 10 value" />
+
+<CoursePage
+  phase="Onboarding"
+  day={1}
+  duration="45–60 minutes"
+  title="Understand the Storybook 10 upgrade"
+  description="Learn why the upgrade matters, what changes, and how to discuss the decision without turning the conversation into a migration workshop."
+  customerProblem="The team sees a major upgrade as cost and risk. It needs a clear reason to move and a safe way to prove compatibility."
+  outcome="You can explain Storybook 10 in customer terms, state the migration boundary, and ask the questions that shape a safe evaluation."
+  previous={{ href: './?path=/docs/onboarding-start-here-why-the-workflow-matters--docs', label: 'Why the workflow matters' }}
+  next={{ href: './?path=/docs/onboarding-core-onboarding-02-stories-demo-states--docs', label: 'Session 2 · Stories and demo states' }}
+>
+
+## What you are learning
+
+- Why an upgrade is a business decision, not a release-note exercise.
+- Which Storybook 10 changes can affect a customer's migration.
+- Which evidence makes an upgrade plan credible.
+- How to explain current 10.x capabilities without overstating what shipped in 10.0.
+
+<aside className="learning-callout learning-callout--why">
+  <strong>Why this matters</strong>
+  <div>
+    Customers do not need another list of features. They need to know whether
+    the upgrade removes a real constraint and whether the migration risk is
+    manageable.
+  </div>
+</aside>
+
+## Start with the customer decision
+
+A customer does not upgrade because a version number is new. The customer upgrades when the supported
+platform removes a constraint, reduces maintenance, or unlocks a workflow worth adopting.
+
+Use this three-part frame:
+
+1. **Why now:** Storybook 10 moves the package ecosystem to ESM and reduces the installed package size.
+2. **What the team gains:** The current platform supports modern testing workflows and the latest 10.x
+   AI capabilities.
+3. **How to control risk:** The supported upgrade command checks the repository, applies migrations,
+   and leaves a diff that the team can verify.
+
+Do not claim that every current 10.x feature shipped in 10.0. Treat Storybook MCP as a current 10.x
+capability with its own preview limitations.
+
+## Know the facts that shape an evaluation
+
+- Storybook 10 is ESM-only. Storybook reports a 29% reduction in install size.
+- Storybook configuration and presets must use valid ESM.
+- Storybook 10 requires a supported modern Node.js version.
+- Projects older than Storybook 9 must upgrade to 9 before upgrading to 10.
+- The upgrade command can find Storybooks, check known blockers, update packages, and run automigrations.
+- A successful install is not enough. The team must verify development, static builds, stories, tests,
+  addons, and CI.
+
+Read the current official sources:
+
+- [Storybook 10 release](https://storybook.js.org/releases/10.0)
+- [Storybook 10 migration guide](https://storybook.js.org/docs/releases/migration-guide)
+
+## Questions to think through
+
+Use a real customer situation if you have one. You can discuss the questions with a teammate or keep
+notes in Notion, Obsidian, Linear, a document, or any tool that works for you.
+
+- What is the customer unable to adopt or maintain today?
+- Which Storybook 10 benefit matters to that constraint?
+- Which runtime, ESM, addon, or framework issue could change the plan?
+- Which build, story, test, and CI result would make the upgrade believable?
+- Who will decide whether the evaluation succeeded?
+
+## See the value in the demo
+
+Open the React Storybook at `http://localhost:6007`. Show these surfaces in order:
+
+1. A story renders on Storybook 10.
+2. Controls change the component without editing application code.
+3. The testing widget can run the story as a browser test.
+4. The MCP endpoint can give an agent documented component context.
+
+Connect the four surfaces with this idea:
+
+> The upgrade is the platform decision. Testing and grounded AI are adoption decisions that build on
+> that platform.
+
+This keeps the upgrade message accurate. It also gives the customer a reason to continue the
+evaluation.
+
+## How would you respond?
+
+> “We are on Storybook 8. The upgrade looks disruptive, and our current setup works. Why should we
+> move now?”
+
+A strong response should include:
+
+- one reason to upgrade;
+- one honest migration constraint;
+- one platform or workflow constraint the upgrade could remove;
+- one measurable finish line.
+
+Avoid these weak claims:
+
+- “It is faster” without naming what became smaller or which loop improved.
+- “The upgrade is automatic” without explaining verification.
+- “MCP comes with Storybook 10” without stating that it is a current preview capability.
+- “Everything is backward compatible” when Storybook 10 is ESM-only.
+
+<aside className="learning-callout learning-callout--practice">
+  <strong>Try it in your own words</strong>
+  <div>
+    Answer the customer in two minutes. Start with the constraint, name one
+    benefit, state one risk, and close with the proof you would collect.
+  </div>
+</aside>
+
+## Before you move on
+
+You should be able to explain why Storybook 10 matters without reading release notes aloud. You should
+also know which migration details require technical validation instead of a confident guess.
+
+</CoursePage>

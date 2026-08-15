@@ -1,17 +1,17 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
 
-<Meta title="Onboarding/Advanced/15 Mock demo" />
+<Meta title="Onboarding/Post-sales technical training/Advanced/15 Adoption capstone" />
 
 <CoursePage
   phase="Advanced"
   day={15}
   duration="75–90 minutes"
-  title="Lead the customer conversation"
-  description="Use discovery to choose the demo path, recover from one surprise, and recommend a next step you can defend."
+  title="Lead the adoption conversation"
+  description="Use discovery to find an adoption gap, recover from one surprise, and recommend a next step you can defend."
   customerProblem="Product knowledge helps only when an SE can connect it to the customer's risk and operate the workflow under pressure."
-  outcome="You can lead a presales or postsales mock call, recover from a failure, and make a measured recommendation."
-  previous={{ href: './?path=/docs/onboarding-advanced-14-storybook-11-readiness--docs', label: 'Day 14 · Storybook 11 readiness' }}
+  outcome="You can lead a post-sales adoption call, recover from a failure, and make a measured recommendation."
+  previous={{ href: './?path=/docs/onboarding-post-sales-technical-training-advanced-14-storybook-11-readiness--docs', label: 'Day 14 · Storybook 11 readiness' }}
 >
 
 ## Plan your session
@@ -21,11 +21,17 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
 - 20–30 minutes: deliver the mock call
 - 15 minutes: debrief and capture feedback
 
+<aside className="learning-callout learning-callout--why">
+  <strong>Why this assessment matters</strong>
+  <div>
+    Technical fluency matters when you can use it to understand a customer's
+    risk, recover from uncertainty, and recommend a change the team can sustain.
+  </div>
+</aside>
+
 ## Prepare the call
 
-Read the complete <a href="./?path=/docs/onboarding-reference-capstone-rubric--docs" target="_top">capstone brief and rubric</a>. Choose the presales evaluation track or the postsales adoption track
-before you pick a demo path. Ask a teammate to play the customer or record an asynchronous demo and
-request timestamped feedback.
+Read the complete <a href="./?path=/docs/onboarding-reference-capstone-rubric--docs" target="_top">capstone brief and rubric</a>. Use the post-sales adoption criteria. Ask a teammate to play the customer or record an asynchronous demo and request timestamped feedback.
 
 Before the demo:
 
@@ -43,38 +49,48 @@ for the recovery moment, but do not leave the live branch in a broken state.
 2. Choose a coherent path through Storybook, tests, Chromatic review, and CI. Do not tour every tab.
 3. Include one multi-framework composition moment only if it supports the customer's discovery answers.
 4. Diagnose one seeded failure or unexpected diff aloud.
-5. Close with a recommendation that fits the call:
-   - **Presales:** a bounded evaluation and the evidence that would prove a fit.
-   - **Postsales:** the next consequential coverage gap, the smallest change, and how the team will measure it.
+5. Close with the next consequential coverage gap, the smallest change, and how the team will measure it.
 6. State one boundary. Be explicit about what you would not recommend yet and why.
+
+## Questions to think through
+
+- Did discovery change the demo path?
+- Which evidence supported the recommendation?
+- Where did you start guessing instead of diagnosing?
+- Did the next step fit the customer's ownership and adoption stage?
+
+## How would you respond?
+
+> “The workflow is useful, but our teams will not adopt another required check. What is the smallest
+> change you would recommend?”
+
+Start with the customer's current behavior. Name one consequential gap, the smallest change that
+closes it, the owner, and the evidence that would show whether the change helped.
 
 ## Ask for specific feedback
 
 - The reviewer completes every section of the capstone rubric.
-- Your progress file includes the recording or meeting artifact, strongest moment, one explanation to
-  tighten, one technical gap, and a follow-up owner/date.
+- The reviewer identifies the strongest moment, one explanation to tighten, one technical gap, and a
+  follow-up owner and date when needed.
 - Your branch ends with `pnpm check` passing and no secret or generated output committed.
 
 ## Debrief while the call is fresh
 
-Write a brief answer to each question:
+Discuss or keep a brief note for each question:
 
 - Where did you connect a product capability to a customer outcome?
 - Where did you slip into feature-tour language?
-- Did your recommendation fit a presales evaluation or a postsales adoption decision?
+- Did your recommendation fit the customer's adoption stage and ownership model?
 - Which technical question made you least confident?
 - What would you show differently for a small React-only team?
 - What would you show differently for a large multi-framework platform team?
 
 ## Close the loop
 
-```sh
-git add progress/<handle>.md
-git commit -m "onboarding(day-15): complete Storybook and Chromatic capstone"
-git push -u origin onboarding/<handle>
-```
+Push the completed technical branch when your facilitator or team expects it. Do not create a
+course-only commit for feedback.
 
-Share the branch, Chromatic build, and demo artifact with the course owner. Completion means you can
+Share the branch, Chromatic build, and feedback link with the course owner. Completion means you can
 apply and explain the workflow. It does not mean you have memorized every option.
 
 </CoursePage>

@@ -1,77 +1,35 @@
-# Onboarding progress — <name>
+# Optional onboarding reflection prompts
 
-Branch: `onboarding/<handle>`  
-Started: YYYY-MM-DD  
-Chromatic branch URL: add after Day 8
+Use these prompts in Notion, Obsidian, Linear, a document, or any system that helps you learn. You do
+not need to create or commit a Markdown progress file.
 
-## Before Day 1: my customer answer
+## Customer value
 
-Write this before the technical work, then revise it after Days 8, 10, and 15.
+- What customer problem does this capability address?
+- What changes for the customer when the capability works well?
+- What proof could I show without explaining implementation details?
+- What is the most important boundary or tradeoff?
+- What discovery question would tell me whether this matters?
 
-- My 90-second answer to “Why Storybook and Chromatic?”:
-- Three discovery questions that reveal risk, ownership, or missing evidence: 1. 2. 3.
-- One situation where I would not recommend more coverage:
+## How would I respond?
 
-## Daily evidence
+- How would I explain this idea to someone who has never used Storybook?
+- Which customer example makes the value concrete?
+- Which claim am I least confident making?
+- What would I ask before recommending an evaluation?
 
-| Day | Complete | Commit | Evidence or URL | One-sentence takeaway |
-| --: | :------: | :----- | :-------------- | :-------------------- |
-|  01 |   [ ]    |        |                 |                       |
-|  02 |   [ ]    |        |                 |                       |
-|  03 |   [ ]    |        |                 |                       |
-|  04 |   [ ]    |        |                 |                       |
-|  05 |   [ ]    |        |                 |                       |
-|  06 |   [ ]    |        |                 |                       |
-|  07 |   [ ]    |        |                 |                       |
-|  08 |   [ ]    |        |                 |                       |
-|  09 |   [ ]    |        |                 |                       |
-|  10 |   [ ]    |        |                 |                       |
-|  11 |   [ ]    |        |                 |                       |
-|  12 |   [ ]    |        |                 |                       |
-|  13 |   [ ]    |        |                 |                       |
-|  14 |   [ ]    |        |                 |                       |
-|  15 |   [ ]    |        |                 |                       |
+## Technical training
 
-## Customer value notebook
+- What did I change, and why?
+- Which checks prove that the change is safe?
+- Which customer risk does the implementation reduce?
+- What failed, and how did I diagnose it?
+- What should the next engineer know before extending this work?
 
-Do not copy definitions. Connect each capability to customer risk, an outcome, and proof you can show.
+## Feedback
 
-| Capability                 | Customer pain or risk | Customer outcome | Proof I can show | Discovery question or boundary |
-| :------------------------- | :-------------------- | :--------------- | :--------------- | :----------------------------- |
-| Storybook                  |                       |                  |                  |                                |
-| Stories and Docs           |                       |                  |                  |                                |
-| MSW                        |                       |                  |                  |                                |
-| Interaction tests          |                       |                  |                  |                                |
-| Accessibility tests        |                       |                  |                  |                                |
-| Visual tests and baselines |                       |                  |                  |                                |
-| UI Review                  |                       |                  |                  |                                |
-| Modes                      |                       |                  |                  |                                |
-| Composition                |                       |                  |                  |                                |
-| TurboSnap                  |                       |                  |                  |                                |
-
-## Call practice
-
-### Presales evaluation
-
-- What the prospect is trying to prove:
-- The shortest demo path that answers it:
-- A concrete evaluation next step:
-
-### Postsales adoption or expansion
-
-- What the customer already uses:
-- The material coverage gap:
-- The smallest useful recommendation:
-- How we will know it helped:
-
-## Questions and escalations
-
-For each unresolved question, include the course day, command or URL, expected behavior, actual
-behavior, and a link to any supporting evidence.
-
-## Capstone feedback
-
-- Strongest moment:
-- One explanation to tighten:
-- One technical gap to revisit:
-- Follow-up owner and date:
+- Which explanation made the value clear?
+- Where did I become too technical?
+- Which claim or boundary needs correction?
+- Which question should I have asked earlier?
+- Is the proposed next step small enough to evaluate?

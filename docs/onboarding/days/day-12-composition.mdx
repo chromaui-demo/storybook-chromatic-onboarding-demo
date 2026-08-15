@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
 
-<Meta title="Onboarding/Advanced/12 Composition" />
+<Meta title="Onboarding/Post-sales technical training/Advanced/12 Composition" />
 
 <CoursePage
   phase="Advanced"
@@ -11,8 +11,8 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
   description="Run the Hub as a product team sees it while each framework keeps its own build, deployment, and tests."
   customerProblem="Trailhead has independently owned catalogs across frameworks, but product teams need one place to discover them."
   outcome="You can operate the composition Hub and explain what composition combines and what remains separate."
-  previous={{ href: './?path=/docs/onboarding-advanced-11-modes--docs', label: 'Day 11 · Modes' }}
-  next={{ href: './?path=/docs/onboarding-advanced-13-monorepo-turbosnap--docs', label: 'Day 13 · TurboSnap' }}
+  previous={{ href: './?path=/docs/onboarding-post-sales-technical-training-advanced-11-modes--docs', label: 'Day 11 · Modes' }}
+  next={{ href: './?path=/docs/onboarding-post-sales-technical-training-advanced-13-monorepo-turbosnap--docs', label: 'Day 13 · TurboSnap' }}
 >
 
 ## Plan your session
@@ -21,6 +21,14 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
 - 25 minutes: inspect and run composition
 - 25–35 minutes: change one reference and verify boundaries
 - 10 minutes: explain
+
+<aside className="learning-callout learning-callout--why">
+  <strong>Why this day matters</strong>
+  <div>
+    Composition can give teams one discovery experience without erasing build,
+    deployment, framework, or test ownership.
+  </div>
+</aside>
 
 ## Understand the composition model
 
@@ -47,7 +55,14 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
 - You can identify the ownership, deployment, and test boundary for each catalog.
 - You can explain why one-project composition is not the same as independently testing five projects.
 
-## Practice the architecture answer
+## Questions to think through
+
+- Which teams need one catalog, and which teams need separate ownership?
+- What should happen when one referenced Storybook is unavailable?
+- Which settings belong to the hub, and which belong to the child Storybook?
+- How many Chromatic projects match the ownership model?
+
+## How would you respond?
 
 Give a three-minute architecture explanation for a platform lead choosing between one combined
 Storybook and independently published Storybooks composed for discovery.
@@ -63,10 +78,10 @@ permalink follows a moving branch build; a commit permalink pins a fixed publish
 ## Save the evidence
 
 ```sh
-git add packages/hub progress/<handle>.md
+git add packages/hub
 git commit -m "onboarding(day-12): validate composition boundaries"
 ```
 
-If inspection required no source change, commit only your progress evidence.
+If inspection required no source change, do not create a commit only to mark the day complete.
 
 </CoursePage>

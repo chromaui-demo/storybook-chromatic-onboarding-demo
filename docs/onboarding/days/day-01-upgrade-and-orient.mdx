@@ -1,18 +1,18 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
 
-<Meta title="Onboarding/Core/01 Upgrade & orient" />
+<Meta title="Onboarding/Post-sales technical training/Core/01 Upgrade & orient" />
 
 <CoursePage
   phase="Core"
   day={1}
   duration="60–75 minutes"
-  title="Verify a Storybook upgrade"
-  description="Use the supported upgrade path, inspect every change, and prove that the React Storybook still works."
+  title="Prove the Storybook 10 upgrade"
+  description="Connect the Storybook 10 value to a safe migration, then inspect every change and verify the React Storybook."
   customerProblem="Trailhead inherited several Storybooks. The team fears that an upgrade will silently break a catalog."
-  outcome="You can explain a safe migration plan and show the evidence that makes an upgrade trustworthy."
+  outcome="You can explain why Storybook 10 matters, perform a safe migration, and show the evidence that makes the upgrade trustworthy."
   previous={{ href: './?path=/docs/onboarding-start-here-why-the-workflow-matters--docs', label: 'Why the workflow matters' }}
-  next={{ href: './?path=/docs/onboarding-core-02-agentic-setup--docs', label: 'Day 2 · Agentic setup' }}
+  next={{ href: './?path=/docs/onboarding-post-sales-technical-training-core-02-agentic-setup--docs', label: 'Day 2 · Agentic setup' }}
 >
 
 ## Plan your session
@@ -20,15 +20,29 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
 - 10 minutes: read
 - 20 minutes: inspect the workspace and upgrade plan
 - 25 minutes: verify development and static builds
-- 10 minutes: explain and record
+- 10 minutes: explain and discuss
+
+<aside className="learning-callout learning-callout--why">
+  <strong>Why this day matters</strong>
+  <div>
+    A safe upgrade is more than a successful install. You must connect the
+    platform value to the runtime, addon, build, test, and CI evidence that
+    protects the customer.
+  </div>
+</aside>
 
 ## Understand the migration boundary
 
-- [Migrate to Storybook 10](https://storybook.js.org/docs/10.5/releases/migration-guide)
-- [Upgrade Storybook](https://storybook.js.org/docs/10.5/releases/upgrading)
+- [Storybook 10 release](https://storybook.js.org/releases/10.0)
+- [Migrate to Storybook 10](https://storybook.js.org/docs/releases/migration-guide)
+- [Upgrade Storybook](https://storybook.js.org/docs/releases/upgrading)
 
 Pay attention to Node requirements, ESM-only configuration, automigrations, aligned Storybook
 package versions, and upgrading one major at a time.
+
+Before you run a command, state the customer reason for the upgrade. Storybook 10 moves the package
+ecosystem to ESM and reduces install size. The current 10.x platform also supports the testing and AI
+workflows used later in this track. Do not attribute every current 10.x feature to the 10.0 release.
 
 ## Run the supported upgrade workflow
 
@@ -48,7 +62,8 @@ package versions, and upgrading one major at a time.
    to understand, not something to accept automatically.
 4. Start `pnpm --filter @demo/react storybook`, open the React Storybook, and exercise Controls,
    Docs, viewport, and the Interactions panel.
-5. Write a short upgrade checklist in your progress file that you could use with a customer.
+5. Compare the verification steps with the customer's highest-risk runtime, addon, and framework
+   boundaries.
 
 If your facilitator supplied `course/storybook-9-start`, branch from that tag instead and follow the
 migration guide's major-by-major path. Capture the dependency/config diff before continuing.
@@ -57,9 +72,16 @@ migration guide's major-by-major path. Capture the dependency/config diff before
 
 - `doctor`, type checking, and the static build pass.
 - The React Storybook renders at its local URL.
-- Your progress file identifies at least three upgrade risks and how you verified them.
+- You can identify at least three upgrade risks and explain how you verified them.
 
-## Practice the SE answer
+## Questions to think through
+
+- Which current constraint makes the upgrade worth the effort?
+- Which migration risk would you test first for this customer?
+- What would an automigration fail to prove?
+- Which result would make you stop the rollout?
+
+## How would you respond?
 
 Imagine this comes up on a customer call: **How do we upgrade without treating the automigration as a
 black box?** Give yourself two minutes to answer.
@@ -73,11 +95,14 @@ upgrade.
 
 </details>
 
-## Save a clean checkpoint
+## Keep a clean checkpoint
 
 ```sh
-git add docs/onboarding progress/<handle>.md
-git commit -m "onboarding(day-01): verify Storybook upgrade boundary"
+git status --short
+git diff --check
 ```
+
+Commit only real migration changes that you understand. Do not create a course-only file to prove that
+you completed the day.
 
 </CoursePage>

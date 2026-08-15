@@ -1,0 +1,124 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
+
+<Meta title="Onboarding/Core onboarding/08 Customer conversation" />
+
+<CoursePage
+  phase="Onboarding"
+  day={8}
+  duration="45–60 minutes"
+  title="Practice the customer conversation"
+  description="Use the demo-ready project to explain the workflow, answer questions, and close with a bounded evaluation."
+  customerProblem="Product knowledge creates value only when the SE can teach it clearly, show credible proof, and guide the next customer decision."
+  outcome="You can explain the Storybook 10, MCP, and Storybook Test value through one coherent conversation and propose a measurable next step."
+  previous={{ href: './?path=/docs/onboarding-core-onboarding-07-customer-narrative--docs', label: 'Session 7 · Customer narrative' }}
+>
+
+## What you are learning
+
+- How to lead with customer context instead of a product tour.
+- How to answer questions without hiding important boundaries.
+- How to use evidence without narrating implementation details.
+- How to turn interest into a focused evaluation.
+
+<aside className="learning-callout learning-callout--why">
+  <strong>Why this matters</strong>
+  <div>
+    Product knowledge becomes useful when you can connect it to a customer's
+    situation, respond to uncertainty, and help the customer choose a sensible
+    next step.
+  </div>
+</aside>
+
+## Practice with a teammate
+
+Ask a teammate to play the Trailhead design-system lead. Use the
+
+<a
+  href="./?path=/docs/onboarding-reference-capstone-rubric--docs"
+  target="_top"
+>
+  conversation guide
+</a>
+for feedback. An asynchronous recording is also fine when that is easier for
+your team.
+
+## Validate the demo project
+
+Before the call:
+
+```sh
+pnpm check
+pnpm test:storybook
+pnpm dev
+```
+
+Open every story, test, CI result, and Chromatic build in advance. Confirm that Codex can reach the
+Storybook MCP server. Keep backup evidence for any hosted service.
+
+## Lead the conversation
+
+1. Confirm the customer decision and current constraint.
+2. Explain why Storybook 10 is the platform step and state the migration boundary.
+3. Show Storybook MCP using documented component context.
+4. Run one Storybook Test locally and connect it to the CI result.
+5. Show one Chromatic visual change and the review decision.
+6. State the boundary of each capability.
+7. Close with a bounded evaluation, named owner, and measurable finish line.
+
+Core onboarding does not test technical recovery. If a hosted page fails, use backup evidence and keep
+the conversation moving. Technical diagnosis belongs in post-sales technical training.
+
+## Questions to think through
+
+- Did you confirm the customer's problem before opening the product?
+- Which explanation made the value clear?
+- Which moment became more technical than the customer needed?
+- Did you state the MCP preview and testing boundaries plainly?
+- Did the proposed evaluation have a clear scope, owner, and finish line?
+
+## How would you respond?
+
+Practice these customer questions without using a prepared script:
+
+- “Why should we upgrade if Storybook already works?”
+- “Why does an agent need MCP if it can read our repository?”
+- “What does Storybook Test add to our existing test suite?”
+- “Why run the same test locally and in CI?”
+- “Does accepting a Chromatic change mean the design is correct?”
+
+For each answer, connect the problem, mechanism, proof, value, and boundary.
+
+## Ask for focused feedback
+
+The reviewer records:
+
+- one explanation that made the value clear;
+- one moment that became too technical;
+- one claim or boundary that needs correction;
+- one demo step to remove;
+- whether the proposed evaluation has a clear owner and finish line.
+
+## Complete core onboarding
+
+Core onboarding is complete when:
+
+- the demo project passes the repository and Storybook tests;
+- all external evidence has a working link or backup;
+- a teammate gives feedback on the conversation;
+- the evaluation close names scope, owner, proof, and finish line;
+- no secret or generated build output is committed.
+
+Keep the feedback wherever it will help you prepare for a real customer conversation. There is no
+required progress file. Share a link only if your team uses one for onboarding check-ins.
+
+<aside className="learning-callout learning-callout--next">
+  <strong>Continue when your role requires hands-on delivery</strong>
+  <div>
+    Post-sales technical training covers configuration, implementation,
+    diagnosis, recovery, and adoption planning. Core onboarding gives everyone
+    the customer-value foundation first.
+  </div>
+</aside>
+
+</CoursePage>

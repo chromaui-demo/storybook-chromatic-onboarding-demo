@@ -7,7 +7,7 @@ import Day14Guide from '../../../../docs/onboarding/days/day-14-storybook-11-rea
 import Day15Guide from '../../../../docs/onboarding/days/day-15-capstone.mdx';
 
 const meta = {
-  title: 'Visual snapshots/Onboarding/Advanced',
+  title: 'Visual snapshots/Onboarding/Post-sales technical training/Advanced',
   parameters: { layout: 'fullscreen' },
   tags: ['docs-snapshot', '!test'],
 } satisfies Meta;

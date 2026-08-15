@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
 
-<Meta title="Onboarding/Core/02 Agentic setup" />
+<Meta title="Onboarding/Post-sales technical training/Core/02 Agentic setup" />
 
 <CoursePage
   phase="Core"
@@ -11,8 +11,8 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
   description="Give Codex one bounded Storybook task, inspect the result, and keep only the changes you understand."
   customerProblem="The design-system team wants AI-assisted setup, but it cannot trust unreviewed configuration or tests."
   outcome="You can scope an AI-assisted task and explain every package, configuration change, story, and test you keep."
-  previous={{ href: './?path=/docs/onboarding-core-01-upgrade-orient--docs', label: 'Day 1 · Upgrade & orient' }}
-  next={{ href: './?path=/docs/onboarding-core-03-stories-docs-manifests--docs', label: 'Day 3 · Stories & manifests' }}
+  previous={{ href: './?path=/docs/onboarding-post-sales-technical-training-core-01-upgrade-orient--docs', label: 'Day 1 · Upgrade & orient' }}
+  next={{ href: './?path=/docs/onboarding-post-sales-technical-training-core-03-stories-docs-manifests--docs', label: 'Day 3 · Stories & manifests' }}
 >
 
 ## Plan your session
@@ -20,6 +20,14 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
 - 10 minutes: read
 - 45–60 minutes: prompt, inspect, and refine
 - 15 minutes: verify and explain
+
+<aside className="learning-callout learning-callout--why">
+  <strong>Why this day matters</strong>
+  <div>
+    AI can shorten setup work, but the engineer still owns scope, review, and
+    verification. Customer trust depends on that ownership.
+  </div>
+</aside>
 
 ## Understand the supported workflow
 
@@ -64,10 +72,17 @@ pnpm --filter @demo/react build-storybook
 git diff --check
 ```
 
-In your progress file, record one useful Codex observation, one suggestion you rejected or constrained,
-and why the final change is trustworthy.
+Discuss one useful Codex observation, one suggestion you rejected or constrained, and why the final
+change is trustworthy. Keep notes in your preferred system if they will help later.
 
-## Practice the SE answer
+## Questions to think through
+
+- Which parts of this task are safe to delegate to an agent?
+- Which changes require the strongest human review?
+- What would make you stop or narrow the task?
+- Which test result proves the agent's change is safe?
+
+## How would you respond?
 
 Put this in your own words: **Where does Storybook AI save time, and where does engineering judgment
 still matter?**
@@ -83,7 +98,7 @@ unrelated edits. Narrow the prompt to `packages/react` and ask for one proposed 
 ## Save what you trust
 
 ```sh
-git add packages/react progress/<handle>.md
+git add packages/react
 git commit -m "onboarding(day-02): review agentic Storybook setup"
 ```
 

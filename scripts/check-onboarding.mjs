@@ -22,6 +22,18 @@ const failures = [];
 const docsIds = new Set();
 
 const setupGuide = readFileSync(resolve(guideRoot, 'SETUP.mdx'), 'utf8');
+const welcomeGuide = readFileSync(resolve(guideRoot, 'README.mdx'), 'utf8');
+const capstoneGuide = readFileSync(resolve(guideRoot, 'CAPSTONE.mdx'), 'utf8');
+const rootPackage = JSON.parse(
+  readFileSync(resolve(repositoryRoot, 'package.json'), 'utf8'),
+);
+const reactPackage = JSON.parse(
+  readFileSync(resolve(repositoryRoot, 'packages/react/package.json'), 'utf8'),
+);
+const storybookTestWorkflow = readFileSync(
+  resolve(repositoryRoot, '.github/workflows/storybook-test.yml'),
+  'utf8',
+);
 const setupRequirements = [
   [
     'VS Code installation',
@@ -37,12 +49,74 @@ const setupRequirements = [
   ['workspace verification', 'pnpm check'],
   ['local Storybooks', 'pnpm dev'],
   ['port conflict recovery', 'STORYBOOK_PORT_OFFSET=100 pnpm dev'],
-  ['personal branch', 'git switch -c onboarding/<handle>'],
+  [
+    'technical-training branch guidance',
+    'Create a personal branch before technical Day 1',
+  ],
 ];
 
 for (const [requirement, expectedText] of setupRequirements) {
   if (!setupGuide.includes(expectedText)) {
     failures.push(`Setup guide is missing ${requirement}: ${expectedText}`);
+  }
+}
+
+const stageRequirements = [
+  [
+    'welcome core onboarding',
+    welcomeGuide,
+    'Core onboarding · Required for every SE',
+  ],
+  [
+    'welcome technical training',
+    welcomeGuide,
+    'Post-sales technical training · Role-based',
+  ],
+  ['shared Storybook 10 focus', welcomeGuide, 'Why upgrade to Storybook 10?'],
+  ['shared Storybook MCP focus', welcomeGuide, 'Why use Storybook MCP?'],
+  [
+    'shared Storybook Test focus',
+    welcomeGuide,
+    'Why use Storybook Test locally and in CI?',
+  ],
+  [
+    'core onboarding conversation',
+    capstoneGuide,
+    'Core onboarding conversation',
+  ],
+  ['technical readiness rubric', capstoneGuide, 'Technical readiness rubric'],
+];
+
+for (const [requirement, source, expectedText] of stageRequirements) {
+  if (!source.includes(expectedText)) {
+    failures.push(
+      `Onboarding guide is missing ${requirement}: ${expectedText}`,
+    );
+  }
+}
+
+if (
+  rootPackage.scripts?.['test:storybook'] !==
+  'pnpm --filter @demo/react test:storybook'
+) {
+  failures.push('Root package is missing the shared test:storybook command');
+}
+
+if (
+  reactPackage.scripts?.['test:storybook'] !== 'vitest run --project=storybook'
+) {
+  failures.push('React package is missing the Storybook Test command');
+}
+
+for (const expectedText of [
+  'pull_request:',
+  'mcr.microsoft.com/playwright:',
+  'pnpm test:storybook',
+]) {
+  if (!storybookTestWorkflow.includes(expectedText)) {
+    failures.push(
+      `Storybook Test workflow is missing required content: ${expectedText}`,
+    );
   }
 }
 
@@ -151,6 +225,51 @@ for (let day = 1; day <= 15; day += 1) {
   }
 }
 
+const onboardingSessionRoot = resolve(guideRoot, 'presales');
+const onboardingSessionFiles = markdownFiles(onboardingSessionRoot);
+
+for (let session = 1; session <= 8; session += 1) {
+  const prefix = `session-${String(session).padStart(2, '0')}-`;
+  if (
+    !onboardingSessionFiles.some((file) =>
+      file.split('/').at(-1).startsWith(prefix),
+    )
+  ) {
+    failures.push(
+      `Onboarding guide is missing core onboarding Session ${session}`,
+    );
+  }
+}
+
+const learningPages = [
+  ...onboardingSessionFiles,
+  ...files.filter((file) => file.includes('/days/day-')),
+];
+
+for (const file of learningPages) {
+  const source = readFileSync(file, 'utf8');
+  for (const requiredSection of [
+    'learning-callout',
+    '## Questions to think through',
+    '## How would you respond?',
+  ]) {
+    if (!source.includes(requiredSection)) {
+      failures.push(
+        `${file.slice(repositoryRoot.length + 1)} is missing ${requiredSection}`,
+      );
+    }
+  }
+}
+
+for (const file of files) {
+  const source = readFileSync(file, 'utf8');
+  if (source.includes('progress/<handle>.md')) {
+    failures.push(
+      `${file.slice(repositoryRoot.length + 1)} still requires a repository progress file`,
+    );
+  }
+}
+
 const iframeNavigationSources = [
   ...files,
   resolve(repositoryRoot, 'packages/hub/src/onboarding/CoursePage.tsx'),
@@ -189,6 +308,6 @@ if (failures.length > 0) {
   process.exitCode = 1;
 } else {
   console.log(
-    `Onboarding guide is valid (${files.length} MDX pages, ${docsIds.size} Storybook docs IDs, ${snapshotGuideFiles.length} visual snapshot stories, 15 linked days).`,
+    `Onboarding guide is valid (${files.length} MDX pages, ${docsIds.size} Storybook docs IDs, ${snapshotGuideFiles.length} visual snapshot stories, 8 core onboarding sessions, 15 technical-training days).`,
   );
 }

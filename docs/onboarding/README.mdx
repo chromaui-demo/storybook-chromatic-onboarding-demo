@@ -5,29 +5,75 @@ import { CoursePage } from '../../packages/hub/src/onboarding/CoursePage';
 
 <CoursePage
   phase="Welcome"
-  title="Learn the workflow well enough to lead the call"
-  description="A hands-on field lab for sales and solutions engineers who need to show, explain, and troubleshoot Storybook and Chromatic."
+  title="Start with the customer value"
+  description="Every SE completes core onboarding. SEs who support implementation continue into post-sales technical training."
   showPath
 >
 
-This is a product lab, not a reading list. Over 15 sessions, you will take one React Storybook from
-local setup to a customer-ready Chromatic workflow. You will change code, diagnose failed tests,
-review visual diffs, connect CI, and finish by leading a mock customer call.
+The course has two stages. Everyone starts with the same Trailhead Travel project and learns why the
+workflow matters. The technical stage adds implementation, diagnosis, and recovery practice.
 
-Plan for **60–90 focused minutes per session**. The first ten sessions are the required core. Sessions
-11–15 cover composition, scale, upgrade judgment, and a capstone. Work asynchronously, but ask for help
-when the evidence stops changing.
+<section className="value-role-grid" aria-label="Onboarding stages">
+  <article className="value-role-card">
+    <span>Core onboarding · Required for every SE</span>
+    <h2>Understand the customer value</h2>
+    <p>
+      Learn why each capability matters. Explore a prepared demo and practice
+      answering the questions customers are likely to ask.
+    </p>
+    <ul>
+      <li>8 sessions of 45–60 minutes</li>
+      <li>A prepared, demo-ready project</li>
+      <li>Customer questions, response practice, and honest boundaries</li>
+    </ul>
+  </article>
+  <article className="value-role-card">
+    <span>Post-sales technical training · Role-based</span>
+    <h2>Implement and support the workflow</h2>
+    <p>
+      Continue after core onboarding when your role requires hands-on delivery.
+      Configure the workflow, diagnose failures, and guide adoption.
+    </p>
+    <ul>
+      <li>10 technical foundations and 5 advanced sessions</li>
+      <li>Configuration, testing, CI, review, and scale</li>
+      <li>Technical recovery and adoption planning</li>
+    </ul>
+  </article>
+</section>
 
-## Before Day 1
+## Three themes connect the whole course
 
-1. Complete <a href="./?path=/docs/onboarding-start-here-setup--docs" target="_top">setup</a>. The setup page starts with VS Code and Codex installation.
-2. Read <a href="./?path=/docs/onboarding-start-here-why-the-workflow-matters--docs" target="_top">why the workflow matters</a> before you configure a tool.
-3. Create `progress/<your-github-handle>.md` from the template. Write your first 90-second value explanation.
-4. Confirm the training Chromatic project and support contact with the course owner. Never store a token in a tracked file.
-5. Complete the sessions in order. Each session ends with working code, evidence, a customer explanation, and a focused commit.
-6. Finish with the <a href="./?path=/docs/onboarding-reference-capstone-rubric--docs" target="_top">mock-demo capstone</a>.
+Every learner must be able to explain and prove these themes:
 
-If you run the course, complete the <a href="./?path=/docs/onboarding-reference-facilitator-setup--docs" target="_top">facilitator setup</a> before you assign Day 1.
+1. **Why upgrade to Storybook 10?** Teach the platform value, the ESM and runtime boundary, and a safe
+   evaluation path.
+2. **Why use Storybook MCP?** Show how documented components and stories give coding agents grounded
+   context. State that the current AI capabilities are preview and the docs toolset is React-only.
+3. **Why use Storybook Test locally and in CI?** Show the same story-defined browser test beside the
+   component and on a pull request.
+
+Chromatic connects the themes with published visual evidence and a clear review decision.
+
+<aside className="learning-callout learning-callout--why">
+  <strong>The point of core onboarding</strong>
+  <div>
+    Learn the customer problem before you learn the implementation. Every
+    session asks what the capability changes for a team, what evidence proves
+    the value, and where the boundary sits.
+  </div>
+</aside>
+
+## Before session 1
+
+1. Complete <a href="./?path=/docs/onboarding-start-here-setup--docs" target="_top">setup</a>.
+2. Read <a href="./?path=/docs/onboarding-start-here-why-the-workflow-matters--docs" target="_top">why the workflow matters</a>.
+3. Confirm the training Chromatic project and support contact with the course owner.
+4. Complete the eight core onboarding sessions in order.
+5. Practice the <a href="./?path=/docs/onboarding-reference-capstone-rubric--docs" target="_top">customer conversation</a>.
+6. Continue into post-sales technical training when your role requires it.
+
+If you run the course, complete the <a href="./?path=/docs/onboarding-reference-facilitator-setup--docs" target="_top">facilitator setup</a> before assigning setup.
 
 ## The customer you will carry through the course
 
@@ -35,22 +81,33 @@ You are advising **Trailhead Travel**, a fictional mid-sized enterprise. Its des
 React. Product teams also ship Next.js, Angular, Web Components, and React Native Web. UI coverage is
 inconsistent, reviews are slow, and teams cannot discover all components in one place.
 
-The goal is not to memorize product features. By the capstone, you should be able to discover the
-customer's risk, choose a useful demo path, explain tradeoffs, recover from a failure, and recommend a
-measured next step. You will practice two call types: a presales evaluation and a postsales adoption
-conversation.
+During core onboarding, Trailhead is deciding whether the current Storybook platform and workflow fit
+its needs. During technical training, Trailhead already uses Storybook or Chromatic and needs stronger
+adoption, coverage, or governance.
 
-## Call a day done when
+## How to use each session
 
-A session is complete when all five statements are true:
+Each core onboarding session follows the same learning pattern:
 
-- You completed the requested work on your branch.
-- The verification commands pass, or you recorded a reproducible product issue.
-- Your progress file contains the requested URL, screenshot, terminal result, or commit SHA.
-- You can explain the customer value and the product boundary in your own words.
-- You committed a focused checkpoint without secrets or generated output.
+1. Understand why the customer cares.
+2. Learn the product model and its boundary.
+3. Explore the proof in the prepared demo.
+4. Consider thoughtful discovery questions.
+5. Practice responding to a realistic customer question.
 
-Official docs explain each feature. This lab gives you a customer, a safe practice environment, and a
-repeatable path from discovery to evidence.
+You can keep notes in Notion, Obsidian, Linear, a document, or nowhere at all. The course does not
+require a repository progress file. Use the note-taking system that helps you prepare for customers.
+
+<aside className="learning-callout learning-callout--next">
+  <strong>Technical training has a different finish line</strong>
+  <div>
+    A technical session is complete when the implementation works, the checks
+    pass, and you can explain why the change is safe and useful. Keep technical
+    evidence where your team normally reviews work.
+  </div>
+</aside>
+
+Official docs explain each feature. This course gives you a customer, a safe project, and a path from
+product knowledge to a credible customer conversation.
 
 </CoursePage>

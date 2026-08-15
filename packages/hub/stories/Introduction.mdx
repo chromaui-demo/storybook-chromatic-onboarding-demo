@@ -1,4 +1,5 @@
 import { Meta } from '@storybook/addon-docs/blocks';
+import { CourseTable } from '../src/onboarding/CoursePage';
 
 <Meta title="Demo guide/Start here" />
 
@@ -7,17 +8,56 @@ import { Meta } from '@storybook/addon-docs/blocks';
 Use this page as presenter notes for the multi-framework demo. Each framework owns a separate
 Storybook. The Hub combines their navigation with Storybook `refs`.
 
-| Section          | Local URL        | What to demonstrate                                   |
-| ---------------- | ---------------- | ----------------------------------------------------- |
-| React            | `localhost:6007` | Component states, callback spies, and visual modes    |
-| Next.js          | `localhost:6008` | App Router-aware components and browser interactions  |
-| Angular          | `localhost:6009` | Standalone components and validated `@Output` events  |
-| Web Components   | `localhost:6010` | Custom elements and bubbling `CustomEvent` payloads   |
-| React Native Web | `localhost:6011` | Mobile-sized browser rendering with native primitives |
+<CourseTable
+  label="Demo sections and local Storybook URLs"
+  columns={['Section', 'Local URL', 'What to demonstrate']}
+  rows={[
+    [
+      'React',
+      <code>localhost:6007</code>,
+      'Component states, callback spies, and visual modes',
+    ],
+    [
+      'Next.js',
+      <code>localhost:6008</code>,
+      'App Router-aware components and browser interactions',
+    ],
+    [
+      'Angular',
+      <code>localhost:6009</code>,
+      <>
+        Standalone components and validated <code>@Output</code> events
+      </>,
+    ],
+    [
+      'Web Components',
+      <code>localhost:6010</code>,
+      <>
+        Custom elements and bubbling <code>CustomEvent</code> payloads
+      </>,
+    ],
+    [
+      'React Native Web',
+      <code>localhost:6011</code>,
+      'Mobile-sized browser rendering with native primitives',
+    ],
+  ]}
+/>
 
-## Five-minute customer walkthrough
+## Choose the right depth for the customer conversation
 
-1. Ask which framework and ownership boundaries matter to the customer.
+- **Core onboarding:** Understand the Storybook 10, MCP, and local-to-CI test value through the React
+  project. Every SE starts here.
+- **Post-sales technical training:** Start with the customer's current workflow. Use the framework
+  examples to diagnose a coverage, ownership, or adoption gap.
+
+Ask which decision matters before you choose a demo path. Use composition only when the customer needs
+several independently owned frameworks.
+
+## Five-minute multi-framework walkthrough
+
+1. Ask which framework and ownership boundaries matter to the customer. Stop if composition does not
+   support the decision they need to make.
 2. Open the equivalent reservation-card story in two relevant frameworks.
 3. Show compact, breakpoint, and desktop coverage in the React Storybook.
 4. Run one interaction story and connect the assertions to customer risk.

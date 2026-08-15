@@ -1,64 +1,85 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
 
-<Meta title="Onboarding/Core/10 CI & core demo" />
+<Meta title="Onboarding/Post-sales technical training/Core/10 Storybook Test CI" />
 
 <CoursePage
   phase="Core"
   day={10}
   duration="75–90 minutes"
-  title="Automate the workflow and demo the value"
-  description="Connect Chromatic to GitHub Actions, trace one commit, and lead a focused five-minute customer demo."
-  customerProblem="Visual testing depends on a developer remembering to publish, so branch coverage and review checks are inconsistent."
-  outcome="You can trace a commit through CI and adapt a short Storybook and Chromatic demo for presales or postsales."
-  previous={{ href: './?path=/docs/onboarding-core-09-visual-review--docs', label: 'Day 9 · Visual review' }}
-  next={{ href: './?path=/docs/onboarding-advanced-11-modes--docs', label: 'Day 11 · Modes' }}
+  title="Run Storybook Test in CI"
+  description="Run the same browser tests for each pull request, connect functional and visual evidence, and lead a focused adoption demo."
+  customerProblem="Local component tests and visual builds depend on developers remembering to run them, so pull-request evidence is inconsistent."
+  outcome="You can operate Storybook Test in CI, trace a commit through Chromatic, and recommend a reliable post-sales adoption gate."
+  previous={{ href: './?path=/docs/onboarding-post-sales-technical-training-core-09-visual-review--docs', label: 'Day 9 · Visual review' }}
+  next={{ href: './?path=/docs/onboarding-post-sales-technical-training-advanced-11-modes--docs', label: 'Day 11 · Modes' }}
 >
 
 ## Plan your session
 
 - 15 minutes: read
-- 25–35 minutes: configure or audit CI
+- 25–35 minutes: configure or audit Storybook Test and Chromatic CI
 - 20 minutes: verify the branch run
 - 15 minutes: deliver the core demo
 
+<aside className="learning-callout learning-callout--why">
+  <strong>Why this day matters</strong>
+  <div>
+    A reliable pull-request workflow combines functional proof, visual evidence,
+    Git context, and clear ownership. The check is useful only when the team
+    knows how to act on it.
+  </div>
+</aside>
+
 ## Read before you change CI
 
+- [Storybook Test in CI](https://storybook.js.org/docs/writing-tests)
 - [Chromatic with GitHub Actions](https://www.chromatic.com/docs/github-actions/)
 - [Chromatic access control](https://www.chromatic.com/docs/access/)
 
-## Make the workflow automatic
+## Make Storybook Test automatic
 
-1. Inspect the repository's Chromatic workflow. If the facilitator has not added it yet, create
-   `.github/workflows/chromatic.yml` with:
-   - checkout using `fetch-depth: 0`;
-   - Node 20 and the pnpm version from `packageManager`;
-   - `pnpm install --frozen-lockfile`;
-   - the token from `${{ secrets.CHROMATIC_PROJECT_TOKEN }}`;
-   - `workingDir: packages/react`, so the action uses that package's Storybook build script and config;
-   - a `push` trigger for `main` and SE branches.
-2. Do not enable automatic acceptance, `exitZeroOnChanges`, or TurboSnap for SE branches.
-3. Push your branch and follow the action, Chromatic build, UI Tests, and UI Review checks from commit
-   to result. Verify the build maps to the pushed commit rather than an ephemeral merge commit.
-4. Ask the facilitator before changing branch protection or required checks. Reading and explaining
-   policy is part of this day; changing repository-wide policy is not.
-5. Deliver the five-minute core demo below to a teammate or record it for asynchronous feedback.
+1. Inspect `.github/workflows/storybook-test.yml` and run `pnpm test:storybook` locally.
+2. Confirm that the workflow installs dependencies, uses a Playwright browser environment, and runs
+   the same command for pull requests.
+3. Push your branch. Trace a render or interaction test from the story to the CI result.
+4. Introduce one temporary failure on a disposable commit. Confirm that CI reports the exact story,
+   then restore the test and push a passing commit.
+5. Explain the adoption value: every pull request gets the same component-level proof without relying
+   on a developer to run the test manually.
+
+## Connect functional and visual CI
+
+Inspect the repository's Chromatic workflow. If the facilitator has not added a React workflow yet,
+create `.github/workflows/chromatic.yml` with:
+
+- checkout using `fetch-depth: 0`;
+- Node and pnpm versions from the repository;
+- `pnpm install --frozen-lockfile`;
+- the token from `${{ secrets.CHROMATIC_PROJECT_TOKEN }}`;
+- `workingDir: packages/react`;
+- a `push` trigger for `main` and SE branches.
+
+Do not enable automatic acceptance, `exitZeroOnChanges`, or TurboSnap for SE branches. Push your
+branch and trace the Chromatic build, UI Tests, and UI Review checks from commit to result.
+
+Ask the facilitator before changing branch protection or required checks. Reading and explaining
+policy is part of this day; changing repository-wide policy is not.
 
 <section
   className="value-role-grid"
   aria-label="Choose a customer conversation"
 >
   <article className="value-role-card">
-    <span>Presales practice</span>
-    <h2>Help a prospect evaluate the fit</h2>
+    <span>Functional adoption</span>
+    <h2>Make Storybook Test a shared gate</h2>
     <p>
-      Start with the risk they need to reduce. Show the smallest end-to-end
-      workflow that proves the product can help, then agree on what a useful
-      evaluation should validate.
+      Start with a behavior the team already represents as a story. Show the
+      local failure, CI result, and path back to the same state.
     </p>
   </article>
   <article className="value-role-card">
-    <span>Postsales practice</span>
+    <span>Visual adoption</span>
     <h2>Help a customer improve adoption</h2>
     <p>
       Start with the workflow they already use. Find one consequential gap in
@@ -74,19 +95,26 @@ import { CoursePage } from '../../../packages/hub/src/onboarding/CoursePage';
 2. Show an editable React story and its Autodocs.
 3. Switch among deterministic MSW states.
 4. Run an interaction and accessibility test.
-5. Open a Chromatic diff, explain the baseline, and show the passing CI result.
-6. Close with a practical next step:
-   - **Presales:** name what the customer should validate in a time-boxed evaluation.
-   - **Postsales:** name the coverage gap, the smallest change, and the evidence that would show it helped.
+5. Show the passing Storybook Test check and explain how the team returns to the failing story.
+6. Open a Chromatic diff, explain the baseline, and distinguish visual from functional evidence.
+7. Close with the coverage gap, the smallest adoption change, and the evidence that would show it helped.
 
 ## Verify the handoff from Git to Chromatic
 
-- The workflow uses full Git history and a repository secret.
+- Storybook Test runs the same browser tests locally and in CI.
+- The Chromatic workflow uses full Git history and a repository secret.
 - The branch build is attached to the expected commit and surfaces its checks.
-- Your progress file names the call you practiced, contains feedback on the five-minute demo, and
-  records one improvement for the capstone.
+- You can explain which customer conversation you practiced and which improvement would make the demo
+  more useful.
 
-## Practice the ancestry answer
+## Questions to think through
+
+- Which check should block a pull request, and why?
+- How does a developer return from CI to the failing story?
+- Who owns a denied visual change?
+- Which Git-history mistake could make the baseline misleading?
+
+## How would you respond?
 
 Be ready when someone asks: **Why do we recommend building `main`, and why are push-based workflows
 often safer for baseline ancestry than default pull-request merge commits?**
@@ -103,11 +131,11 @@ repository secrets.
 ## Mark the core path complete
 
 ```sh
-git add .github/workflows/chromatic.yml progress/<handle>.md
-git commit -m "onboarding(day-10): automate Chromatic and complete core demo"
+git add .github/workflows
+git commit -m "onboarding(day-10): run Storybook Test and Chromatic in CI"
 ```
 
-You have completed the required core. Continue into the advanced path when composition, scale, and
-optimization are relevant to the customer conversation.
+You have completed the technical foundations. Continue into advanced technical training when
+composition, scale, and optimization are relevant to the customer conversation.
 
 </CoursePage>
